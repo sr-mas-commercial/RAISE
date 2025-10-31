@@ -1,101 +1,124 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Bulk QR PDF Generator - RAISE</title>
+  <title>RAISE QR Bulk Generator</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
-    .card {display:inline-block; margin:17px; padding:14px; background:#fff; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.09);}
-    .logo {width:60px; height:60px; display:block; margin:0 auto;}
-    .details {margin-top:7px; font-size:1em; color:#003366;}
-    .bottom {margin-top:18px; font-size:1.12em; text-align:center;}
-    button { background:#003366; color:#fff; border:none; border-radius:4px; padding:9px 16px; font-weight:bold; margin:14px 7px;}
+    body { font-family: 'Segoe UI', sans-serif; background:#f0f4fd; color:#003366; padding: 20px; }
+    .card { display:inline-block; width: 260px; margin: 15px; padding: 14px; background: #fff; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);}
+    .logo { width: 60px; height: 60px; margin: 0 auto 12px; display: block; }
+    .details { font-size: 0.95em; margin: 5px 0; }
+    .bottom-text { margin-top: 18px; font-size: 1em; font-weight: bold; text-align: center; color: #003366; }
+    button { background:#003366; color: #fff; border:none; border-radius: 5px; padding: 10px 20px; font-weight: bold; cursor: pointer; margin-top: 15px; }
   </style>
 </head>
 <body>
-  <h1>Bulk Download QR Posters (A5)</h1>
-  <button id="bulkDownloadBtn">Download All as PDF</button>
-  <div id="assetsContainer"></div>
-  <script>
-    const DEPLOYED_FORM_URL = "https://sr-mas-commercial.github.io/RAISE/raise_index.html";
-    const LOGO_URL = "images/indianrailways_logo.png";
-    const assets = [
-      {
-        assetCode: "MAS-RR-023",
-        stationName: "Chennai Central",
-        location: "Retiring Room",
-        type: "Retiring Room",
-        licenseeName: "ABC Enterp.",
-        category: "Facility"
-      },
-      {
-        assetCode: "MAS-CAT-012",
-        stationName: "Chennai Central",
-        location: "Catering Stall 2",
-        type: "Food Stall",
-        licenseeName: "XYZ Food",
-        category: "Catering"
+
+<h1>Bulk Generate QR Codes for RAISE</h1>
+<button id="downloadAllBtn">Download All as Single PDF (A5)</button>
+<div id="container"></div>
+
+<script>
+  const DEPLOYED_FORM_URL = "https://your-domain/raise_index.html"; // Replace with your deployment URL
+  const LOGO_PATH = "images/indianrailways_logo.png"; // Replace if different
+
+  async function fetchAssets() {
+    try {
+      const response = await fetch('assets/assets.json');
+      if(!response.ok) throw new Error('Failed to fetch asset data');
+      const data = await response.json();
+      return data;
+    } catch(e) {
+      alert('Error loading assets.json: ' + e.message);
+      return null;
+    }
+  }
+
+  function createQRCode(value, size=180) {
+    const qr = new QRious({ value, size });
+    return qr.toDataURL();
+  }
+
+  function renderIndividualCard(asset, qrDataURL) {
+    const container = document.getElementById('container');
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.innerHTML = `
+      <img src="${LOGO_PATH}" alt="Indian Railways Logo" class="logo" />
+      <h2 style="text-align:center">${asset.stationName}</h2>
+      <div class="details"><b>Location:</b> ${asset.location || "N/A"}</div>
+      <div class="details"><b>Asset ID:</b> ${asset.assetCode}</div>
+      <div class="details"><b>Type:</b> ${asset.type}</div>
+      <div class="details"><b>Licensee:</b> ${asset.licenseeName}</div>
+      <div class="details"><b>Category:</b> ${asset.category}</div>
+      <img src="${qrDataURL}" alt="QR Code" style="display:block; margin: 12px auto; width: 180px; height: 180px;"/>
+      <div class="bottom-text">Scan this QR code to register complaint on this stall</div>
+    `;
+    container.appendChild(card);
+  }
+
+  async function generateBulkPDF(assets) {
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF({
+      orientation: "portrait",
+      unit: "mm",
+      format: [148, 210] // A5
+    });
+
+    for (let i=0; i<assets.length; i++) {
+      const asset = assets[i];
+      const qrLink = `${DEPLOYED_FORM_URL}?asset=${encodeURIComponent(asset.assetCode)}`;
+      const qrDataURL = createQRCode(qrLink, 250);
+
+      // Draw logo
+      let imgX = (148 - 30)/2, imgY = 15;
+      try {
+        await pdf.addImage(LOGO_PATH, "PNG", imgX, imgY, 30, 30);
+      } catch (e) {
+        // Fallback if logo load fails
       }
-    ];
-    function renderAssets() {
-      const container = document.getElementById('assetsContainer');
-      assets.forEach(asset => {
-        const qrLink = `${DEPLOYED_FORM_URL}?asset=${encodeURIComponent(asset.assetCode)}`;
-        const qr = new QRious({ value: qrLink, size: 190 });
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML = `
-          <img src="${LOGO_URL}" class="logo" alt="Indian Railways Logo" />
-          <h2 style="text-align:center">${asset.stationName}</h2>
-          <div class="details"><b>Location:</b> ${asset.location}</div>
-          <div class="details"><b>Asset ID:</b> ${asset.assetCode}</div>
-          <div class="details"><b>Type:</b> ${asset.type}</div>
-          <div class="details"><b>Licensee:</b> ${asset.licenseeName}</div>
-          <div class="details"><b>Category:</b> ${asset.category}</div>
-          <img src="${qr.toDataURL()}" alt="QR Code" style="display:block;margin:16px auto;width:190px;">
-          <div class="bottom">Scan this QR code to register complaint on this stall</div>
-        `;
-        container.appendChild(card);
-      });
+      pdf.setFont("helvetica", "bold");
+      pdf.setFontSize(15);
+      pdf.setTextColor(0, 51, 102);
+      pdf.text(asset.stationName, 74, imgY + 40, { align:"center" });
+
+      pdf.setFont("helvetica", "normal");
+      pdf.setFontSize(11);
+      pdf.text(`Location: ${asset.location || "N/A"}`, 74, imgY + 50, { align:"center" });
+      pdf.text(`Asset ID: ${asset.assetCode}`, 74, imgY + 58, { align:"center" });
+      pdf.text(`Type: ${asset.type}`, 74, imgY + 66, { align:"center" });
+      pdf.text(`Licensee: ${asset.licenseeName}`, 74, imgY + 74, { align:"center" });
+      pdf.text(`Category: ${asset.category}`, 74, imgY + 82, { align:"center" });
+
+      pdf.addImage(qrDataURL, "PNG", 32, imgY + 90, 84, 84); // Large QR in center
+
+      pdf.setFontSize(13);
+      pdf.text("Scan this QR code to register complaint on this stall", 74, 195, { align:"center" });
+
+      if(i !== assets.length - 1) pdf.addPage([148,210], "portrait");
+    }
+    pdf.save("RAISE_QR_Bulk.pdf");
+  }
+
+  async function main() {
+    const data = await fetchAssets();
+    if(!data) return;
+
+    // assets.json is an object, convert to array
+    const assetsArray = Object.values(data);
+
+    for(const asset of assetsArray){
+      const qrLink = `${DEPLOYED_FORM_URL}?asset=${encodeURIComponent(asset.assetCode)}`;
+      const qrDataURL = createQRCode(qrLink);
+      renderIndividualCard(asset, qrDataURL);
     }
 
-    async function bulkDownloadPDF() {
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF({
-        orientation: "portrait",
-        unit: "mm",
-        format: [148, 210] // A5 [width, height] in mm
-      });
-      for (let i = 0; i < assets.length; i++) {
-        const asset = assets[i];
-        const qrLink = `${DEPLOYED_FORM_URL}?asset=${encodeURIComponent(asset.assetCode)}`;
-        const qr = new QRious({ value: qrLink, size: 210 });
-        // Logo at top center
-        let imgY = 12, imgW = 25, imgX = (148-imgW)/2;
-        doc.addImage(LOGO_URL, "PNG", imgX, imgY, imgW, imgW); 
-        doc.setFont("helvetica","bold");
-        doc.setFontSize(15);
-        doc.setTextColor(0, 51, 102);
-        doc.text(asset.stationName, 74, imgY+imgW+8, {align:"center"});
-        doc.setFontSize(10);
-        doc.setFont("helvetica","normal");
-        doc.text(`Location: ${asset.location}`, 74, imgY+imgW+16, {align:"center"});
-        doc.text(`Asset ID: ${asset.assetCode}`, 74, imgY+imgW+22, {align:"center"});
-        doc.text(`Type: ${asset.type}`, 74, imgY+imgW+28, {align:"center"});
-        doc.text(`Licensee: ${asset.licenseeName}`, 74, imgY+imgW+34, {align:"center"});
-        doc.text(`Category: ${asset.category}`, 74, imgY+imgW+40, {align:"center"});
-        // QR code big and centered
-        doc.addImage(qr.toDataURL(), "PNG", 32, imgY+imgW+49, 84, 84);
-        // Footer message
-        doc.setFontSize(12);
-        doc.text("Scan this QR code to register complaint on this stall", 74, 194, {align:"center"});
-        if (i !== assets.length - 1) doc.addPage([148,210], "portrait");
-      }
-      doc.save("RAISE_QR_BULK.pdf");
-    }
+    document.getElementById('downloadAllBtn').onclick = () => generateBulkPDF(assetsArray);
+  }
 
-    document.getElementById('bulkDownloadBtn').onclick = bulkDownloadPDF;
-    renderAssets();
-  </script>
+  main();
+</script>
+
 </body>
 </html>
