@@ -1,6 +1,6 @@
 // ==================== CONFIGURATION ====================
 // IMPORTANT: Replace with your actual Google Apps Script Web App URL
-const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxpK3mwwbkaUdXM6EbftiLwKR3fXXEDKnA_QQy1FzU/dev';
 
 // Admin credentials (for demo - in production, use backend authentication)
 const ADMIN_CREDENTIALS = {
