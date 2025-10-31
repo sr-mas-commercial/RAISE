@@ -193,7 +193,7 @@ async function submitToGoogleSheets(data) {
     if (GOOGLE_SCRIPT_URL === "https://script.google.com/macros/s/AKfycbxpK3mwwbkaUdXM6EbftiLwKR3fXXEDKnA_QQy1FzU/dev") {
       // Demo mode
       console.log('Demo mode: Saving to localStorage', data);
-      let complaints = JSON.parse(localStorage.getItem('complaints') || '[]');
+      let complaints = JSON.parse(localStorage.getItem('Complaints') || '[]');
       complaints.push(data);
       localStorage.setItem('Complaints', JSON.stringify(complaints));
       await new Promise(resolve => setTimeout(resolve, 1500));
