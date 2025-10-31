@@ -162,9 +162,9 @@ async function submitToGoogleSheets(data) {
         if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbxpK3mwwbkaUdXM6EbftiLwKR3fXXEDKnA_QQy1FzU/dev') {
             // Demo mode: Store in localStorage
             console.log('Demo mode: Saving to localStorage');
-            let complaints = JSON.parse(localStorage.getItem('complaints') || '[]');
+            let complaints = JSON.parse(localStorage.getItem('Complaints') || '[]');
             complaints.push(data);
-            localStorage.setItem('complaints', JSON.stringify(complaints));
+            localStorage.setItem('Complaints', JSON.stringify(complaints));
             await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate network delay
         } else {
             // Production mode: Send to Google Sheets
@@ -339,7 +339,7 @@ async function loadComplaints() {
         if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbxpK3mwwbkaUdXM6EbftiLwKR3fXXEDKnA_QQy1FzU/dev') {
             // Demo mode: Load from localStorage
             console.log('Demo mode: Loading from localStorage');
-            complaints = JSON.parse(localStorage.getItem('complaints') || '[]');
+            complaints = JSON.parse(localStorage.getItem('Complaints') || '[]');
             await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate network delay
         } else {
             // Production mode: Fetch from Google Sheets
@@ -501,7 +501,7 @@ async function updateStatus() {
         // Save to storage
         if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbxpK3mwwbkaUdXM6EbftiLwKR3fXXEDKnA_QQy1FzU/dev') {
             // Demo mode: Update localStorage
-            localStorage.setItem('complaints', JSON.stringify(currentComplaints));
+            localStorage.setItem('Complaints', JSON.stringify(currentComplaints));
         } else {
             // Production mode: Update Google Sheets
             const updateData = {
