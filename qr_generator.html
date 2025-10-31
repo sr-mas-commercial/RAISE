@@ -1,48 +1,101 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RAISE Asset QR Code Generator</title>
+  <title>Bulk QR PDF Generator - RAISE</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
-    body { font-family: 'Segoe UI', Arial, sans-serif; background: #fafcff; color: #003366; }
-    .card { display: inline-block; margin: 20px; padding: 16px 24px; background: #fff; border-radius: 12px; box-shadow: 0 5px 16px rgba(0,0,0,0.08); }
-    h2 { margin: 8px 0; font-size: 1.25em; }
-    .qr-img { margin: 12px 0; }
-    table { font-size: 0.97em; margin-top: 6px; }
+    .card {display:inline-block; margin:17px; padding:14px; background:#fff; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.09);}
+    .logo {width:60px; height:60px; display:block; margin:0 auto;}
+    .details {margin-top:7px; font-size:1em; color:#003366;}
+    .bottom {margin-top:18px; font-size:1.12em; text-align:center;}
+    button { background:#003366; color:#fff; border:none; border-radius:4px; padding:9px 16px; font-weight:bold; margin:14px 7px;}
   </style>
 </head>
 <body>
-  <h1>Generate QR for RAISE Asset Complaint Form</h1>
+  <h1>Bulk Download QR Posters (A5)</h1>
+  <button id="bulkDownloadBtn">Download All as PDF</button>
   <div id="assetsContainer"></div>
   <script>
-    // Replace with your actual deployed complaint form URL
-    const DEPLOYED_FORM_URL = "https://sr-mas-commercial.github.io/RAISE/raise_index_html.html";
-    
-    // Load asset data (can also fetch from a server API if needed)
-    fetch("assets/assets.json")
-      .then(r => r.json())
-      .then(assets => {
-        const container = document.getElementById('assetsContainer');
-        Object.values(assets).forEach(asset => {
-          const qrLink = `${DEPLOYED_FORM_URL}?asset=${encodeURIComponent(asset.assetCode)}`;
-          // Create QR code
-          const qr = new QRious({ value: qrLink, size: 140 });
-
-          // Card with QR and details
-          const card = document.createElement('div');
-          card.className = 'card';
-          card.innerHTML = `
-            <h2>${asset.stationName} – ${asset.location}</h2>
-            <div><b>Asset ID:</b> ${asset.assetCode}</div>
-            <div><b>Type:</b> ${asset.type}</div>
-            <div><b>Category:</b> ${asset.category}</div>
-            <div><b>Licensee:</b> ${asset.licenseeName}</div>
-            <div class="qr-img"><img src="${qr.toDataURL()}" alt="QR for ${asset.assetCode}" /></div>
-            <div style="word-break:break-all; font-size:0.9em;"><a href="${qrLink}" target="_blank">${qrLink}</a></div>
-          `;
-          container.appendChild(card);
-        });
+    const DEPLOYED_FORM_URL = "https://sr-mas-commercial.github.io/RAISE/raise_index.html";
+    const LOGO_URL = "images/indianrailways_logo.png";
+    const assets = [
+      {
+        assetCode: "MAS-RR-023",
+        stationName: "Chennai Central",
+        location: "Retiring Room",
+        type: "Retiring Room",
+        licenseeName: "ABC Enterp.",
+        category: "Facility"
+      },
+      {
+        assetCode: "MAS-CAT-012",
+        stationName: "Chennai Central",
+        location: "Catering Stall 2",
+        type: "Food Stall",
+        licenseeName: "XYZ Food",
+        category: "Catering"
+      }
+    ];
+    function renderAssets() {
+      const container = document.getElementById('assetsContainer');
+      assets.forEach(asset => {
+        const qrLink = `${DEPLOYED_FORM_URL}?asset=${encodeURIComponent(asset.assetCode)}`;
+        const qr = new QRious({ value: qrLink, size: 190 });
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <img src="${LOGO_URL}" class="logo" alt="Indian Railways Logo" />
+          <h2 style="text-align:center">${asset.stationName}</h2>
+          <div class="details"><b>Location:</b> ${asset.location}</div>
+          <div class="details"><b>Asset ID:</b> ${asset.assetCode}</div>
+          <div class="details"><b>Type:</b> ${asset.type}</div>
+          <div class="details"><b>Licensee:</b> ${asset.licenseeName}</div>
+          <div class="details"><b>Category:</b> ${asset.category}</div>
+          <img src="${qr.toDataURL()}" alt="QR Code" style="display:block;margin:16px auto;width:190px;">
+          <div class="bottom">Scan this QR code to register complaint on this stall</div>
+        `;
+        container.appendChild(card);
       });
+    }
+
+    async function bulkDownloadPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF({
+        orientation: "portrait",
+        unit: "mm",
+        format: [148, 210] // A5 [width, height] in mm
+      });
+      for (let i = 0; i < assets.length; i++) {
+        const asset = assets[i];
+        const qrLink = `${DEPLOYED_FORM_URL}?asset=${encodeURIComponent(asset.assetCode)}`;
+        const qr = new QRious({ value: qrLink, size: 210 });
+        // Logo at top center
+        let imgY = 12, imgW = 25, imgX = (148-imgW)/2;
+        doc.addImage(LOGO_URL, "PNG", imgX, imgY, imgW, imgW); 
+        doc.setFont("helvetica","bold");
+        doc.setFontSize(15);
+        doc.setTextColor(0, 51, 102);
+        doc.text(asset.stationName, 74, imgY+imgW+8, {align:"center"});
+        doc.setFontSize(10);
+        doc.setFont("helvetica","normal");
+        doc.text(`Location: ${asset.location}`, 74, imgY+imgW+16, {align:"center"});
+        doc.text(`Asset ID: ${asset.assetCode}`, 74, imgY+imgW+22, {align:"center"});
+        doc.text(`Type: ${asset.type}`, 74, imgY+imgW+28, {align:"center"});
+        doc.text(`Licensee: ${asset.licenseeName}`, 74, imgY+imgW+34, {align:"center"});
+        doc.text(`Category: ${asset.category}`, 74, imgY+imgW+40, {align:"center"});
+        // QR code big and centered
+        doc.addImage(qr.toDataURL(), "PNG", 32, imgY+imgW+49, 84, 84);
+        // Footer message
+        doc.setFontSize(12);
+        doc.text("Scan this QR code to register complaint on this stall", 74, 194, {align:"center"});
+        if (i !== assets.length - 1) doc.addPage([148,210], "portrait");
+      }
+      doc.save("RAISE_QR_BULK.pdf");
+    }
+
+    document.getElementById('bulkDownloadBtn').onclick = bulkDownloadPDF;
+    renderAssets();
   </script>
 </body>
 </html>
