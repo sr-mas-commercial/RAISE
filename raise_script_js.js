@@ -159,7 +159,7 @@ async function handleComplaintSubmit(event) {
 async function submitToGoogleSheets(data) {
     try {
         // Check if using demo mode or actual Google Sheets
-        if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+        if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbxpK3mwwbkaUdXM6EbftiLwKR3fXXEDKnA_QQy1FzU/dev') {
             // Demo mode: Store in localStorage
             console.log('Demo mode: Saving to localStorage');
             let complaints = JSON.parse(localStorage.getItem('complaints') || '[]');
@@ -336,7 +336,7 @@ async function loadComplaints() {
         let complaints = [];
         
         // Check if using demo mode or actual Google Sheets
-        if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+        if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbxpK3mwwbkaUdXM6EbftiLwKR3fXXEDKnA_QQy1FzU/dev') {
             // Demo mode: Load from localStorage
             console.log('Demo mode: Loading from localStorage');
             complaints = JSON.parse(localStorage.getItem('complaints') || '[]');
@@ -499,7 +499,7 @@ async function updateStatus() {
         currentComplaints[currentRowIndex].status = newStatus;
         
         // Save to storage
-        if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+        if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbxpK3mwwbkaUdXM6EbftiLwKR3fXXEDKnA_QQy1FzU/dev') {
             // Demo mode: Update localStorage
             localStorage.setItem('complaints', JSON.stringify(currentComplaints));
         } else {
