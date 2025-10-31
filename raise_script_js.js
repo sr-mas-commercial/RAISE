@@ -188,13 +188,14 @@ async function handleComplaintSubmit(event) {
 // }
 
 async function submitToGoogleSheets(data) {
+
   try {
     if (GOOGLE_SCRIPT_URL === "https://script.google.com/macros/s/AKfycbxpK3mwwbkaUdXM6EbftiLwKR3fXXEDKnA_QQy1FzU/dev") {
       // Demo mode
-      console.log('Demo mode: Saving to localStorage');
+      console.log('Demo mode: Saving to localStorage', data);
       let complaints = JSON.parse(localStorage.getItem('complaints') || '[]');
       complaints.push(data);
-      localStorage.setItem('complaints', JSON.stringify(complaints));
+      localStorage.setItem('Complaints', JSON.stringify(complaints));
       await new Promise(resolve => setTimeout(resolve, 1500));
     } else {
       // Production mode - REMOVE no-cors
