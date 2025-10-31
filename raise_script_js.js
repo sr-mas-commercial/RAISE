@@ -156,36 +156,68 @@ async function handleComplaintSubmit(event) {
     }
 }
 
-async function submitToGoogleSheets(data) {
-    try {
-        // Check if using demo mode or actual Google Sheets
-        if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbxpK3mwwbkaUdXM6EbftiLwKR3fXXEDKnA_QQy1FzU/dev') {
-            // Demo mode: Store in localStorage
-            console.log('Demo mode: Saving to localStorage');
-            let complaints = JSON.parse(localStorage.getItem('Complaints') || '[]');
-            complaints.push(data);
-            localStorage.setItem('Complaints', JSON.stringify(complaints));
-            await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate network delay
-        } else {
-            // Production mode: Send to Google Sheets
-            const response = await fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            });
+// async function submitToGoogleSheets(data) {
+//     try {
+//         // Check if using demo mode or actual Google Sheets
+//         if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbxpK3mwwbkaUdXM6EbftiLwKR3fXXEDKnA_QQy1FzU/dev') {
+//             // Demo mode: Store in localStorage
+//             console.log('Demo mode: Saving to localStorage');
+//             let complaints = JSON.parse(localStorage.getItem('Complaints') || '[]');
+//             complaints.push(data);
+//             localStorage.setItem('Complaints', JSON.stringify(complaints));
+//             await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate network delay
+//         } else {
+//             // Production mode: Send to Google Sheets
+//             const response = await fetch(GOOGLE_SCRIPT_URL, {
+//                 method: 'POST',
+//                 mode: 'no-cors',
+//                 headers: {
+//                     'Content-Type': 'application/json',
+//                 },
+//                 body: JSON.stringify(data)
+//             });
             
-            // Note: With no-cors mode, we can't read the response
-            // Assume success if no error is thrown
-            console.log('Submitted to Google Sheets');
-        }
-    } catch (error) {
-        console.error('Google Sheets submission error:', error);
-        throw error;
+//             // Note: With no-cors mode, we can't read the response
+//             // Assume success if no error is thrown
+//             console.log('Submitted to Google Sheets');
+//         }
+//     } catch (error) {
+//         console.error('Google Sheets submission error:', error);
+//         throw error;
+//     }
+// }
+
+async function submitToGoogleSheets(data) {
+  try {
+    if (GOOGLE_SCRIPT_URL === "https://script.google.com/macros/s/AKfycbxpK3mwwbkaUdXM6EbftiLwKR3fXXEDKnA_QQy1FzU/dev") {
+      // Demo mode
+      console.log('Demo mode: Saving to localStorage');
+      let complaints = JSON.parse(localStorage.getItem('complaints') || '[]');
+      complaints.push(data);
+      localStorage.setItem('complaints', JSON.stringify(complaints));
+      await new Promise(resolve => setTimeout(resolve, 1500));
+    } else {
+      // Production mode - REMOVE no-cors
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+      });
+      
+      const result = await response.json();
+      if (!result.success) {
+        throw new Error(result.error || 'Submission failed');
+      }
+      console.log('Submitted successfully:', result);
     }
+  } catch (error) {
+    console.error('Google Sheets submission error:', error);
+    throw error;
+  }
 }
+
 
 function showSuccess(formData) {
     document.getElementById('formContent').style.display = 'none';
