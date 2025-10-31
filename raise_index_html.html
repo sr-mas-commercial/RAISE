@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAISE - Railway Asset Issue Escalation System</title>
+    <link rel="stylesheet" href="raise_style_css.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="images/indianrailways_logo.png" alt="Indian Railways Logo" class="logo">
+            <h1>RAISE</h1>
+            <p class="subtitle">Railway Asset Issue Escalation System</p>
+            <p class="organization">Commercial Branch, Southern Railway – Chennai Division</p>
+        </div>
+
+        <div class="content" id="formContent">
+            <div id="errorAlert" class="alert alert-error" style="display: none;"></div>
+
+            <div id="assetBadge" class="asset-badge" style="display: none;">
+                <label>Asset/Stall ID</label>
+                <div class="value" id="assetIdDisplay"></div>
+            </div>
+
+            <form id="complaintForm">
+                <div class="form-group">
+                    <label>Your Name <span class="optional">(Optional)</span></label>
+                    <input type="text" id="name" placeholder="Enter your name">
+                </div>
+
+                <div class="form-group">
+                    <label>Mobile Number <span class="optional">(Optional)</span></label>
+                    <input type="tel" id="mobile" placeholder="10-digit mobile number" maxlength="10" pattern="[0-9]{10}">
+                </div>
+
+                <div class="form-group">
+                    <label>Complaint Type <span class="required">*</span></label>
+                    <select id="complaintType" required>
+                        <option value="">Select complaint type</option>
+                        <option value="Overcharging">Overcharging</option>
+                        <option value="Poor Service">Poor Service</option>
+                        <option value="Cleanliness">Cleanliness Issue</option>
+                        <option value="Staff Behavior">Staff Behavior</option>
+                        <option value="Maintenance">Maintenance Required</option>
+                        <option value="Safety Concern">Safety Concern</option>
+                        <option value="Others">Others</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Complaint Description <span class="required">*</span></label>
+                    <textarea id="description" placeholder="Please describe your complaint in detail..." rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" id="location" placeholder="Auto-detected or enter manually">
+                </div>
+
+                <div class="form-group">
+                    <label>Upload Photo <span class="optional">(Optional, max 5MB)</span></label>
+                    <div class="file-upload" onclick="document.getElementById('photoInput').click()">
+                        <input type="file" id="photoInput" accept="image/*" style="display: none;">
+                        <p id="uploadText">📷 Click to choose photo</p>
+                    </div>
+                    <div id="photoPreview" class="photo-preview" style="display: none;"></div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    <span id="submitText">Submit Complaint</span>
+                </button>
+            </form>
+        </div>
+
+        <div id="successContent" class="content" style="display: none;">
+            <div class="success-box">
+                <div class="success-icon">✓</div>
+                <h2>Complaint Registered!</h2>
+                <p>Your complaint has been successfully submitted.</p>
+            </div>
+
+            <div class="reference-box">
+                <p><strong>Reference ID:</strong> <span id="refId"></span></p>
+                <p><strong>Type:</strong> <span id="refType"></span></p>
+                <p><strong>Status:</strong> <span class="status-badge status-pending">Pending Review</span></p>
+            </div>
+
+            <button class="btn btn-whatsapp" id="whatsappBtn">
+                📱 Share on WhatsApp
+            </button>
+
+            <button class="btn btn-secondary" onclick="location.reload()">
+                Submit Another Complaint
+            </button>
+        </div>
+
+        <div class="footer">
+            <p class="tagline">Scan • Report • Resolve</p>
+            <p class="credits">Powered by IT wing, Commercial Branch, Southern Railway – Chennai Division</p>
+        </div>
+    </div>
+
+    <script src="raise_script_js.js"></script>
+    <script>
+        // Initialize form
+        initComplaintForm();
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RAISE Asset QR Code Generator</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #fafcff; color: #003366; }
+    .card { display: inline-block; margin: 20px; padding: 16px 24px; background: #fff; border-radius: 12px; box-shadow: 0 5px 16px rgba(0,0,0,0.08); }
+    h2 { margin: 8px 0; font-size: 1.25em; }
+    .qr-img { margin: 12px 0; }
+    table { font-size: 0.97em; margin-top: 6px; }
+  </style>
+</head>
+<body>
+  <h1>Generate QR for RAISE Asset Complaint Form</h1>
+  <div id="assetsContainer"></div>
+  <script>
+    // Replace with your actual deployed complaint form URL
+    const DEPLOYED_FORM_URL = "https://your-domain/raise_index_html.html";
+    
+    // Load asset data (can also fetch from a server API if needed)
+    fetch("assets/assets.json")
+      .then(r => r.json())
+      .then(assets => {
+        const container = document.getElementById('assetsContainer');
+        Object.values(assets).forEach(asset => {
+          const qrLink = `${DEPLOYED_FORM_URL}?asset=${encodeURIComponent(asset.assetCode)}`;
+          // Create QR code
+          const qr = new QRious({ value: qrLink, size: 140 });
+
+          // Card with QR and details
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `
+            <h2>${asset.stationName} – ${asset.location}</h2>
+            <div><b>Asset ID:</b> ${asset.assetCode}</div>
+            <div><b>Type:</b> ${asset.type}</div>
+            <div><b>Category:</b> ${asset.category}</div>
+            <div><b>Licensee:</b> ${asset.licenseeName}</div>
+            <div class="qr-img"><img src="${qr.toDataURL()}" alt="QR for ${asset.assetCode}" /></div>
+            <div style="word-break:break-all; font-size:0.9em;"><a href="${qrLink}" target="_blank">${qrLink}</a></div>
+          `;
+          container.appendChild(card);
+        });
+      });
+  </script>
+</body>
+</html>

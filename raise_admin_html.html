@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAISE - Admin Login</title>
+    <link rel="stylesheet" href="raise_style_css.css">
+</head>
+<body>
+    <div class="container" style="max-width: 500px;">
+        <div class="header">
+             <img src="images/indianrailways_logo.png" alt="Indian Railways Logo" class="logo">
+            <h1>RAISE Admin</h1>
+            <p class="subtitle">Railway Asset Issue Escalation System</p>
+            <p class="organization">Admin Access Only</p>
+        </div>
+
+        <div class="content">
+            <div id="loginAlert" class="alert alert-error" style="display: none;"></div>
+
+            <div class="login-card">
+                <h2>Admin Login</h2>
+                <p class="login-subtitle">Enter your credentials to access the complaint dashboard</p>
+
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label>Username <span class="required">*</span></label>
+                        <input type="text" id="username" placeholder="Enter username" required autocomplete="username">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Password <span class="required">*</span></label>
+                        <input type="password" id="password" placeholder="Enter password" required autocomplete="current-password">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <span id="loginText">Login</span>
+                    </button>
+                </form>
+
+                <div class="login-footer">
+                    <p>Default credentials for demo:</p>
+                    <p><strong>Username:</strong> admin</p>
+                    <p><strong>Password:</strong> admin123</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p class="tagline">Scan • Report • Resolve</p>
+            <p class="credits">Powered by IT wing, Commercial Branch, Southern Railway – Chennai Division</p>
+        </div>
+    </div>
+
+    <script src="raise_script_js.js"></script>
+    <script>
+        // Initialize login
+        initAdminLogin();
+    </script>
+</body>
+</html>
