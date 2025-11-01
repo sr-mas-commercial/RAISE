@@ -183,6 +183,16 @@
 
         // Title
         pdf.setFont("helvetica", "bold");
+        pdf.setFontSize(24);
+        pdf.setTextColor(0, 51, 102);
+        pdf.text("Southern Railway", 74, 45, { align: "center" });
+
+        pdf.setFont("helvetica", "bold");
+        pdf.setFontSize(20);
+        pdf.setTextColor(0, 51, 102);
+        pdf.text("Chennai Division", 74, 45, { align: "center" });
+        
+        pdf.setFont("helvetica", "bold");
         pdf.setFontSize(15);
         pdf.setTextColor(0, 51, 102);
         pdf.text(stationName, 74, 45, { align: "center" });
