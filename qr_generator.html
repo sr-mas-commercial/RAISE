@@ -136,13 +136,15 @@
         card.innerHTML = `
           <img src="${LOGO_PATH}" alt="Indian Railways Logo" class="logo" />
           <div class="title">${stationName}</div>
+          <div class="bottom-text"> Southern Railway </div>
+          <div class="bottom-text"> Chennai Division </div>
           ${assetCode ? `<div class="details"><b>Asset ID:</b> ${assetCode}</div>` : ""}
           ${type ? `<div class="details"><b>Type:</b> ${type}</div>` : ""}
           ${location ? `<div class="details"><b>Location:</b> ${location}</div>` : ""}
           ${licenseeName ? `<div class="details"><b>Licensee:</b> ${licenseeName}</div>` : ""}
           ${category ? `<div class="details"><b>Category:</b> ${category}</div>` : ""}
           <img src="${qrDataURL}" alt="QR Code" class="qr" />
-          <div class="bottom-text">Scan this QR code to register complaint on this stall</div>
+          <div class="bottom-text">Scan this QR code to register feedback / complaint</div>
         `;
         container.appendChild(card);
       });

@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RAISE - Railway Asset Issue Escalation System</title>
+    <title>QR Complaints - Railway Asset Issue Escalation System</title>
     <link rel="stylesheet" href="raise_style_css.css" />
 </head>
 <body>
     <div class="container">
         <div class="header">
             <img src="images/indianrailways_logo.png" alt="Indian Railways Logo" class="logo" />
-            <h1>RAISE</h1>
-            <p class="subtitle">Railway Asset Issue Escalation System</p>
+            <h1>QR Complaints</h1>
             <p class="organization">Commercial Branch, Southern Railway – Chennai Division</p>
         </div>
 
@@ -25,13 +24,13 @@
 
             <form id="complaintForm">
                 <div class="form-group">
-                    <label>Your Name <span class="optional">(Optional)</span></label>
-                    <input type="text" id="name" placeholder="Enter your name" />
+                    <label>Your Name <span class="required">*</span></label>
+                    <input type="text" id="name" placeholder="Enter your name" required/>
                 </div>
 
                 <div class="form-group">
-                    <label>Mobile Number <span class="optional">(Optional)</span></label>
-                    <input type="tel" id="mobile" placeholder="10-digit mobile number" maxlength="10" pattern="[0-9]{10}" />
+                    <label>Mobile Number <span class="required">*</span></label>
+                    <input type="tel" id="mobile" placeholder="10-digit mobile number" maxlength="10" pattern="[0-9]{10}" required/>
                 </div>
 
                 <div class="form-group">
