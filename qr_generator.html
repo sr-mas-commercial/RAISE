@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RAISE QR Posters - Bulk Download</title>
+  <title>QR Posters for QR Complaints over Chennai Division - Bulk Download</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
@@ -135,9 +135,11 @@
         // Build HTML only for non-empty fields
         card.innerHTML = `
           <img src="${LOGO_PATH}" alt="Indian Railways Logo" class="logo" />
-          <div class="title">${stationName}</div>
-          <div class="bottom-text"> Southern Railway </div>
-          <div class="bottom-text"> Chennai Division </div>
+          <div class="title"> Southern Railway </div>
+          <div class="title"> Chennai Division </div>
+          <br>
+          <div class="bottom-text">${stationName}</div>
+          <br>
           ${assetCode ? `<div class="details"><b>Asset ID:</b> ${assetCode}</div>` : ""}
           ${type ? `<div class="details"><b>Type:</b> ${type}</div>` : ""}
           ${location ? `<div class="details"><b>Location:</b> ${location}</div>` : ""}
