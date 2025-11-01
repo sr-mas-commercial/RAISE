@@ -175,44 +175,80 @@
         const category = safeValue(asset.category);
 
         // Add logo
-        try {
-          await pdf.addImage(LOGO_PATH, "PNG", (148 - 25) / 2, 10, 25, 25);
-        } catch {
-          // Ignore logo load errors
-        }
+      try {
+        // Add Indian Railways logo at top center
+        await pdf.addImage(LOGO_PATH, "PNG", (148 - 30) / 2, 8, 30, 30);
+      } catch (error) {
+        console.log('Logo not loaded:', error);
+        // Continue without logo
+      }
 
-        // Title
-        pdf.setFont("helvetica", "bold");
-        pdf.setFontSize(24);
-        pdf.setTextColor(0, 51, 102);
-        pdf.text("Southern Railway", 74, 45, { align: "center" });
+      // Starting Y position after logo
+      let yPos = 45;
 
-        pdf.setFont("helvetica", "bold");
-        pdf.setFontSize(20);
-        pdf.setTextColor(0, 51, 102);
-        pdf.text("Chennai Division", 74, 45, { align: "center" });
-        
-        pdf.setFont("helvetica", "bold");
-        pdf.setFontSize(15);
-        pdf.setTextColor(0, 51, 102);
-        pdf.text(stationName, 74, 45, { align: "center" });
+      // Main Header - Southern Railway
+      pdf.setFont("helvetica", "bold");
+      pdf.setFontSize(18);
+      pdf.setTextColor(0, 51, 102);
+      pdf.text("Southern Railway", 74, yPos, { align: "center" });
+      yPos += 7;
 
-        // Asset info lines
-        pdf.setFont("helvetica", "normal");
-        pdf.setFontSize(11);
-        if (assetCode) pdf.text(`Asset ID: ${assetCode}`, 74, 52, { align: "center" });
-        if (type) pdf.text(`Type: ${type}`, 74, 58, { align: "center" });
-        if (location) pdf.text(`Location: ${location}`, 74, 64, { align: "center" });
-        if (licenseeName) pdf.text(`Licensee: ${licenseeName}`, 74, 70, { align: "center" });
-        if (category) pdf.text(`Category: ${category}`, 74, 76, { align: "center" });
+      // Sub Header - Chennai Division
+      pdf.setFontSize(14);
+      pdf.text("Chennai Division", 74, yPos, { align: "center" });
+      yPos += 10;
 
-        // Add QR code large and centered
-        pdf.addImage(qrDataURL, "PNG", 32, 85, 84, 84);
+      // Station Name - Larger and prominent
+      pdf.setFontSize(16);
+      pdf.setTextColor(255, 153, 51); // Saffron color for emphasis
+      pdf.text(stationName, 74, yPos, { align: "center" });
+      yPos += 10;
 
-        // Bottom text
-        pdf.setFontSize(13);
-        pdf.setTextColor(0, 51, 102);
-        pdf.text("Scan this QR code to register feedback or complaint", 74, 200, { align: "center" });
+      // Asset details section with proper spacing
+      pdf.setFont("helvetica", "normal");
+      pdf.setFontSize(10);
+      pdf.setTextColor(0, 51, 102);
+
+      if (assetCode) {
+        pdf.text(`Asset ID: ${assetCode}`, 74, yPos, { align: "center" });
+        yPos += 5;
+      }
+
+      if (type) {
+        pdf.text(`Type: ${type}`, 74, yPos, { align: "center" });
+        yPos += 5;
+      }
+
+      if (location) {
+        pdf.text(`Location: ${location}`, 74, yPos, { align: "center" });
+        yPos += 5;
+      }
+
+      if (licenseeName) {
+        pdf.text(`Licensee: ${licenseeName}`, 74, yPos, { align: "center" });
+        yPos += 5;
+      }
+
+      if (category) {
+        pdf.text(`Category: ${category}`, 74, yPos, { align: "center" });
+        yPos += 5;
+      }
+
+      // Add some spacing before QR code
+      yPos += 5;
+
+      // Add QR code - large and centered
+      const qrSize = 85;
+      const qrX = (148 - qrSize) / 2; // Center horizontally
+      pdf.addImage(qrDataURL, "PNG", qrX, yPos, qrSize, qrSize);
+
+      // Bottom instruction text - positioned near bottom of page
+      pdf.setFont("helvetica", "bold");
+      pdf.setFontSize(11);
+      pdf.setTextColor(0, 51, 102);
+      pdf.text("Scan this QR code to register", 74, 195, { align: "center" });
+      pdf.text("feedback or complaint", 74, 202, { align: "center" });
+
 
         if (i !== assetList.length - 1) pdf.addPage([148, 210], "portrait");
       }
