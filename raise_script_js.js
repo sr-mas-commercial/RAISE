@@ -1,6 +1,6 @@
 // ==================== CONFIGURATION ====================
 // IMPORTANT: Replace with your actual Google Apps Script Web App URL
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxpK3mwwbkaUdXM6EbftiLwKR3fXXEDKnA_QQy1FzU/dev';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyswFn65bVPqle5M1fUGFdzDkS4-stnb7aLcJY9yozMLuhjLtrTjx3SUSiTqvr0upoY/exec';
 
 // Admin credentials (for demo - in production, use backend authentication)
 const ADMIN_CREDENTIALS = {
@@ -50,6 +50,24 @@ function initComplaintForm() {
     if (form) {
         form.addEventListener('submit', handleComplaintSubmit);
     }
+
+     const formTypeEl = document.getElementById('formType');
+    const complaintGroup = document.getElementById('complaintGroup');
+    const feedbackGroup = document.getElementById('feedbackGroup');
+
+    if (formTypeEl && complaintGroup && feedbackGroup) {
+        const toggle = () => {
+        if (formTypeEl.value === 'Feedback') {
+            complaintGroup.style.display = 'none';
+            feedbackGroup.style.display = 'block';
+        } else {
+            complaintGroup.style.display = 'block';
+            feedbackGroup.style.display = 'none';
+        }
+        };
+        formTypeEl.addEventListener('change', toggle);
+        toggle();
+    }
 }
 
 function handlePhotoUpload(event) {
@@ -74,92 +92,189 @@ function handlePhotoUpload(event) {
     reader.readAsDataURL(file);
 }
 
-async function handleComplaintSubmit(event) {
-    event.preventDefault();
+// async function handleComplaintSubmit(event) {
+//     event.preventDefault();
     
-    hideError();
+//     hideError();
     
-    const submitBtn = event.target.querySelector('.btn-primary');
-    const submitText = document.getElementById('submitText');
-    const originalText = submitText.textContent;
+//     const submitBtn = event.target.querySelector('.btn-primary');
+//     const submitText = document.getElementById('submitText');
+//     const originalText = submitText.textContent;
     
-    // Disable submit button
-    submitBtn.disabled = true;
-    submitText.textContent = 'Submitting...';
+//     // Disable submit button
+//     submitBtn.disabled = true;
+//     submitText.textContent = 'Submitting...';
 
-    try {
-        // Get form data
-        const urlParams = new URLSearchParams(window.location.search);
-        const assetId = urlParams.get('stall') || urlParams.get('asset') || urlParams.get('assetcode');
+//     try {
+//         // Get form data
+//         const urlParams = new URLSearchParams(window.location.search);
+//         const assetId = urlParams.get('stall') || urlParams.get('asset') || urlParams.get('assetcode');
         
-        const formData = {
-            timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
-            name: document.getElementById('name').value.trim() || 'Anonymous',
-            mobile: document.getElementById('mobile').value.trim() || 'Not provided',
-            complaintType: document.getElementById('complaintType').value,
-            description: document.getElementById('description').value.trim(),
-            location: document.getElementById('location').value.trim(),
-            assetId: assetId || 'Not specified',
-            status: 'Pending',
-            photo: ''
-        };
+//         const formData = {
+//             timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+//             name: document.getElementById('name').value.trim() || 'Anonymous',
+//             mobile: document.getElementById('mobile').value.trim() || 'Not provided',
+//             complaintType: document.getElementById('complaintType').value,
+//             description: document.getElementById('description').value.trim(),
+//             location: document.getElementById('location').value.trim(),
+//             assetId: assetId || 'Not specified',
+//             status: 'Pending',
+//             photo: ''
+//         };
 
-        // Validate required fields
-        if (!formData.complaintType) {
-            showError('Please select a complaint type');
-            submitBtn.disabled = false;
-            submitText.textContent = originalText;
-            return;
-        }
+//         // Validate required fields
+//         if (!formData.complaintType) {
+//             showError('Please select a complaint type');
+//             submitBtn.disabled = false;
+//             submitText.textContent = originalText;
+//             return;
+//         }
 
-        if (!formData.description) {
-            showError('Please enter complaint description');
-            submitBtn.disabled = false;
-            submitText.textContent = originalText;
-            return;
-        }
+//         if (!formData.description) {
+//             showError('Please enter complaint description');
+//             submitBtn.disabled = false;
+//             submitText.textContent = originalText;
+//             return;
+//         }
 
-        // Validate mobile if provided
-        if (formData.mobile !== 'Not provided' && !/^[0-9]{10}$/.test(formData.mobile)) {
-            showError('Please enter a valid 10-digit mobile number');
-            submitBtn.disabled = false;
-            submitText.textContent = originalText;
-            return;
-        }
+//         // Validate mobile if provided
+//         if (formData.mobile !== 'Not provided' && !/^[0-9]{10}$/.test(formData.mobile)) {
+//             showError('Please enter a valid 10-digit mobile number');
+//             submitBtn.disabled = false;
+//             submitText.textContent = originalText;
+//             return;
+//         }
 
-        // Handle photo
-        const photoInput = document.getElementById('photoInput');
-        if (photoInput && photoInput.files && photoInput.files[0]) {
-            const file = photoInput.files[0];
-            const reader = new FileReader();
+//         // Handle photo
+//         const photoInput = document.getElementById('photoInput');
+//         if (photoInput && photoInput.files && photoInput.files[0]) {
+//             const file = photoInput.files[0];
+//             const reader = new FileReader();
             
-            formData.photo = await new Promise((resolve) => {
-                reader.onloadend = () => resolve(reader.result);
-                reader.readAsDataURL(file);
-            });
-        }
+//             formData.photo = await new Promise((resolve) => {
+//                 reader.onloadend = () => resolve(reader.result);
+//                 reader.readAsDataURL(file);
+//             });
+//         }
 
-        // Submit to Google Sheets
-        await submitToGoogleSheets(formData);
+//         // Submit to Google Sheets
+//         await submitToGoogleSheets(formData);
 
-        // Store for WhatsApp sharing
-        sessionStorage.setItem('lastComplaint', JSON.stringify(formData));
+//         // Store for WhatsApp sharing
+//         sessionStorage.setItem('lastComplaint', JSON.stringify(formData));
 
-        // Show success
-        showSuccess(formData);
+//         // Show success
+//         showSuccess(formData);
 
-    } catch (error) {
-        console.error('Submission error:', error);
-        showError('Failed to submit complaint. Please try again.');
+//     } catch (error) {
+//         console.error('Submission error:', error);
+//         showError('Failed to submit complaint. Please try again.');
+//         submitBtn.disabled = false;
+//         submitText.textContent = originalText;
+//     }
+// }
+
+async function handleComplaintSubmit(event) {
+  event.preventDefault();
+  hideError();
+  const submitBtn = event.target.querySelector('.btn-primary');
+  const submitText = document.getElementById('submitText');
+  const originalText = submitText.textContent;
+  submitBtn.disabled = true;
+  submitText.textContent = 'Submitting...';
+
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    const assetId = urlParams.get('stall') || urlParams.get('asset') || urlParams.get('assetcode');
+
+    // New: read form type and compute category
+    const formType = document.getElementById('formType').value;
+    let category;
+    if (formType === 'Feedback') {
+      const feedbackType = document.getElementById('feedbackType').value;
+      if (!feedbackType) {
+        showError('Please select feedback type');
         submitBtn.disabled = false;
         submitText.textContent = originalText;
+        return;
+      }
+      category = `Feedback - ${feedbackType}`;
+    } else {
+      const selectedComplaint = document.getElementById('complaintType').value;
+      if (!selectedComplaint) {
+        showError('Please select a complaint type');
+        submitBtn.disabled = false;
+        submitText.textContent = originalText;
+        return;
+      }
+      category = selectedComplaint;
     }
+
+    const formData = {
+      timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+      name: document.getElementById('name').value.trim() || 'Anonymous',
+      mobile: document.getElementById('mobile').value.trim() || 'Not provided',
+      complaintType: category, // single field for both complaint and feedback
+      description: document.getElementById('description').value.trim(),
+      location: document.getElementById('location').value.trim(),
+      assetId: assetId || 'Not specified',
+      status: 'Pending',
+      photo: ''
+    };
+
+    // Existing validations remain unchanged
+    if (!formData.description) {
+      showError('Please enter complaint description');
+      submitBtn.disabled = false;
+      submitText.textContent = originalText;
+      return;
+    }
+    if (formData.mobile !== 'Not provided' && !/^[0-9]{10}$/.test(formData.mobile)) {
+      showError('Please enter a valid 10-digit mobile number');
+      submitBtn.disabled = false;
+      submitText.textContent = originalText;
+      return;
+    }
+
+    // Existing photo handling (unchanged)
+    const photoInput = document.getElementById('photoInput');
+    if (photoInput && photoInput.files && photoInput.files[0]) {
+      const file = photoInput.files[0];
+      const reader = new FileReader();
+      formData.photo = await new Promise((resolve) => {
+        reader.onloadend = () => resolve(reader.result);
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // Save to Google Sheets (unchanged function)
+    await submitToGoogleSheets(formData);
+
+    // Auto-share only for complaints and only if a number was provided
+    if (formType === 'Complaint' && formData.mobile && formData.mobile !== 'Not provided') {
+      const digits = formData.mobile.replace(/\D/g, '');
+      const toNumber = digits.length === 10 ? ('91' + digits) : digits; // default to India code for 10-digit inputs
+      if (toNumber) {
+        shareOnWhatsApp(formData, toNumber);
+      }
+    }
+
+    // Persist and show success (existing)
+    sessionStorage.setItem('lastComplaint', JSON.stringify(formData));
+    showSuccess(formData);
+  } catch (error) {
+    console.error('Submission error:', error);
+    showError('Failed to submit complaint. Please try again.');
+    submitBtn.disabled = false;
+    submitText.textContent = originalText;
+  }
 }
+
 
 // async function submitToGoogleSheets(data) {
 //     try {
 //         // Check if using demo mode or actual Google Sheets
-//         if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbxpK3mwwbkaUdXM6EbftiLwKR3fXXEDKnA_QQy1FzU/dev') {
+//         if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbyswFn65bVPqle5M1fUGFdzDkS4-stnb7aLcJY9yozMLuhjLtrTjx3SUSiTqvr0upoY/exec') {
 //             // Demo mode: Store in localStorage
 //             console.log('Demo mode: Saving to localStorage');
 //             let complaints = JSON.parse(localStorage.getItem('Complaints') || '[]');
@@ -190,7 +305,7 @@ async function handleComplaintSubmit(event) {
 async function submitToGoogleSheets(data) {
 
   try {
-    if (GOOGLE_SCRIPT_URL === "https://script.google.com/macros/s/AKfycbxpK3mwwbkaUdXM6EbftiLwKR3fXXEDKnA_QQy1FzU/dev") {
+    if (GOOGLE_SCRIPT_URL === "https://script.google.com/macros/s/AKfycbyswFn65bVPqle5M1fUGFdzDkS4-stnb7aLcJY9yozMLuhjLtrTjx3SUSiTqvr0upoY/exec") {
       // Demo mode
       console.log('Demo mode: Saving to localStorage', data);
       let complaints = JSON.parse(localStorage.getItem('Complaints') || '[]');
@@ -231,37 +346,64 @@ function showSuccess(formData) {
     whatsappBtn.onclick = () => shareOnWhatsApp(formData);
 }
 
-function shareOnWhatsApp(formData) {
-    let message = `🚆 RAISE Complaint Registered
+// function shareOnWhatsApp(formData) {
+//     let message = `🚆 RAISE Complaint Registered
 
+// Asset ID: ${formData.assetId}
+// Type: ${formData.complaintType}
+// Description: ${formData.description}`;
+
+//     if (formData.location && formData.location !== 'Location not available') {
+//         message += `\nLocation: ${formData.location}`;
+//     }
+
+//     if (formData.photo) {
+//         message += `\nPhoto: Attached (see complaint form)`;
+//     }
+
+//     if (formData.name !== 'Anonymous') {
+//         message += `\nSubmitted by: ${formData.name}`;
+//     }
+
+//     if (formData.mobile !== 'Not provided') {
+//         message += `\nMobile: ${formData.mobile}`;
+//     }
+
+//     message += `\n\nTimestamp: ${formData.timestamp}`;
+//     message += `\n\n#RAISE #RailwayComplaint`;
+
+//     const whatsappNumber = "+918754444825";
+//     const whatsappURL = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(message);
+
+//     window.open(whatsappURL, '_blank');
+// }
+
+function shareOnWhatsApp(formData, toNumber) {
+  let message = `🚆 RAISE Complaint Registered
 Asset ID: ${formData.assetId}
 Type: ${formData.complaintType}
 Description: ${formData.description}`;
 
-    if (formData.location && formData.location !== 'Location not available') {
-        message += `\nLocation: ${formData.location}`;
-    }
+  if (formData.location && formData.location !== 'Location not available') {
+    message += `\nLocation: ${formData.location}`;
+  }
+  if (formData.photo) {
+    message += `\nPhoto: Attached (see complaint form)`;
+  }
+  if (formData.name !== 'Anonymous') {
+    message += `\nSubmitted by: ${formData.name}`;
+  }
+  if (formData.mobile !== 'Not provided') {
+    message += `\nMobile: ${formData.mobile}`;
+  }
+  message += `\n\nTimestamp: ${formData.timestamp}\n\n#RAISE #RailwayComplaint`;
 
-    if (formData.photo) {
-        message += `\nPhoto: Attached (see complaint form)`;
-    }
-
-    if (formData.name !== 'Anonymous') {
-        message += `\nSubmitted by: ${formData.name}`;
-    }
-
-    if (formData.mobile !== 'Not provided') {
-        message += `\nMobile: ${formData.mobile}`;
-    }
-
-    message += `\n\nTimestamp: ${formData.timestamp}`;
-    message += `\n\n#RAISE #RailwayComplaint`;
-
-    const whatsappNumber = "+918754444825";
-    const whatsappURL = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(message);
-
-    window.open(whatsappURL, '_blank');
+  // Prefer the provided number; fall back to the existing default if needed
+  const number = (toNumber || '+916374713251').replace(/^\+/, '');
+  const whatsappURL = 'https://wa.me/' + number + '?text=' + encodeURIComponent(message);
+  window.open(whatsappURL, '_blank');
 }
+
 
 function showError(message) {
     const alert = document.getElementById('errorAlert');
@@ -369,7 +511,7 @@ async function loadComplaints() {
         let complaints = [];
         
         // Check if using demo mode or actual Google Sheets
-        if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbxpK3mwwbkaUdXM6EbftiLwKR3fXXEDKnA_QQy1FzU/dev') {
+        if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbyswFn65bVPqle5M1fUGFdzDkS4-stnb7aLcJY9yozMLuhjLtrTjx3SUSiTqvr0upoY/exec') {
             // Demo mode: Load from localStorage
             console.log('Demo mode: Loading from localStorage');
             complaints = JSON.parse(localStorage.getItem('Complaints') || '[]');
@@ -532,7 +674,7 @@ async function updateStatus() {
         currentComplaints[currentRowIndex].status = newStatus;
         
         // Save to storage
-        if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbxpK3mwwbkaUdXM6EbftiLwKR3fXXEDKnA_QQy1FzU/dev') {
+        if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbyswFn65bVPqle5M1fUGFdzDkS4-stnb7aLcJY9yozMLuhjLtrTjx3SUSiTqvr0upoY/exec') {
             // Demo mode: Update localStorage
             localStorage.setItem('Complaints', JSON.stringify(currentComplaints));
         } else {
