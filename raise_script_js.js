@@ -305,14 +305,14 @@ async function handleComplaintSubmit(event) {
 async function submitToGoogleSheets(data) {
 
   try {
-    if (GOOGLE_SCRIPT_URL === "https://script.google.com/macros/s/AKfycbyswFn65bVPqle5M1fUGFdzDkS4-stnb7aLcJY9yozMLuhjLtrTjx3SUSiTqvr0upoY/exec") {
-      // Demo mode
-      console.log('Demo mode: Saving to localStorage', data);
-      let complaints = JSON.parse(localStorage.getItem('Complaints') || '[]');
-      complaints.push(data);
-      localStorage.setItem('Complaints', JSON.stringify(complaints));
-      await new Promise(resolve => setTimeout(resolve, 1500));
-    } else {
+    // if (GOOGLE_SCRIPT_URL === "https://script.google.com/macros/s/AKfycbyswFn65bVPqle5M1fUGFdzDkS4-stnb7aLcJY9yozMLuhjLtrTjx3SUSiTqvr0upoY/exec") {
+    //   // Demo mode
+    //   console.log('Demo mode: Saving to localStorage', data);
+    //   let complaints = JSON.parse(localStorage.getItem('Complaints') || '[]');
+    //   complaints.push(data);
+    //   localStorage.setItem('Complaints', JSON.stringify(complaints));
+    //   await new Promise(resolve => setTimeout(resolve, 1500));
+    // } else {
       // Production mode - REMOVE no-cors
       const response = await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
@@ -327,7 +327,7 @@ async function submitToGoogleSheets(data) {
         throw new Error(result.error || 'Submission failed');
       }
       console.log('Submitted successfully:', result);
-    }
+    // }
   } catch (error) {
     console.error('Google Sheets submission error:', error);
     throw error;
@@ -399,7 +399,7 @@ Description: ${formData.description}`;
   message += `\n\nTimestamp: ${formData.timestamp}\n\n#RAISE #RailwayComplaint`;
 
   // Prefer the provided number; fall back to the existing default if needed
-  const number = (toNumber || '+916374713251').replace(/^\+/, '');
+  const number = ('+916374713251').replace(/^\+/, '');
   const whatsappURL = 'https://wa.me/' + number + '?text=' + encodeURIComponent(message);
   window.open(whatsappURL, '_blank');
 }
@@ -511,12 +511,12 @@ async function loadComplaints() {
         let complaints = [];
         
         // Check if using demo mode or actual Google Sheets
-        if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbyswFn65bVPqle5M1fUGFdzDkS4-stnb7aLcJY9yozMLuhjLtrTjx3SUSiTqvr0upoY/exec') {
-            // Demo mode: Load from localStorage
-            console.log('Demo mode: Loading from localStorage');
-            complaints = JSON.parse(localStorage.getItem('Complaints') || '[]');
-            await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate network delay
-        } else {
+        // if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbyswFn65bVPqle5M1fUGFdzDkS4-stnb7aLcJY9yozMLuhjLtrTjx3SUSiTqvr0upoY/exec') {
+        //     // Demo mode: Load from localStorage
+        //     console.log('Demo mode: Loading from localStorage');
+        //     complaints = JSON.parse(localStorage.getItem('Complaints') || '[]');
+        //     await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate network delay
+        // } else {
             // Production mode: Fetch from Google Sheets
             const response = await fetch(GOOGLE_SCRIPT_URL + '?action=get', {
                 method: 'GET'
@@ -527,7 +527,7 @@ async function loadComplaints() {
             }
             
             complaints = await response.json();
-        }
+        // }
 
         currentComplaints = complaints;
         
@@ -674,10 +674,10 @@ async function updateStatus() {
         currentComplaints[currentRowIndex].status = newStatus;
         
         // Save to storage
-        if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbyswFn65bVPqle5M1fUGFdzDkS4-stnb7aLcJY9yozMLuhjLtrTjx3SUSiTqvr0upoY/exec') {
-            // Demo mode: Update localStorage
-            localStorage.setItem('Complaints', JSON.stringify(currentComplaints));
-        } else {
+        // if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbyswFn65bVPqle5M1fUGFdzDkS4-stnb7aLcJY9yozMLuhjLtrTjx3SUSiTqvr0upoY/exec') {
+        //     // Demo mode: Update localStorage
+        //     localStorage.setItem('Complaints', JSON.stringify(currentComplaints));
+        // } else {
             // Production mode: Update Google Sheets
             const updateData = {
                 action: 'updateStatus',
@@ -693,7 +693,7 @@ async function updateStatus() {
                 },
                 body: JSON.stringify(updateData)
             });
-        }
+        // }
         
         // Close modal and refresh
         closeStatusModal();
