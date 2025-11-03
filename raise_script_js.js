@@ -188,7 +188,7 @@ async function handleComplaintSubmit(event) {
     const assetId = urlParams.get('stall') || urlParams.get('asset') || urlParams.get('assetcode');
 
     // New: read form type and compute category
-    const formType = document.getElementById('formType').value;
+    let formType = document.getElementById('formType').value;
     let category;
     if (formType === 'Feedback') {
       const feedbackType = document.getElementById('feedbackType').value;
