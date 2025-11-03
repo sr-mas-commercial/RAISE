@@ -180,6 +180,7 @@ async function handleComplaintSubmit(event) {
   const submitBtn = event.target.querySelector('.btn-primary');
   const submitText = document.getElementById('submitText');
   const originalText = submitText.textContent;
+  let formType = document.getElementById('formType').value;
   submitBtn.disabled = true;
   submitText.textContent = 'Submitting...';
 
@@ -188,7 +189,7 @@ async function handleComplaintSubmit(event) {
     const assetId = urlParams.get('stall') || urlParams.get('asset') || urlParams.get('assetcode');
 
     // New: read form type and compute category
-    let formType = document.getElementById('formType').value;
+    
     let category;
     if (formType === 'Feedback') {
       const feedbackType = document.getElementById('feedbackType').value;
