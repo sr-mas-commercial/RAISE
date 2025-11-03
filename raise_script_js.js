@@ -316,9 +316,10 @@ async function submitToGoogleSheets(data) {
       // Production mode - REMOVE no-cors
       const response = await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        mode: 'no-cors',
+        // headers: {
+        //   'Content-Type': 'application/json',
+        // },
         body: JSON.stringify(data)
       });
       
