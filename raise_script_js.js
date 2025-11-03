@@ -210,7 +210,7 @@ async function handleComplaintSubmit(event) {
       category = selectedComplaint;
     }
 
-    console.log("Form Type:", type);
+    console.log("Form Type:", formType);
     console.log("Category:", category);
 
     const formData = {
