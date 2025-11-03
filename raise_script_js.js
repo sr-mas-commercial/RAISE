@@ -218,8 +218,8 @@ async function handleComplaintSubmit(event) {
       timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
       name: document.getElementById('name').value.trim() || 'Anonymous',
       mobile: document.getElementById('mobile').value.trim() || 'Not provided',
-      type:formType,
-      complaintType: category, // single field for both complaint and feedback
+      submissionType:formType,
+      type: category, // single field for both complaint and feedback
       description: document.getElementById('description').value.trim(),
       location: document.getElementById('location').value.trim(),
       assetId: assetId || 'Not specified',
