@@ -109,6 +109,7 @@ async function handleComplaintSubmit(event) {
             timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
             name: document.getElementById('name').value.trim() || 'Anonymous',
             mobile: document.getElementById('mobile').value.trim() || 'Not provided',
+            pnr_uts: document.getElementById('pnrUts').value.trim() || 'Not provided',
             complaint_type: document.getElementById('complaintType').value,
             description: document.getElementById('description').value.trim(),
             location: document.getElementById('location').value.trim(),
@@ -206,6 +207,10 @@ Description: ${formData.description}`;
     
     if (formData.location && formData.location !== 'Location not available') {
         message += `\nLocation: ${formData.location}`;
+    }
+
+    if (formData.pnr_uts && formData.pnr_uts !== 'Not provided') {
+        message += `\nPNR/UTS: ${formData.pnr_uts}`;
     }
     
     if (formData.photo_url) {
@@ -374,6 +379,7 @@ function renderTable(complaints) {
             <td class="table-cell">${escapeHtml(complaint.timestamp)}</td>
             <td class="table-cell">${escapeHtml(complaint.name)}</td>
             <td class="table-cell">${escapeHtml(complaint.mobile)}</td>
+            <td class="table-cell">${escapeHtml(complaint.pnr_uts || 'Not provided')}</td>
             <td class="table-cell">${escapeHtml(complaint.complaint_type)}</td>
             <td class="table-cell" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis;" 
                 title="${escapeHtml(complaint.description)}">
@@ -495,6 +501,7 @@ function searchComplaints() {
         return (
             complaint.name.toLowerCase().includes(searchTerm) ||
             complaint.mobile.includes(searchTerm) ||
+            (complaint.pnr_uts && complaint.pnr_uts.toLowerCase().includes(searchTerm)) || 
             complaint.complaint_type.toLowerCase().includes(searchTerm) ||
             complaint.description.toLowerCase().includes(searchTerm) ||
             complaint.asset_id.toLowerCase().includes(searchTerm)

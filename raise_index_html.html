@@ -33,6 +33,15 @@
                     <input type="tel" id="mobile" placeholder="10-digit mobile number" maxlength="10" pattern="[0-9]{10}" required/>
                 </div>
 
+                <!-- NEW PNR/UTS FIELD - ADD THIS -->
+                <div class="form-group">
+                    <label>PNR/UTS Number <span class="optional">(Optional)</span></label>
+                    <input type="text" id="pnrUts" placeholder="Enter PNR or UTS ticket number" maxlength="10">
+                    <small style="color: #666; font-size: 0.875rem; margin-top: 4px; display: block;">
+                        Enter your 10-digit PNR or UTS ticket number if applicable
+                    </small>
+                </div>
+
                 <div class="form-group">
                 <label>Form Type <span class="required"></span></label>
                 <select id="formType" required>
