@@ -587,7 +587,7 @@ function renderTable(complaints) {
                 </span>
             </td>
             <td class="table-cell">
-                <button class="btn-action" onclick="openStatusModal('${complaint.id}', '${escapeHtml(complaint.status)}', ${index})">
+                <button class="btn-update" onclick="openStatusModal('${complaint.id}', '${escapeHtml(complaint.status)}', ${index})">
                     Update
                 </button>
             </td>
@@ -633,6 +633,7 @@ function openStatusModal(complaintId, currentStatus, index) {
 
 function closeStatusModal() {
     document.getElementById('statusModal').style.display = 'none';
+    const updateBtn = document.querySelector('#statusModal .btn-primary');
     updateBtn.disabled = false;
     updateBtn.textContent = 'Update Status';
     currentComplaintId = null;
