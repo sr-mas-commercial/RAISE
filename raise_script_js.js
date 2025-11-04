@@ -871,21 +871,21 @@ function showNotification(message, type) {
 }
 
 // Add CSS animations for notifications
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideIn {
-        from { transform: translateX(400px); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
-    }
-    @keyframes slideOut {
-        from { transform: translateX(0); opacity: 1; }
-        to { transform: translateX(400px); opacity: 0; }
-    }
-`;
-if (!document.head.querySelector('style[data-notifications]')) {
-    style.setAttribute('data-notifications', 'true');
-    document.head.appendChild(style);
-}
+// const style = document.createElement('style');
+// style.textContent = `
+//     @keyframes slideIn {
+//         from { transform: translateX(400px); opacity: 0; }
+//         to { transform: translateX(0); opacity: 1; }
+//     }
+//     @keyframes slideOut {
+//         from { transform: translateX(0); opacity: 1; }
+//         to { transform: translateX(400px); opacity: 0; }
+//     }
+// `;
+// if (!document.head.querySelector('style[data-notifications]')) {
+//     style.setAttribute('data-notifications', 'true');
+//     document.head.appendChild(style);
+// }
 
 
 // ==================== INITIALIZATION ====================
@@ -926,15 +926,33 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 // Add CSS animations
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideIn {
-        from { transform: translateX(400px); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
-    }
-    @keyframes slideOut {
-        from { transform: translateX(0); opacity: 1; }
-        to { transform: translateX(400px); opacity: 0; }
-    }
-`;
-document.head.appendChild(style);
+// const style = document.createElement('style');
+// style.textContent = `
+//     @keyframes slideIn {
+//         from { transform: translateX(400px); opacity: 0; }
+//         to { transform: translateX(0); opacity: 1; }
+//     }
+//     @keyframes slideOut {
+//         from { transform: translateX(0); opacity: 1; }
+//         to { transform: translateX(400px); opacity: 0; }
+//     }
+// `;
+// document.head.appendChild(style);
+
+// Create a <style> element only if it doesn't already exist
+if (!document.head.querySelector('style[data-notifications]')) {
+    const style = document.createElement('style');
+    style.setAttribute('data-notifications', 'true');
+    style.textContent = `
+        @keyframes slideIn {
+            from { transform: translateX(400px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(400px); opacity: 0; }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
