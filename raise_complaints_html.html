@@ -99,33 +99,8 @@
         </div>
     </div>
 
-    <!-- Status Update Modal -->
-    <!-- <div id="statusModal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Update Complaint Status</h3>
-                <span class="modal-close" onclick="closeStatusModal()">&times;</span>
-            </div>
-            <div class="modal-body">
-                <p><strong>Asset ID:</strong> <span id="modalAssetId"></span></p>
-                <p><strong>Current Status:</strong> <span id="modalCurrentStatus"></span></p>
-                <div class="form-group">
-                    <label>New Status <span class="required">*</span></label>
-                    <select id="newStatus">
-                        <option value="Pending">Pending</option>
-                        <option value="In Progress">In Progress</option>
-                        <option value="Resolved">Resolved</option>
-                    </select>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" onclick="closeStatusModal()">Cancel</button>
-                <button class="btn btn-primary" onclick="updateStatus()">Update Status</button>
-            </div>
-        </div>
-    </div> -->
 
-    <div id="statusModal" class="modal" style="display: none;">
+    <!-- <div id="statusModal" class="modal" style="display: none;">
     <div class="modal-content">
         <div class="modal-header">
             <h3>Update Status</h3>
@@ -148,8 +123,56 @@
             <button class="btn btn-primary" onclick="updateStatus()">Update Status</button>
         </div>
     </div>
-    </div>
+    </div> -->
 
+    <div id="statusModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Update Status</h3>
+                <span class="modal-close" onclick="closeStatusModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p><strong>Asset ID:</strong> <span id="modalAssetId"></span></p>
+                <p><strong>User Name:</strong> <span id="modalUserName"></span></p>
+                <p><strong>Mobile:</strong> <span id="modalUserMobile"></span></p>
+                <p><strong>Current Status:</strong> <span id="modalCurrentStatus"></span></p>
+                
+                <div class="form-group">
+                    <label>New Status <span class="required">*</span></label>
+                    <select id="newStatus" onchange="handleStatusChange()">
+                        <option value="Pending">Pending</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Resolved">Resolved</option>
+                    </select>
+                </div>
+
+                <!-- WhatsApp Notification Section (shown for In Progress/Resolved) -->
+                <div id="whatsappNotificationSection" style="display: none; margin-top: 20px; padding: 15px; background: #f0fdf4; border: 1px solid #86efac; border-radius: 8px;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <span style="font-size: 24px;">💬</span>
+                        <p style="margin: 0; font-weight: 600; color: #166534;">Send WhatsApp Update to User</p>
+                    </div>
+                    <p style="margin: 5px 0; font-size: 0.9rem; color: #15803d;">
+                        Click below to notify user about status change via WhatsApp
+                    </p>
+                    <div style="margin-top: 10px;">
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                            <input type="checkbox" id="sendWhatsAppCheck" checked style="width: 18px; height: 18px; cursor: pointer;">
+                            <span style="font-size: 0.9rem;">Automatically open WhatsApp after status update</span>
+                        </label>
+                    </div>
+                    <button type="button" class="btn btn-success" onclick="sendWhatsAppStatusUpdate()" style="margin-top: 10px;">
+                        📱 Send WhatsApp Notification
+                    </button>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeStatusModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="updateStatus()">Update Status</button>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="raise_script_js.js"></script>

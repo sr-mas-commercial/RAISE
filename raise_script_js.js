@@ -608,10 +608,110 @@ function updateStats(complaints) {
     document.getElementById('resolvedCount').textContent = resolved;
 }
 
+function handleStatusChange() {
+    const newStatus = document.getElementById('newStatus').value;
+    const whatsappSection = document.getElementById('whatsappNotificationSection');
+    
+    // Show WhatsApp notification option for In Progress or Resolved
+    if (newStatus === 'In Progress' || newStatus === 'Resolved') {
+        whatsappSection.style.display = 'block';
+    } else {
+        whatsappSection.style.display = 'none';
+    }
+}
+
+function sendWhatsAppStatusUpdate() {
+    const complaint = window.currentComplaintForWhatsApp;
+    const newStatus = document.getElementById('newStatus').value;
+    
+    // Check if user provided mobile number
+    const mobile = complaint.mobile;
+    if (!mobile || mobile === 'Not provided' || mobile === 'Anonymous') {
+        alert('❌ Cannot send WhatsApp notification: User did not provide mobile number');
+        return;
+    }
+    
+    // Validate mobile format (10 digits)
+    const mobileDigits = mobile.replace(/\D/g, ''); // Remove non-digits
+    if (mobileDigits.length !== 10) {
+        alert('❌ Invalid mobile number format');
+        return;
+    }
+    
+    // Build WhatsApp message based on status
+    let message = '';
+    const formType = complaint.form_type || 'Complaint';
+    const type = complaint.complaint_type || complaint.feedback_type || 'N/A';
+    const assetId = complaint.asset_id || 'N/A';
+    
+    if (newStatus === 'In Progress') {
+        message = `🚆 *RAISE Status Update*
+
+Dear ${complaint.name || 'Customer'},
+
+Your ${formType} regarding *${assetId}* has been updated.
+
+📋 *Details:*
+• Asset/Location: ${assetId}
+• ${formType} Type: ${type}
+• Status: *In Progress* ⏳
+
+Our team is actively working on resolving this issue. We appreciate your patience.
+
+Reference ID: ${complaint.id ? complaint.id.substring(0, 8) : 'N/A'}
+
+Thank you,
+Railway Customer Care`;
+    } else if (newStatus === 'Resolved') {
+        message = `🚆 *RAISE Status Update*
+
+Dear ${complaint.name || 'Customer'},
+
+Good news! Your ${formType} regarding *${assetId}* has been *RESOLVED* ✅
+
+📋 *Details:*
+• Asset/Location: ${assetId}
+• ${formType} Type: ${type}
+• Status: *Resolved*
+
+Thank you for bringing this to our attention. Your feedback helps us improve our services.
+
+Reference ID: ${complaint.id ? complaint.id.substring(0, 8) : 'N/A'}
+
+Thank you,
+Railway Customer Care`;
+    } else {
+        alert('WhatsApp notification is only available for "In Progress" or "Resolved" status');
+        return;
+    }
+    
+    // Create WhatsApp link (wa.me format)
+    // Add +91 country code for India
+    const whatsappNumber = '91' + mobileDigits;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    // Open WhatsApp in new tab
+    window.open(whatsappURL, '_blank');
+    
+    // Show confirmation
+    showNotification('WhatsApp opened! Please send the message manually.', 'success');
+}
+
+
+
 // function openStatusModal(complaintId, currentStatus, index) {
 //     currentComplaintId = complaintId;
-//     document.getElementById('currentStatus').textContent = currentStatus;
+    
+//     // Get the complaint details
+//     const complaint = currentComplaints[index];
+    
+//     // Populate modal
+//     document.getElementById('modalAssetId').textContent = complaint.asset_id || 'N/A';
+//     document.getElementById('modalCurrentStatus').textContent = currentStatus;
 //     document.getElementById('newStatus').value = currentStatus;
+    
+//     // Show modal
 //     document.getElementById('statusModal').style.display = 'flex';
 // }
 
@@ -621,14 +721,23 @@ function openStatusModal(complaintId, currentStatus, index) {
     // Get the complaint details
     const complaint = currentComplaints[index];
     
+    // Store complaint data globally for WhatsApp function
+    window.currentComplaintForWhatsApp = complaint;
+    
     // Populate modal
     document.getElementById('modalAssetId').textContent = complaint.asset_id || 'N/A';
+    document.getElementById('modalUserName').textContent = complaint.name || 'Anonymous';
+    document.getElementById('modalUserMobile').textContent = complaint.mobile || 'Not provided';
     document.getElementById('modalCurrentStatus').textContent = currentStatus;
     document.getElementById('newStatus').value = currentStatus;
+    
+    // Hide WhatsApp section initially
+    document.getElementById('whatsappNotificationSection').style.display = 'none';
     
     // Show modal
     document.getElementById('statusModal').style.display = 'flex';
 }
+
 
 
 function closeStatusModal() {
@@ -650,6 +759,47 @@ function closeStatusModal() {
 //     updateBtn.textContent = 'Updating...';
     
 //     try {
+//         const { error } = await supabase
+//             .from('complaints')
+//             .update({ status: newStatus })
+//             .eq('id', currentComplaintId);
+        
+//         if (error) {
+//             throw error;
+//         }
+        
+//         // Show success notification
+//         showNotification('Status updated successfully!', 'success');
+        
+//         // Close modal
+//         closeStatusModal();
+        
+//         // Reload complaints
+//         await loadComplaints();
+        
+//     } catch (error) {
+//         console.error('Update status error:', error);
+//         showNotification('Failed to update status. Please try again.', 'error');
+//         updateBtn.disabled = false;
+//         updateBtn.textContent = originalText;
+//     }
+// }
+
+// async function updateStatus() {
+//     const newStatus = document.getElementById('newStatus').value;
+    
+//     if (!currentComplaintId) {
+//         showError('No complaint selected');
+//         return;
+//     }
+    
+//     const updateBtn = document.querySelector('#statusModal .btn-primary');
+//     const originalText = updateBtn.textContent;
+//     updateBtn.disabled = true;
+//     updateBtn.textContent = 'Updating...';
+    
+//     try {
+//         // Update in Supabase
 //         const { error } = await supabase
 //             .from('complaints')
 //             .update({ status: newStatus })
@@ -703,6 +853,16 @@ async function updateStatus() {
         // Show success notification
         showNotification('Status updated successfully!', 'success');
         
+        // Check if should send WhatsApp and if checkbox is checked
+        const shouldSendWhatsApp = document.getElementById('sendWhatsAppCheck');
+        if (shouldSendWhatsApp && shouldSendWhatsApp.checked && 
+            (newStatus === 'In Progress' || newStatus === 'Resolved')) {
+            // Automatically open WhatsApp
+            setTimeout(() => {
+                sendWhatsAppStatusUpdate();
+            }, 500);
+        }
+        
         // Close modal
         closeStatusModal();
         
@@ -716,6 +876,7 @@ async function updateStatus() {
         updateBtn.textContent = originalText;
     }
 }
+
 
 
 function showNotification(message, type) {
