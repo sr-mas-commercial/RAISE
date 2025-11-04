@@ -225,37 +225,31 @@ async function handleComplaintSubmit(event) {
             return;
         }
 
-        // Validate complaint type for complaints
-        if (formData.form_type === 'Complaint' && !formData.complaint_type) {
-            showError('Please select a complaint type');
+        // Validate based on form type
+        if (formData.form_type === 'Complaint') {
+            if (!formData.complaint_type) {
+                showError('Please select a complaint type');
+                submitBtn.disabled = false;
+                submitText.textContent = originalText;
+                return;
+            }
+        } else if (formData.form_type === 'Feedback') {
+            if (!formData.feedback_type) {
+                showError('Please select a feedback type (Suggestion or Appreciation)');
+                submitBtn.disabled = false;
+                submitText.textContent = originalText;
+                return;
+            }
+        }
+
+        // Validate description
+        if (!formData.description) {
+            showError('Please enter description');
             submitBtn.disabled = false;
             submitText.textContent = originalText;
             return;
         }
 
-        // Validate feedback type for feedback
-        if (formData.form_type === 'Feedback' && !formData.feedback_type) {
-            showError('Please select a feedback type (Suggestion or Appreciation)');
-            submitBtn.disabled = false;
-            submitText.textContent = originalText;
-            return;
-        }
-        
-        // Validate required fields
-        if (!formData.complaint_type) {
-            showError('Please select a complaint type');
-            submitBtn.disabled = false;
-            submitText.textContent = originalText;
-            return;
-        }
-        
-        if (!formData.description) {
-            showError('Please enter complaint description');
-            submitBtn.disabled = false;
-            submitText.textContent = originalText;
-            return;
-        }
-        
         // Validate mobile if provided
         if (formData.mobile !== 'Not provided' && !/^[0-9]{10}$/.test(formData.mobile)) {
             showError('Please enter a valid 10-digit mobile number');
@@ -263,7 +257,7 @@ async function handleComplaintSubmit(event) {
             submitText.textContent = originalText;
             return;
         }
-        
+
         // Handle photo upload to Supabase Storage
         const photoInput = document.getElementById('photoInput');
         if (photoInput && photoInput.files && photoInput.files[0]) {
