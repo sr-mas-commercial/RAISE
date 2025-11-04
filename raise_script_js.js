@@ -608,22 +608,78 @@ function updateStats(complaints) {
     document.getElementById('resolvedCount').textContent = resolved;
 }
 
+// function openStatusModal(complaintId, currentStatus, index) {
+//     currentComplaintId = complaintId;
+//     document.getElementById('currentStatus').textContent = currentStatus;
+//     document.getElementById('newStatus').value = currentStatus;
+//     document.getElementById('statusModal').style.display = 'flex';
+// }
+
 function openStatusModal(complaintId, currentStatus, index) {
     currentComplaintId = complaintId;
-    document.getElementById('currentStatus').textContent = currentStatus;
+    
+    // Get the complaint details
+    const complaint = currentComplaints[index];
+    
+    // Populate modal
+    document.getElementById('modalAssetId').textContent = complaint.asset_id || 'N/A';
+    document.getElementById('modalCurrentStatus').textContent = currentStatus;
     document.getElementById('newStatus').value = currentStatus;
+    
+    // Show modal
     document.getElementById('statusModal').style.display = 'flex';
 }
+
 
 function closeStatusModal() {
     document.getElementById('statusModal').style.display = 'none';
     currentComplaintId = null;
 }
 
+// async function updateStatus() {
+//     const newStatus = document.getElementById('newStatus').value;
+    
+//     if (!currentComplaintId) return;
+    
+//     const updateBtn = document.querySelector('#statusModal .btn-primary');
+//     const originalText = updateBtn.textContent;
+//     updateBtn.disabled = true;
+//     updateBtn.textContent = 'Updating...';
+    
+//     try {
+//         const { error } = await supabase
+//             .from('complaints')
+//             .update({ status: newStatus })
+//             .eq('id', currentComplaintId);
+        
+//         if (error) {
+//             throw error;
+//         }
+        
+//         // Show success notification
+//         showNotification('Status updated successfully!', 'success');
+        
+//         // Close modal
+//         closeStatusModal();
+        
+//         // Reload complaints
+//         await loadComplaints();
+        
+//     } catch (error) {
+//         console.error('Update status error:', error);
+//         showNotification('Failed to update status. Please try again.', 'error');
+//         updateBtn.disabled = false;
+//         updateBtn.textContent = originalText;
+//     }
+// }
+
 async function updateStatus() {
     const newStatus = document.getElementById('newStatus').value;
     
-    if (!currentComplaintId) return;
+    if (!currentComplaintId) {
+        showError('No complaint selected');
+        return;
+    }
     
     const updateBtn = document.querySelector('#statusModal .btn-primary');
     const originalText = updateBtn.textContent;
@@ -631,6 +687,7 @@ async function updateStatus() {
     updateBtn.textContent = 'Updating...';
     
     try {
+        // Update in Supabase
         const { error } = await supabase
             .from('complaints')
             .update({ status: newStatus })
@@ -656,6 +713,7 @@ async function updateStatus() {
         updateBtn.textContent = originalText;
     }
 }
+
 
 function showNotification(message, type) {
     // Create notification element
@@ -783,6 +841,52 @@ function downloadQR(assetId) {
         a.click();
     }
 }
+
+function showNotification(message, type) {
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.textContent = message;
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px 25px;
+        background: ${type === 'success' ? '#10b981' : '#ef4444'};
+        color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        z-index: 10000;
+        font-weight: 600;
+        animation: slideIn 0.3s ease-out;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease-out';
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
+
+// Add CSS animations for notifications
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideIn {
+        from { transform: translateX(400px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slideOut {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(400px); opacity: 0; }
+    }
+`;
+if (!document.head.querySelector('style[data-notifications]')) {
+    style.setAttribute('data-notifications', 'true');
+    document.head.appendChild(style);
+}
+
 
 // ==================== INITIALIZATION ====================
 // document.addEventListener('DOMContentLoaded', () => {

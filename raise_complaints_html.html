@@ -12,7 +12,12 @@
              <img src="images/indianrailways_logo.png" alt="Indian Railways Logo" class="logo">
             <h1>QR Complaints Dashboard</h1>
             <p class="organization">Commercial Branch, Southern Railway – Chennai Division</p>
-            <button class="btn-logout" onclick="logout()">Logout</button>
+            <div class="header-actions">
+                <button class="btn btn-secondary" onclick="window.open('qr_generator.html', '_blank')" style="margin-right: 10px;">
+                    <span style="font-size: 1.2rem;">📱</span> Generate QR Code
+                </button>
+                <button class="btn-logout" onclick="logout()">Logout</button>
+            </div>
         </div>
 
         <div class="dashboard-content">
@@ -95,7 +100,7 @@
     </div>
 
     <!-- Status Update Modal -->
-    <div id="statusModal" class="modal" style="display: none;">
+    <!-- <div id="statusModal" class="modal" style="display: none;">
         <div class="modal-content">
             <div class="modal-header">
                 <h3>Update Complaint Status</h3>
@@ -118,7 +123,33 @@
                 <button class="btn btn-primary" onclick="updateStatus()">Update Status</button>
             </div>
         </div>
+    </div> -->
+
+    <div id="statusModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Update Status</h3>
+            <span class="modal-close" onclick="closeStatusModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <p><strong>Asset ID:</strong> <span id="modalAssetId"></span></p>
+            <p><strong>Current Status:</strong> <span id="modalCurrentStatus"></span></p>
+            <div class="form-group">
+                <label>New Status <span class="required">*</span></label>
+                <select id="newStatus">
+                    <option value="Pending">Pending</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Resolved">Resolved</option>
+                </select>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" onclick="closeStatusModal()">Cancel</button>
+            <button class="btn btn-primary" onclick="updateStatus()">Update Status</button>
+        </div>
     </div>
+    </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="raise_script_js.js"></script>
