@@ -36,7 +36,15 @@
                 <!-- NEW PNR/UTS FIELD - ADD THIS -->
                 <div class="form-group">
                     <label>PNR/UTS Number <span class="optional">(Optional)</span></label>
-                    <input type="text" id="pnrUts" placeholder="Enter PNR or UTS ticket number" maxlength="10">
+                    <input
+                        type="text"
+                        id="pnrUts"
+                        placeholder="Enter PNR or UTS ticket number"
+                        inputmode="numeric"
+                        pattern="[0-9]*"
+                        maxlength="10"
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                        >
                     <small style="color: #666; font-size: 0.875rem; margin-top: 4px; display: block;">
                         Enter your 10-digit PNR or UTS ticket number if applicable
                     </small>

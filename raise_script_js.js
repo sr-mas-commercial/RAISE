@@ -9,61 +9,98 @@ const ADMIN_CREDENTIALS = {
     password: 'admin123'
 };
 
-// Initialize Supabase client
-let supabase;
-if (typeof window !== 'undefined') {
-    // Load Supabase from CDN
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
-    script.onload = () => {
-        supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-        console.log('Supabase initialized');
-    };
-    document.head.appendChild(script);
-}
+// // Initialize Supabase client
+// let supabase;
+// if (typeof window !== 'undefined') {
+//     // Load Supabase from CDN
+//     const script = document.createElement('script');
+//     script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+//     script.onload = () => {
+//         supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+//         console.log('Supabase initialized');
+//     };
+//     document.head.appendChild(script);
+// }
+
+// // Global variables
+// let currentComplaints = [];
+// let currentComplaintId = null;
+
+// // ==================== COMPLAINT FORM (index.html) ====================
+// function initComplaintForm() {
+//     // Get asset/stall ID from URL
+//     const urlParams = new URLSearchParams(window.location.search);
+//     const assetId = urlParams.get('stall') || urlParams.get('asset') || urlParams.get('assetcode');
+    
+//     if (assetId) {
+//         document.getElementById('assetIdDisplay').textContent = assetId;
+//         document.getElementById('assetBadge').style.display = 'block';
+//     }
+    
+//     // Get location
+//     if (navigator.geolocation) {
+//         navigator.geolocation.getCurrentPosition(
+//             (position) => {
+//                 const lat = position.coords.latitude.toFixed(6);
+//                 const lon = position.coords.longitude.toFixed(6);
+//                 document.getElementById('location').value = `${lat}, ${lon}`;
+//             },
+//             () => {
+//                 document.getElementById('location').value = 'Location not available';
+//             }
+//         );
+//     } else {
+//         document.getElementById('location').value = 'Location not supported';
+//     }
+    
+//     // Photo upload handler
+//     const photoInput = document.getElementById('photoInput');
+//     if (photoInput) {
+//         photoInput.addEventListener('change', handlePhotoUpload);
+//     }
+    
+//     // Form submission
+//     const form = document.getElementById('complaintForm');
+//     if (form) {
+//         form.addEventListener('submit', handleComplaintSubmit);
+//     }
+// }
 
 // Global variables
+let supabase = null;
 let currentComplaints = [];
 let currentComplaintId = null;
 
-// ==================== COMPLAINT FORM (index.html) ====================
-function initComplaintForm() {
-    // Get asset/stall ID from URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const assetId = urlParams.get('stall') || urlParams.get('asset') || urlParams.get('assetcode');
-    
-    if (assetId) {
-        document.getElementById('assetIdDisplay').textContent = assetId;
-        document.getElementById('assetBadge').style.display = 'block';
-    }
-    
-    // Get location
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                const lat = position.coords.latitude.toFixed(6);
-                const lon = position.coords.longitude.toFixed(6);
-                document.getElementById('location').value = `${lat}, ${lon}`;
-            },
-            () => {
-                document.getElementById('location').value = 'Location not available';
+// ==================== SUPABASE INITIALIZATION ====================
+// Wait for Supabase to load from CDN
+function initSupabase() {
+    return new Promise((resolve, reject) => {
+        // Check if already loaded
+        if (window.supabase) {
+            supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            console.log('✅ Supabase initialized');
+            resolve();
+            return;
+        }
+        
+        // Wait for script to load
+        let checkInterval = setInterval(() => {
+            if (window.supabase) {
+                clearInterval(checkInterval);
+                supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+                console.log('✅ Supabase initialized');
+                resolve();
             }
-        );
-    } else {
-        document.getElementById('location').value = 'Location not supported';
-    }
-    
-    // Photo upload handler
-    const photoInput = document.getElementById('photoInput');
-    if (photoInput) {
-        photoInput.addEventListener('change', handlePhotoUpload);
-    }
-    
-    // Form submission
-    const form = document.getElementById('complaintForm');
-    if (form) {
-        form.addEventListener('submit', handleComplaintSubmit);
-    }
+        }, 100);
+        
+        // Timeout after 10 seconds
+        setTimeout(() => {
+            clearInterval(checkInterval);
+            if (!supabase) {
+                reject(new Error('Supabase failed to load'));
+            }
+        }, 10000);
+    });
 }
 
 function handlePhotoUpload(event) {
@@ -91,6 +128,16 @@ function handlePhotoUpload(event) {
 async function handleComplaintSubmit(event) {
     event.preventDefault();
     hideError();
+
+        
+    // CHECK IF SUPABASE IS LOADED - ADD THIS
+    if (!supabase) {
+        await initSupabase();
+        if (!supabase) {
+            showError('Database connection failed. Please refresh the page.');
+            return;
+        }
+    }
     
     const submitBtn = event.target.querySelector('.btn-primary');
     const submitText = document.getElementById('submitText');
@@ -324,6 +371,20 @@ function checkAuth() {
 }
 
 async function loadComplaints() {
+        // CHECK IF SUPABASE IS LOADED - ADD THIS
+    if (!supabase) {
+        try {
+            await initSupabase();
+        } catch (error) {
+            console.error('Supabase initialization failed:', error);
+            const errorDiv = document.getElementById('errorDiv');
+            errorDiv.style.display = 'block';
+            document.getElementById('errorMessage').textContent = 
+                'Failed to initialize database connection. Please refresh the page.';
+            return;
+        }
+    }
+
     const loadingDiv = document.getElementById('loadingDiv');
     const tableContainer = document.getElementById('tableContainer');
     const errorDiv = document.getElementById('errorDiv');
@@ -535,6 +596,21 @@ function escapeHtml(text) {
     return String(text).replace(/[&<>"']/g, m => map[m]);
 }
 
+// ==================== DASHBOARD FILTERS ====================
+function initDashboardFilters() {
+    // Search input listener
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.addEventListener('input', searchComplaints);
+    }
+    
+    // Status filter listener
+    const statusFilter = document.getElementById('statusFilter');
+    if (statusFilter) {
+        statusFilter.addEventListener('change', filterByStatus);
+    }
+}
+
 // ==================== QR CODE GENERATOR (qr_generator.html) ====================
 function generateQRCode() {
     const assetId = document.getElementById('assetInput').value.trim();
@@ -580,7 +656,29 @@ function downloadQR(assetId) {
 }
 
 // ==================== INITIALIZATION ====================
-document.addEventListener('DOMContentLoaded', () => {
+// document.addEventListener('DOMContentLoaded', () => {
+//     // Determine which page we're on and initialize accordingly
+//     if (document.getElementById('complaintForm')) {
+//         initComplaintForm();
+//     } else if (document.getElementById('loginForm')) {
+//         initAdminLogin();
+//     } else if (document.getElementById('complaintsTable')) {
+//         checkAuth();
+//         loadComplaints();
+//     }
+// });
+
+
+document.addEventListener('DOMContentLoaded', async () => {
+    // Initialize Supabase first
+    try {
+        await initSupabase();
+    } catch (error) {
+        console.error('Failed to initialize Supabase:', error);
+        showError('Failed to connect to database. Please refresh the page.');
+        return;
+    }
+    
     // Determine which page we're on and initialize accordingly
     if (document.getElementById('complaintForm')) {
         initComplaintForm();
@@ -588,9 +686,11 @@ document.addEventListener('DOMContentLoaded', () => {
         initAdminLogin();
     } else if (document.getElementById('complaintsTable')) {
         checkAuth();
-        loadComplaints();
+        initDashboardFilters();
+        await loadComplaints();
     }
 });
+
 
 // Add CSS animations
 const style = document.createElement('style');
