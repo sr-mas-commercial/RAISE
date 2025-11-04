@@ -25,7 +25,14 @@
             <form id="complaintForm">
                 <div class="form-group">
                     <label>Your Name <span class="required">*</span></label>
-                    <input type="text" id="name" placeholder="Enter your name">
+                    <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your name"
+                    pattern="[A-Za-z ]+"
+                    title="Name can contain only letters and spaces"
+                    required
+                    >
                 </div>
 
                 <div class="form-group">
