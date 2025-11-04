@@ -340,6 +340,7 @@ async function submitToGoogleSheets(data) {
 
       const response = await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
             'Content-Type': 'application/json',
         },
