@@ -30,12 +30,20 @@
 
                 <div class="form-group">
                     <label>Mobile Number <span class="required">*</span></label>
-                    <input type="tel" id="mobile" placeholder="10-digit mobile number" maxlength="10" pattern="[0-9]{10}">
+                    <input type="tel" id="mobile" placeholder="10-digit mobile number" inputmode="numeric" maxlength="10" 
+                     oninput="this.value = this.value.replace(/[^0-9]/g, '')" pattern="[0-9]{10}">
                 </div>
 
                 <div class="form-group">
-                    <label>PNR/UTS Number <span class="optional">(Optional)</span></label>
-                    <input type="text" id="pnrUts" placeholder="Enter PNR or UTS ticket number" maxlength="20">
+                    <label>PNR/UTS Number <span class="optional"></span></label>
+                    <input
+                    type="text"
+                    id="pnrUts"
+                    placeholder="Enter PNR or UTS ticket number"
+                    inputmode="numeric"
+                    pattern="[0-9]*"
+                    maxlength="10"
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                     <small style="color: #666; font-size: 0.875rem; margin-top: 4px; display: block;">
                         Enter your 10-digit PNR or UTS ticket number if applicable
                     </small>
