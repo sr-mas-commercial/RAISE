@@ -66,6 +66,54 @@ function initComplaintForm() {
     }
 }
 
+// ==================== FORM TYPE TOGGLE ====================
+function toggleFormFields() {
+    const formType = document.getElementById('formType').value;
+    const complaintTypeGroup = document.getElementById('complaintTypeGroup');
+    const feedbackTypeGroup = document.getElementById('feedbackTypeGroup');
+    const complaintTypeSelect = document.getElementById('complaintType');
+    const feedbackTypeSelect = document.getElementById('feedbackType');
+    const descriptionLabel = document.getElementById('descriptionLabel');
+    const submitText = document.getElementById('submitText');
+    
+    if (formType === 'Complaint') {
+        // Show complaint type, hide feedback type
+        complaintTypeGroup.style.display = 'block';
+        feedbackTypeGroup.style.display = 'none';
+        
+        // Make complaint type required, feedback type optional
+        complaintTypeSelect.required = true;
+        feedbackTypeSelect.required = false;
+        feedbackTypeSelect.value = '';
+        
+        // Update labels
+        descriptionLabel.innerHTML = 'Complaint Description <span class="required">*</span>';
+        submitText.textContent = 'Submit Complaint';
+        
+    } else if (formType === 'Feedback') {
+        // Show feedback type, hide complaint type
+        complaintTypeGroup.style.display = 'none';
+        feedbackTypeGroup.style.display = 'block';
+        
+        // Make feedback type required, complaint type optional
+        feedbackTypeSelect.required = true;
+        complaintTypeSelect.required = false;
+        complaintTypeSelect.value = '';
+        
+        // Update labels
+        descriptionLabel.innerHTML = 'Feedback Description <span class="required">*</span>';
+        submitText.textContent = 'Submit Feedback';
+        
+    } else {
+        // Hide both if nothing selected
+        complaintTypeGroup.style.display = 'none';
+        feedbackTypeGroup.style.display = 'none';
+        complaintTypeSelect.required = false;
+        feedbackTypeSelect.required = false;
+        submitText.textContent = 'Submit';
+    }
+}
+
 // Global variables
 let supabase = null;
 let currentComplaints = [];
@@ -152,18 +200,46 @@ async function handleComplaintSubmit(event) {
         const urlParams = new URLSearchParams(window.location.search);
         const assetId = urlParams.get('stall') || urlParams.get('asset') || urlParams.get('assetcode');
         
+        const formType = document.getElementById('formType').value;
+        
         const formData = {
             timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
             name: document.getElementById('name').value.trim() || 'Anonymous',
             mobile: document.getElementById('mobile').value.trim() || 'Not provided',
             pnr_uts: document.getElementById('pnrUts').value.trim() || 'Not provided',
-            complaint_type: document.getElementById('complaintType').value,
+            form_type: formType,  // NEW
+            complaint_type: formType === 'Complaint' ? document.getElementById('complaintType').value : null,  // UPDATED
+            feedback_type: formType === 'Feedback' ? document.getElementById('feedbackType').value : null,  // NEW
             description: document.getElementById('description').value.trim(),
             location: document.getElementById('location').value.trim(),
             asset_id: assetId || 'Not specified',
             status: 'Pending',
             photo_url: null
         };
+        
+        // Validate form type selection
+        if (!formData.form_type) {
+            showError('Please select form type (Complaint or Feedback)');
+            submitBtn.disabled = false;
+            submitText.textContent = originalText;
+            return;
+        }
+
+        // Validate complaint type for complaints
+        if (formData.form_type === 'Complaint' && !formData.complaint_type) {
+            showError('Please select a complaint type');
+            submitBtn.disabled = false;
+            submitText.textContent = originalText;
+            return;
+        }
+
+        // Validate feedback type for feedback
+        if (formData.form_type === 'Feedback' && !formData.feedback_type) {
+            showError('Please select a feedback type (Suggestion or Appreciation)');
+            submitBtn.disabled = false;
+            submitText.textContent = originalText;
+            return;
+        }
         
         // Validate required fields
         if (!formData.complaint_type) {
@@ -246,16 +322,26 @@ function showSuccess(formData) {
 }
 
 function shareOnWhatsApp(formData) {
-    let message = `🚆 RAISE Complaint Registered
+    const emoji = formData.form_type === 'Feedback' ? '💬' : '🚆';
+    let message = `${emoji} RAISE ${formData.form_type} Registered
 
 Asset ID: ${formData.asset_id}
-Type: ${formData.complaint_type}
-Description: ${formData.description}`;
+Form Type: ${formData.form_type}`;
+    
+    if (formData.complaint_type) {
+        message += `\nComplaint Type: ${formData.complaint_type}`;
+    }
+    
+    if (formData.feedback_type) {
+        message += `\nFeedback Type: ${formData.feedback_type}`;
+    }
+    
+    message += `\nDescription: ${formData.description}`;
     
     if (formData.location && formData.location !== 'Location not available') {
         message += `\nLocation: ${formData.location}`;
     }
-
+    
     if (formData.pnr_uts && formData.pnr_uts !== 'Not provided') {
         message += `\nPNR/UTS: ${formData.pnr_uts}`;
     }
@@ -273,12 +359,13 @@ Description: ${formData.description}`;
     }
     
     message += `\n\nTimestamp: ${formData.timestamp}`;
-    message += `\n\n#RAISE #RailwayComplaint`;
+    message += `\n\n#RAISE #Railway${formData.form_type}`;
     
     const whatsappNumber = "+916374713251";
     const whatsappURL = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(message);
     window.open(whatsappURL, '_blank');
 }
+
 
 function showError(message) {
     const alert = document.getElementById('errorAlert');
@@ -435,13 +522,49 @@ function renderTable(complaints) {
     
     complaints.forEach((complaint, index) => {
         const row = tbody.insertRow();
-        row.innerHTML = `
+        // row.innerHTML = `
+        //     <td class="table-cell">${complaints.length - index}</td>
+        //     <td class="table-cell">${escapeHtml(complaint.timestamp)}</td>
+        //     <td class="table-cell">${escapeHtml(complaint.name)}</td>
+        //     <td class="table-cell">${escapeHtml(complaint.mobile)}</td>
+        //     <td class="table-cell">${escapeHtml(complaint.pnr_uts || 'Not provided')}</td>
+        //     <td class="table-cell">${escapeHtml(complaint.complaint_type)}</td>
+        //     <td class="table-cell" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis;" 
+        //         title="${escapeHtml(complaint.description)}">
+        //         ${escapeHtml(complaint.description)}
+        //     </td>
+        //     <td class="table-cell">${escapeHtml(complaint.location || 'N/A')}</td>
+        //     <td class="table-cell">${escapeHtml(complaint.asset_id)}</td>
+        //     <td class="table-cell">
+        //         ${complaint.photo_url ? 
+        //             `<a href="${escapeHtml(complaint.photo_url)}" target="_blank" class="photo-link">📷 View</a>` : 
+        //             'No photo'}
+        //     </td>
+        //     <td class="table-cell">
+        //         <span class="status-badge status-${complaint.status.toLowerCase().replace(' ', '-')}">
+        //             ${escapeHtml(complaint.status)}
+        //         </span>
+        //     </td>
+        //     <td class="table-cell">
+        //         <button class="btn-action" onclick="openStatusModal('${complaint.id}', '${escapeHtml(complaint.status)}', ${index})">
+        //             Update
+        //         </button>
+        //     </td>
+        // `;
+         row.innerHTML = `
             <td class="table-cell">${complaints.length - index}</td>
             <td class="table-cell">${escapeHtml(complaint.timestamp)}</td>
+            <td class="table-cell">
+                <span class="badge ${complaint.form_type === 'Complaint' ? 'badge-complaint' : 'badge-feedback'}">
+                    ${escapeHtml(complaint.form_type || 'Complaint')}
+                </span>
+            </td>
             <td class="table-cell">${escapeHtml(complaint.name)}</td>
             <td class="table-cell">${escapeHtml(complaint.mobile)}</td>
             <td class="table-cell">${escapeHtml(complaint.pnr_uts || 'Not provided')}</td>
-            <td class="table-cell">${escapeHtml(complaint.complaint_type)}</td>
+            <td class="table-cell">
+                ${escapeHtml(complaint.complaint_type || complaint.feedback_type || 'N/A')}
+            </td>
             <td class="table-cell" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis;" 
                 title="${escapeHtml(complaint.description)}">
                 ${escapeHtml(complaint.description)}
@@ -464,6 +587,7 @@ function renderTable(complaints) {
                 </button>
             </td>
         `;
+
     });
 }
 

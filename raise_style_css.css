@@ -664,3 +664,22 @@ tr:hover {
         padding: 10px 8px;
     }
 }
+
+/* Form type badges */
+.badge {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.badge-complaint {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.badge-feedback {
+    background-color: #dbeafe;
+    color: #1e40af;
+}

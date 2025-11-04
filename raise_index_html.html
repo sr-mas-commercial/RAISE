@@ -22,97 +22,84 @@
                 <div class="value" id="assetIdDisplay"></div>
             </div>
 
-            <form id="complaintForm">
-                <div class="form-group">
-                    <label>Your Name <span class="required">*</span></label>
-                    <input type="text" id="name" placeholder="Enter your name" required/>
-                </div>
+            <form id="complaintForm">
+                <div class="form-group">
+                    <label>Your Name <span class="required">*</span></label>
+                    <input type="text" id="name" placeholder="Enter your name">
+                </div>
 
-                <div class="form-group">
-                    <label>Mobile Number <span class="required">*</span></label>
-                    <input type="tel" id="mobile" placeholder="10-digit mobile number" maxlength="10" pattern="[0-9]{10}" required/>
-                </div>
+                <div class="form-group">
+                    <label>Mobile Number <span class="required">*</span></label>
+                    <input type="tel" id="mobile" placeholder="10-digit mobile number" maxlength="10" pattern="[0-9]{10}">
+                </div>
 
-                <!-- NEW PNR/UTS FIELD - ADD THIS -->
                 <div class="form-group">
                     <label>PNR/UTS Number <span class="optional">(Optional)</span></label>
-                    <input
-                        type="text"
-                        id="pnrUts"
-                        placeholder="Enter PNR or UTS ticket number"
-                        inputmode="numeric"
-                        pattern="[0-9]*"
-                        maxlength="10"
-                        oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-                        >
+                    <input type="text" id="pnrUts" placeholder="Enter PNR or UTS ticket number" maxlength="20">
                     <small style="color: #666; font-size: 0.875rem; margin-top: 4px; display: block;">
                         Enter your 10-digit PNR or UTS ticket number if applicable
                     </small>
                 </div>
 
+                <!-- NEW: Form Type Selection -->
                 <div class="form-group">
-                <label>Form Type <span class="required"></span></label>
-                <select id="formType" required>
-                    <option value="Complaint" selected>Complaint</option>
-                    <option value="Feedback">Feedback</option>
-                </select>
+                    <label>Form Type <span class="required">*</span></label>
+                    <select id="formType" required onchange="toggleFormFields()">
+                        <option value="">Select form type</option>
+                        <option value="Complaint">Complaint</option>
+                        <option value="Feedback">Feedback</option>
+                    </select>
                 </div>
 
-<!--                 <div class="form-group">
-                    <label>Complaint Type <span class="required">*</span></label>
-                    <select id="complaintType" required> -->
-                <div class="form-group" id="complaintGroup">
-                <label>Complaint Type <span class="required"></span></label>
-                <select id="complaintType" required>
-                        <option value="">Select complaint type</option>
-                        <option value="Overcharging">Overcharging</option>
-                        <option value="Poor Service">Poor Service</option>
-                        <option value="Cleanliness">Cleanliness Issue</option>
-                        <option value="Staff Behavior">Staff Behavior</option>
-                        <option value="Maintenance">Maintenance Required</option>
-                        <option value="Safety Concern">Safety Concern</option>
-                        <option value="Others">Others</option>
-                    </select>
-                </div>
-
-                <div class="form-group" id="feedbackGroup" style="display:none">
-                <label>Feedback Subcategory <span class="required"></span></label>
-                <select id="feedbackType">
-                    <option value="">Select feedback type</option>
-                    <option value="Suggestion">Suggestion</option>
-                    <option value="Appreciation">Appreciation</option>
-                </select>
+                <!-- Complaint Type (shows when Complaint is selected) -->
+                <div class="form-group" id="complaintTypeGroup" style="display: none;">
+                    <label>Complaint Type <span class="required">*</span></label>
+                    <select id="complaintType">
+                        <option value="">Select complaint type</option>
+                        <option value="Overcharging">Overcharging</option>
+                        <option value="Poor Service">Poor Service</option>
+                        <option value="Cleanliness">Cleanliness Issue</option>
+                        <option value="Staff Behavior">Staff Behavior</option>
+                        <option value="Maintenance">Maintenance Required</option>
+                        <option value="Safety Concern">Safety Concern</option>
+                        <option value="Others">Others</option>
+                    </select>
                 </div>
 
-                <div class="form-group">
-                    <label>Description <span class="required">*</span></label>
-                    <textarea id="description" placeholder="Please describe in detail..." rows="4" required></textarea>
-                </div>
+                <!-- NEW: Feedback Type (shows when Feedback is selected) -->
+                <div class="form-group" id="feedbackTypeGroup" style="display: none;">
+                    <label>Feedback Type <span class="required">*</span></label>
+                    <select id="feedbackType">
+                        <option value="">Select feedback type</option>
+                        <option value="Suggestion">Suggestion</option>
+                        <option value="Appreciation">Appreciation</option>
+                    </select>
+                </div>
 
-                <div class="form-group">
-                    <label>Location</label>
-                    <input type="text" id="location" placeholder="Auto-detected or enter manually" />
-                </div>
+                <div class="form-group">
+                    <label id="descriptionLabel">Description <span class="required">*</span></label>
+                    <textarea id="description" placeholder="Please describe in detail..." rows="4" required></textarea>
+                </div>
 
-                <div class="form-group">
-                    <label>Upload Photo <span class="optional">(Optional, max 5MB)</span></label>
-                    <div class="file-upload" onclick="document.getElementById('photoInput').click()">
-                        <input type="file" id="photoInput" accept="image/*" style="display: none" />
-                        <p id="uploadText">📷 Click to choose photo</p>
-                    </div>
-                    <div id="photoPreview" class="photo-preview" style="display: none"></div>
-                </div>
+                <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" id="location" placeholder="Auto-detected or enter manually">
+                </div>
 
-                <button type="submit" class="btn btn-primary">
-                    <span id="submitText">Submit</span>
-                </button>
+                <div class="form-group">
+                    <label>Upload Photo <span class="optional">(Optional, max 5MB)</span></label>
+                    <div class="file-upload" onclick="document.getElementById('photoInput').click()">
+                        <input type="file" id="photoInput" accept="image/*" style="display: none;">
+                        <p id="uploadText">📷 Click to choose photo</p>
+                    </div>
+                    <div id="photoPreview" class="photo-preview" style="display: none;"></div>
+                </div>
 
-                <!-- Hidden inputs to submit asset info -->
-                <input type="hidden" id="assetCodeInput" name="assetCode" />
-                <input type="hidden" id="stationNameInput" name="stationName" />
-                <input type="hidden" id="locationInput" name="locationInput" />
+                <button type="submit" class="btn btn-primary">
+                    <span id="submitText">Submit</span>
+                </button>
+            </form>
 
-            </form>
         </div>
 
         <div id="successContent" class="content" style="display: none;">
