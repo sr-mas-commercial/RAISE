@@ -26,45 +26,45 @@ const ADMIN_CREDENTIALS = {
 // let currentComplaints = [];
 // let currentComplaintId = null;
 
-// // ==================== COMPLAINT FORM (index.html) ====================
-// function initComplaintForm() {
-//     // Get asset/stall ID from URL
-//     const urlParams = new URLSearchParams(window.location.search);
-//     const assetId = urlParams.get('stall') || urlParams.get('asset') || urlParams.get('assetcode');
+// ==================== COMPLAINT FORM (index.html) ====================
+function initComplaintForm() {
+    // Get asset/stall ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const assetId = urlParams.get('stall') || urlParams.get('asset') || urlParams.get('assetcode');
     
-//     if (assetId) {
-//         document.getElementById('assetIdDisplay').textContent = assetId;
-//         document.getElementById('assetBadge').style.display = 'block';
-//     }
+    if (assetId) {
+        document.getElementById('assetIdDisplay').textContent = assetId;
+        document.getElementById('assetBadge').style.display = 'block';
+    }
     
-//     // Get location
-//     if (navigator.geolocation) {
-//         navigator.geolocation.getCurrentPosition(
-//             (position) => {
-//                 const lat = position.coords.latitude.toFixed(6);
-//                 const lon = position.coords.longitude.toFixed(6);
-//                 document.getElementById('location').value = `${lat}, ${lon}`;
-//             },
-//             () => {
-//                 document.getElementById('location').value = 'Location not available';
-//             }
-//         );
-//     } else {
-//         document.getElementById('location').value = 'Location not supported';
-//     }
+    // Get location
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const lat = position.coords.latitude.toFixed(6);
+                const lon = position.coords.longitude.toFixed(6);
+                document.getElementById('location').value = `${lat}, ${lon}`;
+            },
+            () => {
+                document.getElementById('location').value = 'Location not available';
+            }
+        );
+    } else {
+        document.getElementById('location').value = 'Location not supported';
+    }
     
-//     // Photo upload handler
-//     const photoInput = document.getElementById('photoInput');
-//     if (photoInput) {
-//         photoInput.addEventListener('change', handlePhotoUpload);
-//     }
+    // Photo upload handler
+    const photoInput = document.getElementById('photoInput');
+    if (photoInput) {
+        photoInput.addEventListener('change', handlePhotoUpload);
+    }
     
-//     // Form submission
-//     const form = document.getElementById('complaintForm');
-//     if (form) {
-//         form.addEventListener('submit', handleComplaintSubmit);
-//     }
-// }
+    // Form submission
+    const form = document.getElementById('complaintForm');
+    if (form) {
+        form.addEventListener('submit', handleComplaintSubmit);
+    }
+}
 
 // Global variables
 let supabase = null;
