@@ -633,6 +633,8 @@ function openStatusModal(complaintId, currentStatus, index) {
 
 function closeStatusModal() {
     document.getElementById('statusModal').style.display = 'none';
+    updateBtn.disabled = false;
+    updateBtn.textContent = 'Update Status';
     currentComplaintId = null;
 }
 
