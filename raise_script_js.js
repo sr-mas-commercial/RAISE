@@ -347,7 +347,7 @@ async function submitToGoogleSheets(data) {
         body: JSON.stringify(data)
         });
 
-        const text = await response.JSON();
+        const text = await response.text();
         console.log("Raw response:", text);
 
         let result;
