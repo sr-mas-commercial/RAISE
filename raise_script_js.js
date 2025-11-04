@@ -207,15 +207,25 @@ async function handleComplaintSubmit(event) {
             name: document.getElementById('name').value.trim() || 'Anonymous',
             mobile: document.getElementById('mobile').value.trim() || 'Not provided',
             pnr_uts: document.getElementById('pnrUts').value.trim() || 'Not provided',
-            form_type: formType,  // NEW
-            complaint_type: formType === 'Complaint' ? document.getElementById('complaintType').value : null,  // UPDATED
-            feedback_type: formType === 'Feedback' ? document.getElementById('feedbackType').value : null,  // NEW
+            form_type: formType,
             description: document.getElementById('description').value.trim(),
             location: document.getElementById('location').value.trim(),
             asset_id: assetId || 'Not specified',
             status: 'Pending',
             photo_url: null
         };
+
+        if (formType === 'Complaint') {
+            const complaintType = document.getElementById('complaintType').value;
+            if (complaintType) {
+                formData.complaint_type = complaintType;
+            }
+        } else if (formType === 'Feedback') {
+            const feedbackType = document.getElementById('feedbackType').value;
+            if (feedbackType) {
+                formData.feedback_type = feedbackType;
+            }
+        }
         
         // Validate form type selection
         if (!formData.form_type) {
@@ -280,10 +290,11 @@ async function handleComplaintSubmit(event) {
             }
         }
         
+        console.log("formData:", formData);
         // Submit to Supabase
         const { data, error } = await supabase
             .from('complaints')
-            .insert([formData])
+            .insert([formData], { defaultToNull: false })
             .select();
         
         if (error) {
