@@ -320,22 +320,49 @@ async function submitToGoogleSheets(data) {
     //   await new Promise(resolve => setTimeout(resolve, 1500));
     // } else {
       // Production mode - REMOVE no-cors
+    //   const response = await fetch(GOOGLE_SCRIPT_URL, {
+    //     method: 'POST',
+    //     mode: 'no-cors',
+    //     // headers: {
+    //     //   'Content-Type': 'application/json',
+    //     // },
+    //     headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+    //     body: JSON.stringify(data)
+    //   });
+      
+    //   const result = await response.text();
+    //   console.log("result:",result);
+    //   if (!result.success) {
+    //     throw new Error(result.error || 'Submission failed');
+    //   }
+    //   console.log('Submitted successfully:', result);
+
+
       const response = await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
-        mode: 'no-cors',
-        // headers: {
-        //   'Content-Type': 'application/json',
-        // },
-        headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+        headers: {
+            'Content-Type': 'application/json',
+        },
         body: JSON.stringify(data)
-      });
-      
-      const result = await response.text();
-      console.log("result:",result);
-      if (!result.success) {
-        throw new Error(result.error || 'Submission failed');
-      }
-      console.log('Submitted successfully:', result);
+        });
+
+        const text = await response.JSON();
+        console.log("Raw response:", text);
+
+        let result;
+        try {
+        result = JSON.parse(text);
+        console.log("Parsed result:", result);
+        } catch (err) {
+        console.error("JSON parse error:", err);
+        }
+
+        if (!result?.success) {
+        throw new Error(result?.error || 'Submission failed');
+        }
+
+        console.log('✅ Submitted successfully:', result);
+
     // }
   } catch (error) {
     console.error('Google Sheets submission error:', error);
