@@ -330,7 +330,10 @@ async function submitToGoogleSheets(data) {
         body: JSON.stringify(data)
       });
       
-      const result = await response.text();
+      let result = await response.text();
+
+      result = JSON.parse(result);
+      console.log("Parsed result:", result);
       console.log("result:",result);
       if (!result.success) {
         throw new Error(result.error || 'Submission failed');
