@@ -1,6 +1,7 @@
 // ==================== CONFIGURATION ====================
 // IMPORTANT: Replace with your actual Google Apps Script Web App URL
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxHNFlRq1aeXbopDn9BbHd68luOe9QCapvTtZDvgHGj_ulzNKldYdAH9EOe349RLHu-/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxhgdbKs9tA1UydKuCd0pwWlxFtItTtcpTgA6F5UIJ_PYFYOaxnqMHhd2KWiBoeD5ll/exec';
+
 
 // Admin credentials (for demo - in production, use backend authentication)
 const ADMIN_CREDENTIALS = {
@@ -279,7 +280,7 @@ async function handleComplaintSubmit(event) {
 // async function submitToGoogleSheets(data) {
 //     try {
 //         // Check if using demo mode or actual Google Sheets
-//         if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbxHNFlRq1aeXbopDn9BbHd68luOe9QCapvTtZDvgHGj_ulzNKldYdAH9EOe349RLHu-/exec') {
+//         if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbxhgdbKs9tA1UydKuCd0pwWlxFtItTtcpTgA6F5UIJ_PYFYOaxnqMHhd2KWiBoeD5ll/exec') {
 //             // Demo mode: Store in localStorage
 //             console.log('Demo mode: Saving to localStorage');
 //             let complaints = JSON.parse(localStorage.getItem('Complaints') || '[]');
@@ -310,7 +311,7 @@ async function handleComplaintSubmit(event) {
 async function submitToGoogleSheets(data) {
 
   try {
-    // if (GOOGLE_SCRIPT_URL === "https://script.google.com/macros/s/AKfycbxHNFlRq1aeXbopDn9BbHd68luOe9QCapvTtZDvgHGj_ulzNKldYdAH9EOe349RLHu-/exec") {
+    // if (GOOGLE_SCRIPT_URL === "https://script.google.com/macros/s/AKfycbxhgdbKs9tA1UydKuCd0pwWlxFtItTtcpTgA6F5UIJ_PYFYOaxnqMHhd2KWiBoeD5ll/exec") {
     //   // Demo mode
     //   console.log('Demo mode: Saving to localStorage', data);
     //   let complaints = JSON.parse(localStorage.getItem('Complaints') || '[]');
@@ -519,7 +520,7 @@ async function loadComplaints() {
         let complaints = [];
         
         // Check if using demo mode or actual Google Sheets
-        // if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbxHNFlRq1aeXbopDn9BbHd68luOe9QCapvTtZDvgHGj_ulzNKldYdAH9EOe349RLHu-/exec') {
+        // if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbxhgdbKs9tA1UydKuCd0pwWlxFtItTtcpTgA6F5UIJ_PYFYOaxnqMHhd2KWiBoeD5ll/exec') {
         //     // Demo mode: Load from localStorage
         //     console.log('Demo mode: Loading from localStorage');
         //     complaints = JSON.parse(localStorage.getItem('Complaints') || '[]');
@@ -682,7 +683,7 @@ async function updateStatus() {
         currentComplaints[currentRowIndex].status = newStatus;
         
         // Save to storage
-        // if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbxHNFlRq1aeXbopDn9BbHd68luOe9QCapvTtZDvgHGj_ulzNKldYdAH9EOe349RLHu-/exec') {
+        // if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbxhgdbKs9tA1UydKuCd0pwWlxFtItTtcpTgA6F5UIJ_PYFYOaxnqMHhd2KWiBoeD5ll/exec') {
         //     // Demo mode: Update localStorage
         //     localStorage.setItem('Complaints', JSON.stringify(currentComplaints));
         // } else {
