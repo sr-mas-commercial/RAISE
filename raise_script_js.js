@@ -1,17 +1,30 @@
 // ==================== CONFIGURATION ====================
-// IMPORTANT: Replace with your actual Google Apps Script Web App URL
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxhgdbKs9tA1UydKuCd0pwWlxFtItTtcpTgA6F5UIJ_PYFYOaxnqMHhd2KWiBoeD5ll/exec';
+// Supabase Configuration - Replace with your actual values
+const SUPABASE_URL = 'https://fixvjglzzxiqpylblvqz.supabase.co';  // e.g., https://xxxxx.supabase.co
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZpeHZqZ2x6enhpcXB5bGJsdnF6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIxNjc2NTcsImV4cCI6MjA3Nzc0MzY1N30.aoPwVDYshyNmYL79Xo3DSBfZ53hxFv26kt2QwJIXRiw'; // Your anon/public key
 
-
-// Admin credentials (for demo - in production, use backend authentication)
+// Admin credentials (for demo - in production, use Supabase Auth)
 const ADMIN_CREDENTIALS = {
     username: 'admin',
     password: 'admin123'
 };
 
+// Initialize Supabase client
+let supabase;
+if (typeof window !== 'undefined') {
+    // Load Supabase from CDN
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+    script.onload = () => {
+        supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        console.log('Supabase initialized');
+    };
+    document.head.appendChild(script);
+}
+
 // Global variables
 let currentComplaints = [];
-let currentRowIndex = null;
+let currentComplaintId = null;
 
 // ==================== COMPLAINT FORM (index.html) ====================
 function initComplaintForm() {
@@ -23,7 +36,7 @@ function initComplaintForm() {
         document.getElementById('assetIdDisplay').textContent = assetId;
         document.getElementById('assetBadge').style.display = 'block';
     }
-
+    
     // Get location
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -39,411 +52,181 @@ function initComplaintForm() {
     } else {
         document.getElementById('location').value = 'Location not supported';
     }
-
+    
     // Photo upload handler
     const photoInput = document.getElementById('photoInput');
     if (photoInput) {
         photoInput.addEventListener('change', handlePhotoUpload);
     }
-
+    
     // Form submission
     const form = document.getElementById('complaintForm');
     if (form) {
         form.addEventListener('submit', handleComplaintSubmit);
-    }
-
-     const formTypeEl = document.getElementById('formType');
-    const complaintGroup = document.getElementById('complaintGroup');
-    const feedbackGroup = document.getElementById('feedbackGroup');
-
-    if (formTypeEl && complaintGroup && feedbackGroup) {
-        const toggle = () => {
-        if (formTypeEl.value === 'Feedback') {
-            complaintGroup.style.display = 'none';
-            feedbackGroup.style.display = 'block';
-        } else {
-            complaintGroup.style.display = 'block';
-            feedbackGroup.style.display = 'none';
-        }
-        };
-        formTypeEl.addEventListener('change', toggle);
-        toggle();
     }
 }
 
 function handlePhotoUpload(event) {
     const file = event.target.files[0];
     if (!file) return;
-
+    
     // Check file size (5MB limit)
     if (file.size > 5000000) {
         showError('Photo size should be less than 5MB');
         event.target.value = '';
         return;
     }
-
+    
     // Show preview
     const reader = new FileReader();
     reader.onloadend = function() {
         const preview = document.getElementById('photoPreview');
-        preview.innerHTML = `<img src="${reader.result}" alt="Preview">`;
+        preview.innerHTML = `<img src="${reader.result}" alt="Preview" style="max-width: 100%; max-height: 200px; border-radius: 8px;">`;
         preview.style.display = 'block';
         document.getElementById('uploadText').textContent = '✓ Photo uploaded';
     };
     reader.readAsDataURL(file);
 }
 
-// async function handleComplaintSubmit(event) {
-//     event.preventDefault();
-    
-//     hideError();
-    
-//     const submitBtn = event.target.querySelector('.btn-primary');
-//     const submitText = document.getElementById('submitText');
-//     const originalText = submitText.textContent;
-    
-//     // Disable submit button
-//     submitBtn.disabled = true;
-//     submitText.textContent = 'Submitting...';
-
-//     try {
-//         // Get form data
-//         const urlParams = new URLSearchParams(window.location.search);
-//         const assetId = urlParams.get('stall') || urlParams.get('asset') || urlParams.get('assetcode');
-        
-//         const formData = {
-//             timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
-//             name: document.getElementById('name').value.trim() || 'Anonymous',
-//             mobile: document.getElementById('mobile').value.trim() || 'Not provided',
-//             complaintType: document.getElementById('complaintType').value,
-//             description: document.getElementById('description').value.trim(),
-//             location: document.getElementById('location').value.trim(),
-//             assetId: assetId || 'Not specified',
-//             status: 'Pending',
-//             photo: ''
-//         };
-
-//         // Validate required fields
-//         if (!formData.complaintType) {
-//             showError('Please select a complaint type');
-//             submitBtn.disabled = false;
-//             submitText.textContent = originalText;
-//             return;
-//         }
-
-//         if (!formData.description) {
-//             showError('Please enter complaint description');
-//             submitBtn.disabled = false;
-//             submitText.textContent = originalText;
-//             return;
-//         }
-
-//         // Validate mobile if provided
-//         if (formData.mobile !== 'Not provided' && !/^[0-9]{10}$/.test(formData.mobile)) {
-//             showError('Please enter a valid 10-digit mobile number');
-//             submitBtn.disabled = false;
-//             submitText.textContent = originalText;
-//             return;
-//         }
-
-//         // Handle photo
-//         const photoInput = document.getElementById('photoInput');
-//         if (photoInput && photoInput.files && photoInput.files[0]) {
-//             const file = photoInput.files[0];
-//             const reader = new FileReader();
-            
-//             formData.photo = await new Promise((resolve) => {
-//                 reader.onloadend = () => resolve(reader.result);
-//                 reader.readAsDataURL(file);
-//             });
-//         }
-
-//         // Submit to Google Sheets
-//         await submitToGoogleSheets(formData);
-
-//         // Store for WhatsApp sharing
-//         sessionStorage.setItem('lastComplaint', JSON.stringify(formData));
-
-//         // Show success
-//         showSuccess(formData);
-
-//     } catch (error) {
-//         console.error('Submission error:', error);
-//         showError('Failed to submit complaint. Please try again.');
-//         submitBtn.disabled = false;
-//         submitText.textContent = originalText;
-//     }
-// }
-
 async function handleComplaintSubmit(event) {
-  event.preventDefault();
-  hideError();
-  const submitBtn = event.target.querySelector('.btn-primary');
-  const submitText = document.getElementById('submitText');
-  const originalText = submitText.textContent;
-  let formType = document.getElementById('formType').value;
-  submitBtn.disabled = true;
-  submitText.textContent = 'Submitting...';
-
-  try {
-    const urlParams = new URLSearchParams(window.location.search);
-    const assetId = urlParams.get('stall') || urlParams.get('asset') || urlParams.get('assetcode');
-
-    // New: read form type and compute category
+    event.preventDefault();
+    hideError();
     
-    let category;
-    if (formType === 'Feedback') {
-      const feedbackType = document.getElementById('feedbackType').value;
-      if (!feedbackType) {
-        showError('Please select feedback type');
-        submitBtn.disabled = false;
-        submitText.textContent = originalText;
-        return;
-      }
-      category = `Feedback - ${feedbackType}`;
-    } else {
-      const selectedComplaint = document.getElementById('complaintType').value;
-      if (!selectedComplaint) {
-        showError('Please select a complaint type');
-        submitBtn.disabled = false;
-        submitText.textContent = originalText;
-        return;
-      }
-      category = selectedComplaint;
-    }
-
-    console.log("Form Type:", formType);
-    console.log("Category:", category);
-
-    const formData = {
-      timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
-      name: document.getElementById('name').value.trim() || 'Anonymous',
-      mobile: document.getElementById('mobile').value.trim() || 'Not provided',
-      submissionType:formType,
-      type: category, // single field for both complaint and feedback
-      description: document.getElementById('description').value.trim(),
-      location: document.getElementById('location').value.trim(),
-      assetId: assetId || 'Not specified',
-      status: 'Pending',
-      photo: ''
-    };
-
-    // Existing validations remain unchanged
-    if (!formData.description) {
-      showError('Please enter complaint description');
-      submitBtn.disabled = false;
-      submitText.textContent = originalText;
-      return;
-    }
-    if (formData.mobile !== 'Not provided' && !/^[0-9]{10}$/.test(formData.mobile)) {
-      showError('Please enter a valid 10-digit mobile number');
-      submitBtn.disabled = false;
-      submitText.textContent = originalText;
-      return;
-    }
-
-    // Existing photo handling (unchanged)
-    const photoInput = document.getElementById('photoInput');
-    if (photoInput && photoInput.files && photoInput.files[0]) {
-      const file = photoInput.files[0];
-      const reader = new FileReader();
-      formData.photo = await new Promise((resolve) => {
-        reader.onloadend = () => resolve(reader.result);
-        reader.readAsDataURL(file);
-      });
-    }
-
-    // Save to Google Sheets (unchanged function)
-    await submitToGoogleSheets(formData);
-
-    // Auto-share only for complaints and only if a number was provided
-    if (formType === 'Complaint' && formData.mobile && formData.mobile !== 'Not provided') {
-      const digits = formData.mobile.replace(/\D/g, '');
-      const toNumber = digits.length === 10 ? ('91' + digits) : digits; // default to India code for 10-digit inputs
-      if (toNumber) {
-        shareOnWhatsApp(formData, toNumber);
-      }
-    }
-
-    // Persist and show success (existing)
-    sessionStorage.setItem('lastComplaint', JSON.stringify(formData));
-    showSuccess(formData);
-  } catch (error) {
-    console.error('Submission error:', error);
-    showError('Failed to submit complaint. Please try again.');
-    submitBtn.disabled = false;
-    submitText.textContent = originalText;
-  }
-}
-
-
-// async function submitToGoogleSheets(data) {
-//     try {
-//         // Check if using demo mode or actual Google Sheets
-//         if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbxhgdbKs9tA1UydKuCd0pwWlxFtItTtcpTgA6F5UIJ_PYFYOaxnqMHhd2KWiBoeD5ll/exec') {
-//             // Demo mode: Store in localStorage
-//             console.log('Demo mode: Saving to localStorage');
-//             let complaints = JSON.parse(localStorage.getItem('Complaints') || '[]');
-//             complaints.push(data);
-//             localStorage.setItem('Complaints', JSON.stringify(complaints));
-//             await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate network delay
-//         } else {
-//             // Production mode: Send to Google Sheets
-//             const response = await fetch(GOOGLE_SCRIPT_URL, {
-//                 method: 'POST',
-//                 mode: 'no-cors',
-//                 headers: {
-//                     'Content-Type': 'application/json',
-//                 },
-//                 body: JSON.stringify(data)
-//             });
+    const submitBtn = event.target.querySelector('.btn-primary');
+    const submitText = document.getElementById('submitText');
+    const originalText = submitText.textContent;
+    
+    // Disable submit button
+    submitBtn.disabled = true;
+    submitText.textContent = 'Submitting...';
+    
+    try {
+        // Get form data
+        const urlParams = new URLSearchParams(window.location.search);
+        const assetId = urlParams.get('stall') || urlParams.get('asset') || urlParams.get('assetcode');
+        
+        const formData = {
+            timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+            name: document.getElementById('name').value.trim() || 'Anonymous',
+            mobile: document.getElementById('mobile').value.trim() || 'Not provided',
+            complaint_type: document.getElementById('complaintType').value,
+            description: document.getElementById('description').value.trim(),
+            location: document.getElementById('location').value.trim(),
+            asset_id: assetId || 'Not specified',
+            status: 'Pending',
+            photo_url: null
+        };
+        
+        // Validate required fields
+        if (!formData.complaint_type) {
+            showError('Please select a complaint type');
+            submitBtn.disabled = false;
+            submitText.textContent = originalText;
+            return;
+        }
+        
+        if (!formData.description) {
+            showError('Please enter complaint description');
+            submitBtn.disabled = false;
+            submitText.textContent = originalText;
+            return;
+        }
+        
+        // Validate mobile if provided
+        if (formData.mobile !== 'Not provided' && !/^[0-9]{10}$/.test(formData.mobile)) {
+            showError('Please enter a valid 10-digit mobile number');
+            submitBtn.disabled = false;
+            submitText.textContent = originalText;
+            return;
+        }
+        
+        // Handle photo upload to Supabase Storage
+        const photoInput = document.getElementById('photoInput');
+        if (photoInput && photoInput.files && photoInput.files[0]) {
+            const file = photoInput.files[0];
+            const fileName = `${Date.now()}_${file.name.replace(/[^a-zA-Z0-9.]/g, '_')}`;
             
-//             // Note: With no-cors mode, we can't read the response
-//             // Assume success if no error is thrown
-//             console.log('Submitted to Google Sheets');
-//         }
-//     } catch (error) {
-//         console.error('Google Sheets submission error:', error);
-//         throw error;
-//     }
-// }
-
-async function submitToGoogleSheets(data) {
-
-  try {
-    // if (GOOGLE_SCRIPT_URL === "https://script.google.com/macros/s/AKfycbxhgdbKs9tA1UydKuCd0pwWlxFtItTtcpTgA6F5UIJ_PYFYOaxnqMHhd2KWiBoeD5ll/exec") {
-    //   // Demo mode
-    //   console.log('Demo mode: Saving to localStorage', data);
-    //   let complaints = JSON.parse(localStorage.getItem('Complaints') || '[]');
-    //   complaints.push(data);
-    //   localStorage.setItem('Complaints', JSON.stringify(complaints));
-    //   await new Promise(resolve => setTimeout(resolve, 1500));
-    // } else {
-      // Production mode - REMOVE no-cors
-      const response = await fetch(GOOGLE_SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        // headers: {
-        //   'Content-Type': 'application/json',
-        // },
-        headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
-        body: JSON.stringify(data)
-      });
-      
-      let result = await response.text();
-
-      result = JSON.parse(result);
-      console.log("Parsed result:", result);
-      console.log("result:",result);
-      if (!result.success) {
-        throw new Error(result.error || 'Submission failed');
-      }
-      console.log('Submitted successfully:', result);
-
-
-    //   const response = await fetch(GOOGLE_SCRIPT_URL, {
-    //     method: 'POST',
-    //     mode: 'no-cors',
-    //     headers: {
-    //         'Content-Type': 'text/plain;charset=UTF-8'
-    //     },
-    //     body: JSON.stringify(data)
-    //     });
-
-    //     const text = await response.text();
-    //     console.log("Raw response:", text);
-
-    //     let result;
-    //     try {
-    //     result = JSON.parse(text);
-    //     console.log("Parsed result:", result);
-    //     } catch (err) {
-    //     console.error("JSON parse error:", err);
-    //     }
-
-    //     if (!result?.success) {
-    //     throw new Error(result?.error || 'Submission failed');
-    //     }
-
-    //     console.log('✅ Submitted successfully:', result);
-
-    // }
-  } catch (error) {
-    console.error('Google Sheets submission error:', error);
-    throw error;
-  }
+            const { data: uploadData, error: uploadError } = await supabase.storage
+                .from('complaint-photos')
+                .upload(fileName, file);
+            
+            if (uploadError) {
+                console.error('Photo upload error:', uploadError);
+                showError('Failed to upload photo. Submitting complaint without photo...');
+            } else {
+                // Get public URL
+                const { data: urlData } = supabase.storage
+                    .from('complaint-photos')
+                    .getPublicUrl(fileName);
+                formData.photo_url = urlData.publicUrl;
+            }
+        }
+        
+        // Submit to Supabase
+        const { data, error } = await supabase
+            .from('complaints')
+            .insert([formData])
+            .select();
+        
+        if (error) {
+            throw error;
+        }
+        
+        // Store for WhatsApp sharing
+        sessionStorage.setItem('lastComplaint', JSON.stringify(formData));
+        
+        // Show success
+        showSuccess(formData);
+        
+    } catch (error) {
+        console.error('Submission error:', error);
+        showError('Failed to submit complaint. Please try again.');
+        submitBtn.disabled = false;
+        submitText.textContent = originalText;
+    }
 }
-
 
 function showSuccess(formData) {
     document.getElementById('formContent').style.display = 'none';
     document.getElementById('successContent').style.display = 'block';
-    document.getElementById('refId').textContent = formData.assetId;
-    document.getElementById('refType').textContent = formData.complaintType;
+    document.getElementById('refId').textContent = formData.asset_id;
+    document.getElementById('refType').textContent = formData.complaint_type;
     
     // Setup WhatsApp button
     const whatsappBtn = document.getElementById('whatsappBtn');
     whatsappBtn.onclick = () => shareOnWhatsApp(formData);
 }
 
-// function shareOnWhatsApp(formData) {
-//     let message = `🚆 RAISE Complaint Registered
+function shareOnWhatsApp(formData) {
+    let message = `🚆 RAISE Complaint Registered
 
-// Asset ID: ${formData.assetId}
-// Type: ${formData.complaintType}
-// Description: ${formData.description}`;
-
-//     if (formData.location && formData.location !== 'Location not available') {
-//         message += `\nLocation: ${formData.location}`;
-//     }
-
-//     if (formData.photo) {
-//         message += `\nPhoto: Attached (see complaint form)`;
-//     }
-
-//     if (formData.name !== 'Anonymous') {
-//         message += `\nSubmitted by: ${formData.name}`;
-//     }
-
-//     if (formData.mobile !== 'Not provided') {
-//         message += `\nMobile: ${formData.mobile}`;
-//     }
-
-//     message += `\n\nTimestamp: ${formData.timestamp}`;
-//     message += `\n\n#RAISE #RailwayComplaint`;
-
-//     const whatsappNumber = "+918754444825";
-//     const whatsappURL = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(message);
-
-//     window.open(whatsappURL, '_blank');
-// }
-
-function shareOnWhatsApp(formData, toNumber) {
-  let message = `🚆 RAISE Complaint Registered
-Asset ID: ${formData.assetId}
-Type: ${formData.complaintType}
+Asset ID: ${formData.asset_id}
+Type: ${formData.complaint_type}
 Description: ${formData.description}`;
-
-  if (formData.location && formData.location !== 'Location not available') {
-    message += `\nLocation: ${formData.location}`;
-  }
-  if (formData.photo) {
-    message += `\nPhoto: Attached (see complaint form)`;
-  }
-  if (formData.name !== 'Anonymous') {
-    message += `\nSubmitted by: ${formData.name}`;
-  }
-  if (formData.mobile !== 'Not provided') {
-    message += `\nMobile: ${formData.mobile}`;
-  }
-  message += `\n\nTimestamp: ${formData.timestamp}\n\n#RAISE #RailwayComplaint`;
-
-  // Prefer the provided number; fall back to the existing default if needed
-  const number = ('+916374713251').replace(/^\+/, '');
-  const whatsappURL = 'https://wa.me/' + number + '?text=' + encodeURIComponent(message);
-  window.open(whatsappURL, '_blank');
+    
+    if (formData.location && formData.location !== 'Location not available') {
+        message += `\nLocation: ${formData.location}`;
+    }
+    
+    if (formData.photo_url) {
+        message += `\nPhoto: ${formData.photo_url}`;
+    }
+    
+    if (formData.name !== 'Anonymous') {
+        message += `\nSubmitted by: ${formData.name}`;
+    }
+    
+    if (formData.mobile !== 'Not provided') {
+        message += `\nMobile: ${formData.mobile}`;
+    }
+    
+    message += `\n\nTimestamp: ${formData.timestamp}`;
+    message += `\n\n#RAISE #RailwayComplaint`;
+    
+    const whatsappNumber = "+918754444825";
+    const whatsappURL = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(message);
+    window.open(whatsappURL, '_blank');
 }
-
 
 function showError(message) {
     const alert = document.getElementById('errorAlert');
@@ -546,209 +329,272 @@ async function loadComplaints() {
     tableContainer.style.display = 'none';
     errorDiv.style.display = 'none';
     emptyState.style.display = 'none';
-
+    
     try {
-        let complaints = [];
+        // Fetch from Supabase
+        const { data: complaints, error } = await supabase
+            .from('complaints')
+            .select('*')
+            .order('created_at', { ascending: false });
         
-        // Check if using demo mode or actual Google Sheets
-        // if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbxhgdbKs9tA1UydKuCd0pwWlxFtItTtcpTgA6F5UIJ_PYFYOaxnqMHhd2KWiBoeD5ll/exec') {
-        //     // Demo mode: Load from localStorage
-        //     console.log('Demo mode: Loading from localStorage');
-        //     complaints = JSON.parse(localStorage.getItem('Complaints') || '[]');
-        //     await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate network delay
-        // } else {
-            // Production mode: Fetch from Google Sheets
-            const response = await fetch(GOOGLE_SCRIPT_URL + '?action=get', {
-                method: 'GET'
-            });
-            
-            if (!response.ok) {
-                throw new Error('Failed to fetch complaints');
-            }
-            
-            complaints = await response.json();
-        // }
-
-        currentComplaints = complaints;
+        if (error) {
+            throw error;
+        }
+        
+        currentComplaints = complaints || [];
         
         // Hide loading
         loadingDiv.style.display = 'none';
         
-        if (complaints.length === 0) {
+        if (currentComplaints.length === 0) {
             emptyState.style.display = 'block';
         } else {
-            renderTable(complaints);
-            updateStats(complaints);
+            renderTable(currentComplaints);
+            updateStats(currentComplaints);
             tableContainer.style.display = 'block';
         }
-
+        
     } catch (error) {
         console.error('Load complaints error:', error);
         loadingDiv.style.display = 'none';
         errorDiv.style.display = 'block';
-        document.getElementById('errorMessage').textContent = 'Failed to load complaints. Please check your Google Apps Script configuration and try again.';
+        document.getElementById('errorMessage').textContent = 
+            'Failed to load complaints. Please check your Supabase configuration and try again.';
     }
 }
 
 function renderTable(complaints) {
     const tbody = document.getElementById('tableBody');
     tbody.innerHTML = '';
-
-    complaints.reverse().forEach((complaint, index) => {
+    
+    complaints.forEach((complaint, index) => {
         const row = tbody.insertRow();
         row.innerHTML = `
-            <td>${complaint.timestamp || '-'}</td>
-            <td><strong>${complaint.assetId || complaint.stallId || '-'}</strong></td>
-            <td>${complaint.complaintType || '-'}</td>
-            <td title="${complaint.description || '-'}">${truncateText(complaint.description, 50)}</td>
-            <td>${complaint.name || '-'}</td>
-            <td>${complaint.mobile || '-'}</td>
-            <td title="${complaint.location || '-'}">${truncateText(complaint.location, 30)}</td>
-            <td>${renderPhotoCell(complaint.photo)}</td>
-            <td><span class="status-badge status-${getStatusClass(complaint.status)}">${complaint.status || 'Pending'}</span></td>
-            <td><button class="btn-update" onclick="openStatusModal(${complaints.length - 1 - index})">Update</button></td>
+            <td class="table-cell">${complaints.length - index}</td>
+            <td class="table-cell">${escapeHtml(complaint.timestamp)}</td>
+            <td class="table-cell">${escapeHtml(complaint.name)}</td>
+            <td class="table-cell">${escapeHtml(complaint.mobile)}</td>
+            <td class="table-cell">${escapeHtml(complaint.complaint_type)}</td>
+            <td class="table-cell" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis;" 
+                title="${escapeHtml(complaint.description)}">
+                ${escapeHtml(complaint.description)}
+            </td>
+            <td class="table-cell">${escapeHtml(complaint.location || 'N/A')}</td>
+            <td class="table-cell">${escapeHtml(complaint.asset_id)}</td>
+            <td class="table-cell">
+                ${complaint.photo_url ? 
+                    `<a href="${escapeHtml(complaint.photo_url)}" target="_blank" class="photo-link">📷 View</a>` : 
+                    'No photo'}
+            </td>
+            <td class="table-cell">
+                <span class="status-badge status-${complaint.status.toLowerCase().replace(' ', '-')}">
+                    ${escapeHtml(complaint.status)}
+                </span>
+            </td>
+            <td class="table-cell">
+                <button class="btn-action" onclick="openStatusModal('${complaint.id}', '${escapeHtml(complaint.status)}', ${index})">
+                    Update
+                </button>
+            </td>
         `;
     });
 }
 
-function renderPhotoCell(photo) {
-    if (!photo || photo === 'No') {
-        return '<span style="color: #999;">No Photo</span>';
-    }
-    
-    if (photo.startsWith('http')) {
-        return `<a href="${photo}" target="_blank" style="color: #3b82f6; text-decoration: none;">View Photo</a>`;
-    }
-    
-    if (photo === 'Yes' || photo.startsWith('data:image')) {
-        return '<span style="color: #10b981;">✓ Available</span>';
-    }
-    
-    return '<span style="color: #999;">-</span>';
-}
-
-function getStatusClass(status) {
-    if (!status) return 'pending';
-    const statusLower = status.toLowerCase();
-    if (statusLower.includes('progress')) return 'progress';
-    if (statusLower.includes('resolved')) return 'resolved';
-    return 'pending';
-}
-
-function truncateText(text, maxLength) {
-    if (!text) return '-';
-    return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
-}
-
 function updateStats(complaints) {
     const total = complaints.length;
-    const pending = complaints.filter(c => !c.status || c.status === 'Pending').length;
-    const progress = complaints.filter(c => c.status === 'In Progress').length;
+    const pending = complaints.filter(c => c.status === 'Pending').length;
+    const inProgress = complaints.filter(c => c.status === 'In Progress').length;
     const resolved = complaints.filter(c => c.status === 'Resolved').length;
-
+    
     document.getElementById('totalCount').textContent = total;
     document.getElementById('pendingCount').textContent = pending;
-    document.getElementById('progressCount').textContent = progress;
+    document.getElementById('progressCount').textContent = inProgress;
     document.getElementById('resolvedCount').textContent = resolved;
 }
 
-function initDashboardFilters() {
-    const searchInput = document.getElementById('searchInput');
-    const filterStatus = document.getElementById('filterStatus');
-    
-    if (searchInput) {
-        searchInput.addEventListener('input', applyFilters);
-    }
-    
-    if (filterStatus) {
-        filterStatus.addEventListener('change', applyFilters);
-    }
-}
-
-function applyFilters() {
-    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-    const statusFilter = document.getElementById('filterStatus').value;
-    
-    let filtered = currentComplaints;
-    
-    // Apply search
-    if (searchTerm) {
-        filtered = filtered.filter(c => {
-            const assetId = (c.assetId || c.stallId || '').toLowerCase();
-            const type = (c.complaintType || '').toLowerCase();
-            const description = (c.description || '').toLowerCase();
-            return assetId.includes(searchTerm) || type.includes(searchTerm) || description.includes(searchTerm);
-        });
-    }
-    
-    // Apply status filter
-    if (statusFilter) {
-        filtered = filtered.filter(c => c.status === statusFilter);
-    }
-    
-    renderTable(filtered);
-}
-
-function openStatusModal(index) {
-    currentRowIndex = currentComplaints.length - 1 - index;
-    const complaint = currentComplaints[currentRowIndex];
-    
-    document.getElementById('modalAssetId').textContent = complaint.assetId || complaint.stallId || '-';
-    document.getElementById('modalCurrentStatus').textContent = complaint.status || 'Pending';
-    document.getElementById('newStatus').value = complaint.status || 'Pending';
+function openStatusModal(complaintId, currentStatus, index) {
+    currentComplaintId = complaintId;
+    document.getElementById('currentStatus').textContent = currentStatus;
+    document.getElementById('newStatus').value = currentStatus;
     document.getElementById('statusModal').style.display = 'flex';
 }
 
 function closeStatusModal() {
     document.getElementById('statusModal').style.display = 'none';
-    currentRowIndex = null;
+    currentComplaintId = null;
 }
 
 async function updateStatus() {
-    if (currentRowIndex === null) return;
-    
     const newStatus = document.getElementById('newStatus').value;
     
+    if (!currentComplaintId) return;
+    
+    const updateBtn = document.querySelector('#statusModal .btn-primary');
+    const originalText = updateBtn.textContent;
+    updateBtn.disabled = true;
+    updateBtn.textContent = 'Updating...';
+    
     try {
-        // Update status in data
-        currentComplaints[currentRowIndex].status = newStatus;
+        const { error } = await supabase
+            .from('complaints')
+            .update({ status: newStatus })
+            .eq('id', currentComplaintId);
         
-        // Save to storage
-        // if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbxhgdbKs9tA1UydKuCd0pwWlxFtItTtcpTgA6F5UIJ_PYFYOaxnqMHhd2KWiBoeD5ll/exec') {
-        //     // Demo mode: Update localStorage
-        //     localStorage.setItem('Complaints', JSON.stringify(currentComplaints));
-        // } else {
-            // Production mode: Update Google Sheets
-            const updateData = {
-                action: 'updateStatus',
-                rowIndex: currentRowIndex,
-                status: newStatus
-            };
-            
-            await fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(updateData)
-            });
-        // }
+        if (error) {
+            throw error;
+        }
         
-        // Close modal and refresh
+        // Show success notification
+        showNotification('Status updated successfully!', 'success');
+        
+        // Close modal
         closeStatusModal();
-        loadComplaints();
+        
+        // Reload complaints
+        await loadComplaints();
         
     } catch (error) {
         console.error('Update status error:', error);
-        alert('Failed to update status. Please try again.');
+        showNotification('Failed to update status. Please try again.', 'error');
+        updateBtn.disabled = false;
+        updateBtn.textContent = originalText;
     }
 }
 
-// Click outside modal to close
-window.onclick = function(event) {
-    const modal = document.getElementById('statusModal');
-    if (modal && event.target === modal) {
-        closeStatusModal();
+function showNotification(message, type) {
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.textContent = message;
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px 20px;
+        background: ${type === 'success' ? '#10b981' : '#ef4444'};
+        color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        z-index: 10000;
+        animation: slideIn 0.3s ease-out;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease-out';
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
+
+function searchComplaints() {
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    
+    const filtered = currentComplaints.filter(complaint => {
+        return (
+            complaint.name.toLowerCase().includes(searchTerm) ||
+            complaint.mobile.includes(searchTerm) ||
+            complaint.complaint_type.toLowerCase().includes(searchTerm) ||
+            complaint.description.toLowerCase().includes(searchTerm) ||
+            complaint.asset_id.toLowerCase().includes(searchTerm)
+        );
+    });
+    
+    renderTable(filtered);
+    updateStats(filtered);
+}
+
+function filterByStatus() {
+    const status = document.getElementById('statusFilter').value;
+    
+    let filtered = currentComplaints;
+    if (status !== 'all') {
+        filtered = currentComplaints.filter(c => c.status === status);
+    }
+    
+    renderTable(filtered);
+    updateStats(filtered);
+}
+
+function escapeHtml(text) {
+    const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
+    return String(text).replace(/[&<>"']/g, m => map[m]);
+}
+
+// ==================== QR CODE GENERATOR (qr_generator.html) ====================
+function generateQRCode() {
+    const assetId = document.getElementById('assetInput').value.trim();
+    const qrContainer = document.getElementById('qrCode');
+    const downloadBtn = document.getElementById('downloadBtn');
+    
+    if (!assetId) {
+        alert('Please enter an Asset/Stall ID');
+        return;
+    }
+    
+    // Clear previous QR code
+    qrContainer.innerHTML = '';
+    
+    // Generate complaint form URL
+    const baseUrl = window.location.origin + window.location.pathname.replace('qr_generator.html', 'raise_index_html.html');
+    const complaintUrl = `${baseUrl}?asset=${encodeURIComponent(assetId)}`;
+    
+    // Generate QR code
+    new QRCode(qrContainer, {
+        text: complaintUrl,
+        width: 256,
+        height: 256,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+    });
+    
+    // Show download button
+    downloadBtn.style.display = 'inline-block';
+    downloadBtn.onclick = () => downloadQR(assetId);
+}
+
+function downloadQR(assetId) {
+    const canvas = document.querySelector('#qrCode canvas');
+    if (canvas) {
+        const url = canvas.toDataURL('image/png');
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `QR_${assetId}.png`;
+        a.click();
     }
 }
+
+// ==================== INITIALIZATION ====================
+document.addEventListener('DOMContentLoaded', () => {
+    // Determine which page we're on and initialize accordingly
+    if (document.getElementById('complaintForm')) {
+        initComplaintForm();
+    } else if (document.getElementById('loginForm')) {
+        initAdminLogin();
+    } else if (document.getElementById('complaintsTable')) {
+        checkAuth();
+        loadComplaints();
+    }
+});
+
+// Add CSS animations
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideIn {
+        from { transform: translateX(400px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slideOut {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(400px); opacity: 0; }
+    }
+`;
+document.head.appendChild(style);
