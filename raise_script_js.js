@@ -914,7 +914,7 @@ function searchComplaints() {
             complaint.name.toLowerCase().includes(searchTerm) ||
             complaint.mobile.includes(searchTerm) ||
             (complaint.pnr_uts && complaint.pnr_uts.toLowerCase().includes(searchTerm)) || 
-            complaint.complaint_type.toLowerCase().includes(searchTerm) ||
+            complaint.complaint_type?.toLowerCase().includes(searchTerm) ||
             complaint.description.toLowerCase().includes(searchTerm) ||
             complaint.asset_id.toLowerCase().includes(searchTerm)
         );

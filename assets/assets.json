@@ -1421,7 +1421,7 @@
     "licenseeName": "Binu Railway Contract",
     "category": "PARKING"
   },
-  "PARKING-MSC-2025-56": {
+  "MSC-1": {
     "assetCode": "PARKING-MSC-2025-56",
     "stationCode": "MSC",
     "stationName": "Chetpet",
@@ -1790,7 +1790,7 @@
     "licenseeName": "M/s.Future Ads",
     "category": "NFR"
   },
-  "MAS-OOH-MSCZONE-2024": {
+  "MSC2": {
     "assetCode": "MAS-OOH-MSCZONE-2024",
     "stationCode": "MSC Zone",
     "stationName": "MSC Zone",
@@ -2285,7 +2285,7 @@
     "licenseeName": "Hexion Solutions",
     "category": "NFR"
   },
-  "PUB-OSN-MSC-TBMS-25-04": {
+  "MSC3": {
     "assetCode": "PUB-OSN-MSC-TBMS-25-04",
     "stationCode": "MSC",
     "stationName": "Chetpet",
