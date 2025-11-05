@@ -146,7 +146,7 @@
           ${licenseeName ? `<div class="details"><b>Licensee:</b> ${licenseeName}</div>` : ""}
           ${category ? `<div class="details"><b>Category:</b> ${category}</div>` : ""}
           <img src="${qrDataURL}" alt="QR Code" class="qr" />
-          <div class="bottom-text">Scan this QR code to register feedback or complaint</div>
+          <div class="bottom-text">Scan this QR code to register feedback or complaint for this specific facility or asset</div>
         `;
         container.appendChild(card);
       });
@@ -246,8 +246,8 @@
       pdf.setFont("helvetica", "bold");
       pdf.setFontSize(11);
       pdf.setTextColor(0, 51, 102);
-      pdf.text("Scan this QR code to register", 74, 195, { align: "center" });
-      pdf.text("feedback or complaint", 74, 202, { align: "center" });
+      pdf.text("Scan this QR code to register feedback or complaint ", 74, 195, { align: "center" });
+      pdf.text("for this specific facility or asset", 74, 202, { align: "center" });
 
 
         if (i !== assetList.length - 1) pdf.addPage([148, 210], "portrait");
