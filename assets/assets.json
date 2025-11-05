@@ -2,8 +2,8 @@
   "PARKING-AB-2-2024-50": {
     "assetCode": "PARKING-AB-2-2024-50",
     "stationCode": "AB",
-    "stationName": "Ambur Site 2",
-    "location": "Not Available",
+    "stationName": "Ambur",
+    "location": "Ambur Site 2",
     "type": "2 wheeler",
     "licenseeName": "M K Traders",
     "category": "PARKING"
@@ -11,8 +11,8 @@
   "PARKING-AB-2025-1": {
     "assetCode": "PARKING-AB-2025-1",
     "stationCode": "AB",
-    "stationName": "Ambur Site 1",
-    "location": "Not Available",
+    "stationName": "Ambur",
+    "location": "Ambur Site 1",
     "type": "2 wheeler",
     "licenseeName": "MK Traders",
     "category": "PARKING"
