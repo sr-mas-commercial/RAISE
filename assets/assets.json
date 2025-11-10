@@ -883,7 +883,7 @@
   },
   "PnU-MAS-MAS-WRL-248": {
     "assetCode": "PnU-MAS-MAS-WRL-248",
-    "stationCode": "MAS ",
+    "stationCode": "MAS",
     "stationName": "Dr. M. G. R. Chennai Central",
     "location": "Old concourse 1st floor",
     "type": "ACWH",
@@ -1731,7 +1731,7 @@
     "assetCode": "PnU-MAS-STM-Toi-332 | 1",
     "stationCode": "STM",
     "stationName": "St. Thomas Mount",
-    "location": "PF-1&2 (TBM end)",
+    "location": "East side entrance",
     "type": "PAUT (Revenue Model)",
     "licenseeName": "M/s S Uma Chennai",
     "category": "PA"
@@ -1740,7 +1740,7 @@
     "assetCode": "PnU-MAS-STM-Toi-332 | 2",
     "stationCode": "STM",
     "stationName": "St. Thomas Mount",
-    "location": "East side entrance",
+    "location": "PF-1&2 (TBM end)",
     "type": "PAUT (Revenue Model)",
     "licenseeName": "M/s S Uma Chennai",
     "category": "PA"
