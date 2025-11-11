@@ -881,9 +881,54 @@
     "licenseeName": "M/s. Saisharath Subbian and Co",
     "category": "PA"
   },
+  "MSS-MAS-MAS-BCA-23 | 1": {
+    "assetCode": "MSS-MAS-MAS-BCA-23 | 1",
+    "stationCode": "MAS",
+    "stationName": "Dr. M. G. R. Chennai Central",
+    "location": "",
+    "type": "Battery Operated Carts",
+    "licenseeName": "Sri. R. Subburaj",
+    "category": "PA"
+  },
+  "MSS-MAS-MAS-BCA-23 | 2": {
+    "assetCode": "MSS-MAS-MAS-BCA-23 | 2",
+    "stationCode": "MAS",
+    "stationName": "Dr. M. G. R. Chennai Central",
+    "location": "",
+    "type": "Battery Operated Carts",
+    "licenseeName": "Sri. R. Subburaj",
+    "category": "PA"
+  },
+  "MSS-MAS-MAS-BCA-23 | 3": {
+    "assetCode": "MSS-MAS-MAS-BCA-23 | 3",
+    "stationCode": "MAS",
+    "stationName": "Dr. M. G. R. Chennai Central",
+    "location": "",
+    "type": "Battery Operated Carts",
+    "licenseeName": "Sri. R. Subburaj",
+    "category": "PA"
+  },
+  "MSS-MAS-MAS-BCA-23 | 4": {
+    "assetCode": "MSS-MAS-MAS-BCA-23 | 4",
+    "stationCode": "MAS",
+    "stationName": "Dr. M. G. R. Chennai Central",
+    "location": "",
+    "type": "Battery Operated Carts",
+    "licenseeName": "Sri. R. Subburaj",
+    "category": "PA"
+  },
+  "MSS-MAS-MAS-BCA-23 | 5": {
+    "assetCode": "MSS-MAS-MAS-BCA-23 | 5",
+    "stationCode": "MAS",
+    "stationName": "Dr. M. G. R. Chennai Central",
+    "location": "",
+    "type": "Battery Operated Carts",
+    "licenseeName": "Sri. R. Subburaj",
+    "category": "PA"
+  },
   "PnU-MAS-MASS-Toi-211": {
     "assetCode": "PnU-MAS-MASS-Toi-211",
-    "stationCode": "MAS",
+    "stationCode": "MASS",
     "stationName": "Moore Market Complex - Chennai Central suburban",
     "location": "PF-15 of MASS",
     "type": "PAUT (ROMT Model)",
@@ -892,7 +937,7 @@
   },
   "PARKING-MASS-2025-21": {
     "assetCode": "PARKING-MASS-2025-21",
-    "stationCode": "MAS",
+    "stationCode": "MASS",
     "stationName": "Moore Market Complex - Chennai Central suburban",
     "location": "",
     "type": "2 wheeler",
@@ -901,7 +946,7 @@
   },
   "PUB-MASS-RDN-24-1": {
     "assetCode": "PUB-MASS-RDN-24-1",
-    "stationCode": "MAS",
+    "stationCode": "MASS",
     "stationName": "Moore Market Complex - Chennai Central suburban",
     "location": "",
     "type": "Digital ads with PIDS",
@@ -910,7 +955,7 @@
   },
   "BSS-MASS-2024-2": {
     "assetCode": "BSS-MASS-2024-2",
-    "stationCode": "MAS",
+    "stationCode": "MASS",
     "stationName": "Moore Market Complex - Chennai Central suburban",
     "location": "",
     "type": "Battery Swapping",
@@ -919,7 +964,7 @@
   },
   "PnU-MAS-MBM-Toi-321": {
     "assetCode": "PnU-MAS-MBM-Toi-321",
-    "stationCode": "MAS",
+    "stationCode": "MBM",
     "stationName": "Mambalam",
     "location": "PF-1 (TBM end)",
     "type": "PAUT (Revenue Model)",
@@ -928,7 +973,7 @@
   },
   "PnU-MAS-MBM-WRL-284": {
     "assetCode": "PnU-MAS-MBM-WRL-284",
-    "stationCode": "MASS",
+    "stationCode": "MBM",
     "stationName": "Mambalam",
     "location": "PF-1",
     "type": "ACWH",
@@ -937,7 +982,7 @@
   },
   "PARKING-MBM-2025-34": {
     "assetCode": "PARKING-MBM-2025-34",
-    "stationCode": "MASS",
+    "stationCode": "MBM",
     "stationName": "Mambalam",
     "location": "",
     "type": "2 wheeler",
@@ -946,7 +991,7 @@
   },
   "PARKING-MBM-2025-40": {
     "assetCode": "PARKING-MBM-2025-40",
-    "stationCode": "MASS",
+    "stationCode": "MBM",
     "stationName": "Mambalam",
     "location": "",
     "type": "2 wheeler",
@@ -955,7 +1000,7 @@
   },
   "PARKING-MAS-VN-TW-244-23": {
     "assetCode": "PARKING-MAS-VN-TW-244-23",
-    "stationCode": "MASS",
+    "stationCode": "MCN",
     "stationName": "Mukundarayapuram",
     "location": "",
     "type": "2 wheeler",
@@ -964,7 +1009,7 @@
   },
   "PnU-MAS-MCPK-Toi-334": {
     "assetCode": "PnU-MAS-MCPK-Toi-334",
-    "stationCode": "MBM",
+    "stationCode": "MCPK",
     "stationName": "Chepauk",
     "location": "Mezzanine floor",
     "type": "PAUT (Revenue Model)",
@@ -973,7 +1018,7 @@
   },
   "PARKING-MCPK-2025-74": {
     "assetCode": "PARKING-MCPK-2025-74",
-    "stationCode": "MBM",
+    "stationCode": "MCPK",
     "stationName": "Chepauk",
     "location": "Chepauk (A & B)",
     "type": "Mixed",
@@ -982,7 +1027,7 @@
   },
   "PnU-MAS-MCPT-Toi-333": {
     "assetCode": "PnU-MAS-MCPT-Toi-333",
-    "stationCode": "MBM",
+    "stationCode": "MCPT",
     "stationName": "Chintadripet",
     "location": "Mezzanine floor",
     "type": "PAUT (Revenue Model)",
@@ -991,7 +1036,7 @@
   },
   "PARKING-MCPT-2024-35": {
     "assetCode": "PARKING-MCPT-2024-35",
-    "stationCode": "MBM",
+    "stationCode": "MCPT",
     "stationName": "Chintadripet",
     "location": "",
     "type": "Mixed",
@@ -1000,7 +1045,7 @@
   },
   "PUB-BSS-MCPT-10": {
     "assetCode": "PUB-BSS-MCPT-10",
-    "stationCode": "MCN",
+    "stationCode": "MCPT",
     "stationName": "Chintadripet",
     "location": "",
     "type": "Battery Swapping",
@@ -1009,7 +1054,7 @@
   },
   "NFR-GROCERY-MCPT-02": {
     "assetCode": "NFR-GROCERY-MCPT-02",
-    "stationCode": "MCPK",
+    "stationCode": "MCPT",
     "stationName": "Chintadripet",
     "location": "",
     "type": "Grocery Shop with Photocopier",
@@ -1018,7 +1063,7 @@
   },
   "PnU-MAS-MJR-Toi-353": {
     "assetCode": "PnU-MAS-MJR-Toi-353",
-    "stationCode": "MCPK",
+    "stationCode": "MJR",
     "stationName": "Minjur",
     "location": "",
     "type": "PAUT (BOT Model)",
@@ -1027,7 +1072,7 @@
   },
   "PARKING-MJR-MAIN-2025-36": {
     "assetCode": "PARKING-MJR-MAIN-2025-36",
-    "stationCode": "MCPT",
+    "stationCode": "MJR",
     "stationName": "Minjur",
     "location": "Minjur Main",
     "type": "2 wheeler",
@@ -1036,7 +1081,7 @@
   },
   "PARKING-MJR-II-2025-64": {
     "assetCode": "PARKING-MJR-II-2025-64",
-    "stationCode": "MCPT",
+    "stationCode": "MJR",
     "stationName": "Minjur",
     "location": "Minjur II Entry",
     "type": "2 wheeler",
@@ -1045,7 +1090,7 @@
   },
   "NFR-Shops-MJR-25-03": {
     "assetCode": "NFR-Shops-MJR-25-03",
-    "stationCode": "MCPT",
+    "stationCode": "MJR",
     "stationName": "Minjur",
     "location": "",
     "type": "Cosmetics/personal care shop",
@@ -1054,7 +1099,7 @@
   },
   "PnU-MAS-MJR-Toi-269 | 1": {
     "assetCode": "PnU-MAS-MJR-Toi-269 | 1",
-    "stationCode": "MCPT",
+    "stationCode": "MJR",
     "stationName": "Minjur",
     "location": "Concourse area",
     "type": "PAUT (ROMT Model)",
@@ -1072,7 +1117,7 @@
   },
   "PARKING-MKAK-2024-39": {
     "assetCode": "PARKING-MKAK-2024-39",
-    "stationCode": "MJR",
+    "stationCode": "MKAK",
     "stationName": "Mundagakanni Amman Koil",
     "location": "",
     "type": "Mixed",
@@ -1081,7 +1126,7 @@
   },
   "NFR-BSS-MKAK-13": {
     "assetCode": "NFR-BSS-MKAK-13",
-    "stationCode": "MJR",
+    "stationCode": "MKAK",
     "stationName": "Mundagakanni Amman Koil",
     "location": "",
     "type": "Battery Swapping",
@@ -1090,7 +1135,7 @@
   },
   "PnU-MAS-MKK-Toi-170": {
     "assetCode": "PnU-MAS-MKK-Toi-170",
-    "stationCode": "MJR",
+    "stationCode": "MKK",
     "stationName": "Kodambakkam",
     "location": "PF-1&2 (TBM end), Main entrance",
     "type": "PAUT (Revenue Model)",
@@ -1099,7 +1144,7 @@
   },
   "PARKING-MAS-MKK-TW-269": {
     "assetCode": "PARKING-MAS-MKK-TW-269",
-    "stationCode": "MJR",
+    "stationCode": "MKK",
     "stationName": "Kodambakkam",
     "location": "",
     "type": "2 wheeler",
@@ -1108,7 +1153,7 @@
   },
   "PUB-BSS-MKK-11": {
     "assetCode": "PUB-BSS-MKK-11",
-    "stationCode": "MJR",
+    "stationCode": "MKK",
     "stationName": "Kodambakkam",
     "location": "",
     "type": "Battery Swapping",
@@ -1117,7 +1162,7 @@
   },
   "PARKING-MLHS-2024-36": {
     "assetCode": "PARKING-MLHS-2024-36",
-    "stationCode": "MKAK",
+    "stationCode": "MLHS",
     "stationName": "Light House",
     "location": "",
     "type": "Mixed",
@@ -1126,7 +1171,7 @@
   },
   "MSS-MAS-MLMR-DigiL-145": {
     "assetCode": "MSS-MAS-MLMR-DigiL-145",
-    "stationCode": "MKAK",
+    "stationCode": "MLMR",
     "stationName": "Melmaruvathur",
     "location": "Concourse area near main entrance",
     "type": "Digital Locker",
@@ -1135,7 +1180,7 @@
   },
   "PARKING-MMNK-2024-48": {
     "assetCode": "PARKING-MMNK-2024-48",
-    "stationCode": "MKK",
+    "stationCode": "MMNK",
     "stationName": "Maraimalai Nagar Kamarajar",
     "location": "",
     "type": "2 wheeler",
@@ -1144,7 +1189,7 @@
   },
   "MN-MX-271-23-1": {
     "assetCode": "MN-MX-271-23-1",
-    "stationCode": "MKK",
+    "stationCode": "MN",
     "stationName": "Minambakkam",
     "location": "",
     "type": "Mixed",
@@ -1153,7 +1198,7 @@
   },
   "PARKING-MNDY-2024-54": {
     "assetCode": "PARKING-MNDY-2024-54",
-    "stationCode": "MKK",
+    "stationCode": "MNDY",
     "stationName": "Mandaiveli",
     "location": "",
     "type": "Mixed",
@@ -1162,7 +1207,7 @@
   },
   "PnU-MAS-MPK-Toi-370 | 1": {
     "assetCode": "PnU-MAS-MPK-Toi-370 | 1",
-    "stationCode": "MLHS",
+    "stationCode": "MPK",
     "stationName": "Chennai Park",
     "location": "PF-1 (middle of platform)",
     "type": "PAUT (Revenue Model)",
@@ -1171,7 +1216,7 @@
   },
   "PnU-MAS-MPK-Toi-370 | 2": {
     "assetCode": "PnU-MAS-MPK-Toi-370 | 2",
-    "stationCode": "MLMR",
+    "stationCode": "MPK",
     "stationName": "Chennai Park",
     "location": "PF-1 (MS end)",
     "type": "PAUT (Revenue Model)",
@@ -1180,7 +1225,7 @@
   },
   "PnU-MAS-MS-WRL-324": {
     "assetCode": "PnU-MAS-MS-WRL-324",
-    "stationCode": "MMNK",
+    "stationCode": "MS",
     "stationName": "Chennai Egmore",
     "location": "PF-4",
     "type": "ACWH",
@@ -1189,7 +1234,7 @@
   },
   "PnU-MAS-MS-WRL-282": {
     "assetCode": "PnU-MAS-MS-WRL-282",
-    "stationCode": "MN",
+    "stationCode": "MS",
     "stationName": "Chennai Egmore",
     "location": "PF-4",
     "type": "Cloak Room",
@@ -1198,7 +1243,7 @@
   },
   "PnU-MAS-MS-WRL-213": {
     "assetCode": "PnU-MAS-MS-WRL-213",
-    "stationCode": "MNDY",
+    "stationCode": "MS",
     "stationName": "Chennai Egmore",
     "location": "1st floor of concourse area",
     "type": "Executive Lounge",
@@ -1207,7 +1252,7 @@
   },
   "PARKING-MS-2024-105": {
     "assetCode": "PARKING-MS-2024-105",
-    "stationCode": "MPK",
+    "stationCode": "MS",
     "stationName": "Chennai Egmore",
     "location": "",
     "type": "Mixed",
@@ -1216,7 +1261,7 @@
   },
   "MS-TWnOPS-63-23-1": {
     "assetCode": "MS-TWnOPS-63-23-1",
-    "stationCode": "MPK",
+    "stationCode": "MS",
     "stationName": "Chennai Egmore",
     "location": "",
     "type": "Bike Packing",
@@ -1241,9 +1286,45 @@
     "licenseeName": "Naveen Advertisers",
     "category": "NFR"
   },
+  "MSS-MAS-MS-BCA-24 | 1": {
+    "assetCode": "MSS-MAS-MS-BCA-24 | 1",
+    "stationCode": "MS",
+    "stationName": "Chennai Egmore",
+    "location": "",
+    "type": "Battery Operated Carts",
+    "licenseeName": "M/s. Balaji Catering Service",
+    "category": "PA"
+  },
+  "MSS-MAS-MS-BCA-24 | 2": {
+    "assetCode": "MSS-MAS-MS-BCA-24 | 2",
+    "stationCode": "MS",
+    "stationName": "Chennai Egmore",
+    "location": "",
+    "type": "Battery Operated Carts",
+    "licenseeName": "M/s. Balaji Catering Service",
+    "category": "PA"
+  },
+  "MSS-MAS-MS-BCA-24 | 3": {
+    "assetCode": "MSS-MAS-MS-BCA-24 | 3",
+    "stationCode": "MS",
+    "stationName": "Chennai Egmore",
+    "location": "",
+    "type": "Battery Operated Carts",
+    "licenseeName": "M/s. Balaji Catering Service",
+    "category": "PA"
+  },
+  "MSS-MAS-MS-BCA-24 | 4": {
+    "assetCode": "MSS-MAS-MS-BCA-24 | 4",
+    "stationCode": "MS",
+    "stationName": "Chennai Egmore",
+    "location": "",
+    "type": "Battery Operated Carts",
+    "licenseeName": "M/s. Balaji Catering Service",
+    "category": "PA"
+  },
   "PnU-MAS-MSB-Toi-318": {
     "assetCode": "PnU-MAS-MSB-Toi-318",
-    "stationCode": "MS",
+    "stationCode": "MSB",
     "stationName": "Chennai Beach",
     "location": "Concourse area",
     "type": "PAUT (Revenue Model)",
@@ -1252,7 +1333,7 @@
   },
   "PARKING-MSC-2025-56": {
     "assetCode": "PARKING-MSC-2025-56",
-    "stationCode": "MS",
+    "stationCode": "MSC",
     "stationName": "Chetpet",
     "location": "",
     "type": "2 wheeler",
@@ -1261,7 +1342,7 @@
   },
   "PnU-MAS-MTCN-Toi-335": {
     "assetCode": "PnU-MAS-MTCN-Toi-335",
-    "stationCode": "MS",
+    "stationCode": "MTCN",
     "stationName": "Tiruvallikeni",
     "location": "Mezzanine floor",
     "type": "PAUT (Revenue Model)",
@@ -1270,7 +1351,7 @@
   },
   "MAS-MTCN-MX-295-23-1": {
     "assetCode": "MAS-MTCN-MX-295-23-1",
-    "stationCode": "MS",
+    "stationCode": "MTCN",
     "stationName": "Tiruvallikeni",
     "location": "",
     "type": "Mixed",
@@ -1279,7 +1360,7 @@
   },
   "PnU-MAS-MTMY-Toi-338": {
     "assetCode": "PnU-MAS-MTMY-Toi-338",
-    "stationCode": "MS",
+    "stationCode": "MTMY",
     "stationName": "Thirumayilai",
     "location": "Mezzanine floor",
     "type": "PAUT (Revenue Model)",
@@ -1288,7 +1369,7 @@
   },
   "PARKING-MTMY-2024-31": {
     "assetCode": "PARKING-MTMY-2024-31",
-    "stationCode": "MS",
+    "stationCode": "MTMY",
     "stationName": "Thirumayilai",
     "location": "",
     "type": "Mixed",
@@ -1297,7 +1378,7 @@
   },
   "BSS-MTMY-2024-4": {
     "assetCode": "BSS-MTMY-2024-4",
-    "stationCode": "MS",
+    "stationCode": "MTMY",
     "stationName": "Thirumayilai",
     "location": "",
     "type": "Battery Swapping",
@@ -1306,7 +1387,7 @@
   },
   "PnU-MAS-NBK-Toi-176": {
     "assetCode": "PnU-MAS-NBK-Toi-176",
-    "stationCode": "MS",
+    "stationCode": "NBK",
     "stationName": "Nungambakkam",
     "location": "",
     "type": "PAUT (Revenue Model)",
@@ -1315,7 +1396,7 @@
   },
   "PARKING-NBK-2025-8": {
     "assetCode": "PARKING-NBK-2025-8",
-    "stationCode": "MS",
+    "stationCode": "NBK",
     "stationName": "Nungambakkam",
     "location": "",
     "type": "2 wheeler",
@@ -1324,7 +1405,7 @@
   },
   "PARKING-NEC-2025-26": {
     "assetCode": "PARKING-NEC-2025-26",
-    "stationCode": "MSB",
+    "stationCode": "NEC",
     "stationName": "Nemilicherry",
     "location": "",
     "type": "2 wheeler",
@@ -1333,7 +1414,7 @@
   },
   "PARKING-NYP-2025-33": {
     "assetCode": "PARKING-NYP-2025-33",
-    "stationCode": "MSC",
+    "stationCode": "NYP",
     "stationName": "Nayudupeta",
     "location": "",
     "type": "2 wheeler",
@@ -1342,7 +1423,7 @@
   },
   "PnU-MAS-PAB-Toi-301": {
     "assetCode": "PnU-MAS-PAB-Toi-301",
-    "stationCode": "MTCN",
+    "stationCode": "PAB",
     "stationName": "Pattabiram",
     "location": "PF-1 (AJJ end)",
     "type": "PAUT (ROMT Model)",
@@ -1351,7 +1432,7 @@
   },
   "PARKING-PAB-01-2023-07": {
     "assetCode": "PARKING-PAB-01-2023-07",
-    "stationCode": "MTCN",
+    "stationCode": "PAB",
     "stationName": "Pattabiram",
     "location": "",
     "type": "2 wheeler",
@@ -1360,7 +1441,7 @@
   },
   "PARKING-PCW-1-2024-72": {
     "assetCode": "PARKING-PCW-1-2024-72",
-    "stationCode": "MTMY",
+    "stationCode": "PCW",
     "stationName": "Perambur Carriage Works",
     "location": "Perambur Carriage Works - 1",
     "type": "2 wheeler",
@@ -1369,7 +1450,7 @@
   },
   "PnU-MAS-PER-Toi-305": {
     "assetCode": "PnU-MAS-PER-Toi-305",
-    "stationCode": "MTMY",
+    "stationCode": "PER",
     "stationName": "Perambur",
     "location": "PF-1 (AJJ end)",
     "type": "PAUT (ROMT Model)",
@@ -1378,7 +1459,7 @@
   },
   "PARKING-PER-SOUTH-2025-28": {
     "assetCode": "PARKING-PER-SOUTH-2025-28",
-    "stationCode": "MTMY",
+    "stationCode": "PER",
     "stationName": "Perambur",
     "location": "Perambur South",
     "type": "2 wheeler",
@@ -1387,7 +1468,7 @@
   },
   "PARKING-PER-NOR-2025-38": {
     "assetCode": "PARKING-PER-NOR-2025-38",
-    "stationCode": "NBK",
+    "stationCode": "PER",
     "stationName": "Perambur",
     "location": "Perambur North Side",
     "type": "2 wheeler",
@@ -1396,7 +1477,7 @@
   },
   "PARKING-pew-2024-34": {
     "assetCode": "PARKING-pew-2024-34",
-    "stationCode": "NBK",
+    "stationCode": "PEW",
     "stationName": "Perambur Loco Works",
     "location": "",
     "type": "Mixed",
@@ -1405,7 +1486,7 @@
   },
   "PLMG-TW-276-23-2": {
     "assetCode": "PLMG-TW-276-23-2",
-    "stationCode": "NEC",
+    "stationCode": "PLMG",
     "stationName": "Puliyamangalam",
     "location": "",
     "type": "2 wheeler",
@@ -1414,7 +1495,7 @@
   },
   "PnU-MAS-PON-Toi-310": {
     "assetCode": "PnU-MAS-PON-Toi-310",
-    "stationCode": "NYP",
+    "stationCode": "PON",
     "stationName": "Ponneri",
     "location": "Circulating area, PF-1",
     "type": "PAUT (Revenue Model)",
@@ -1423,7 +1504,7 @@
   },
   "PARKING-PON-II-2024-108": {
     "assetCode": "PARKING-PON-II-2024-108",
-    "stationCode": "PAB",
+    "stationCode": "PON",
     "stationName": "Ponneri",
     "location": "Ponneri II Entry",
     "type": "2 wheeler",
@@ -1432,7 +1513,7 @@
   },
   "PARKING-PON-MAIN-2025-53": {
     "assetCode": "PARKING-PON-MAIN-2025-53",
-    "stationCode": "PAB",
+    "stationCode": "PON",
     "stationName": "Ponneri",
     "location": "Ponneri Main",
     "type": "2 wheeler",
@@ -1441,7 +1522,7 @@
   },
   "PnU-MAS-POTI-Toi-361": {
     "assetCode": "PnU-MAS-POTI-Toi-361",
-    "stationCode": "PCW",
+    "stationCode": "POTI",
     "stationName": "Potheri",
     "location": "",
     "type": "PAUT (BOT Model)",
@@ -1450,7 +1531,7 @@
   },
   "PARKING-POTI-2025-50": {
     "assetCode": "PARKING-POTI-2025-50",
-    "stationCode": "PER",
+    "stationCode": "POTI",
     "stationName": "Potheri",
     "location": "",
     "type": "2 wheeler",
@@ -1459,7 +1540,7 @@
   },
   "POTI-MOBSTORE-25-09": {
     "assetCode": "POTI-MOBSTORE-25-09",
-    "stationCode": "PER",
+    "stationCode": "POTI",
     "stationName": "Potteri",
     "location": "",
     "type": "Mobile Stores and Accesories Kiosk",
@@ -1468,7 +1549,7 @@
   },
   "PARKING-PRGD-2024-88": {
     "assetCode": "PARKING-PRGD-2024-88",
-    "stationCode": "PER",
+    "stationCode": "PRGD",
     "stationName": "Perungudi",
     "location": "",
     "type": "Mixed",
@@ -1477,7 +1558,7 @@
   },
   "NFR-BSS-PRGD-12": {
     "assetCode": "NFR-BSS-PRGD-12",
-    "stationCode": "PEW",
+    "stationCode": "PRGD",
     "stationName": "Perungudi",
     "location": "",
     "type": "Battery Swapping",
@@ -1486,7 +1567,7 @@
   },
   "PnU-MAS-PRGL-Toi-174": {
     "assetCode": "PnU-MAS-PRGL-Toi-174",
-    "stationCode": "PLMG",
+    "stationCode": "PRGL",
     "stationName": "Perungalathur",
     "location": "PF-1",
     "type": "PAUT (Revenue Model)",
@@ -1495,7 +1576,7 @@
   },
   "PRGL-MOBSTORE-25-7": {
     "assetCode": "PRGL-MOBSTORE-25-7",
-    "stationCode": "PON",
+    "stationCode": "PRGL",
     "stationName": "Perungalathur",
     "location": "",
     "type": "Mobile Stores and Accesories Kiosk",
@@ -1504,7 +1585,7 @@
   },
   "NFR-PRGL-Groceryshop-01": {
     "assetCode": "NFR-PRGL-Groceryshop-01",
-    "stationCode": "PON",
+    "stationCode": "PRGL",
     "stationName": "Perungalathur",
     "location": "",
     "type": "Grocery Shop with Photocopier",
@@ -1513,7 +1594,7 @@
   },
   "NFR-SHOP-PRGL-2025-1": {
     "assetCode": "NFR-SHOP-PRGL-2025-1",
-    "stationCode": "PON",
+    "stationCode": "PRGL",
     "stationName": "Perungalathur",
     "location": "",
     "type": "Variety Retail Shop",
@@ -1522,7 +1603,7 @@
   },
   "PARKING_MAS-2024-PUT-116": {
     "assetCode": "PARKING_MAS-2024-PUT-116",
-    "stationCode": "POTI",
+    "stationCode": "PUT",
     "stationName": "Puttur",
     "location": "",
     "type": "2 wheeler",
@@ -1531,7 +1612,7 @@
   },
   "PnU-MAS-PV-Toi-322": {
     "assetCode": "PnU-MAS-PV-Toi-322",
-    "stationCode": "POTI",
+    "stationCode": "PV",
     "stationName": "Pallavaram",
     "location": "PF-1 (TBM end)",
     "type": "PAUT (Revenue Model)",
@@ -1540,7 +1621,7 @@
   },
   "PnU-MAS-PV-Toi-355": {
     "assetCode": "PnU-MAS-PV-Toi-355",
-    "stationCode": "POTI",
+    "stationCode": "PV",
     "stationName": "Pallavaram",
     "location": "",
     "type": "PAUT (BOT Model)",
@@ -1549,7 +1630,7 @@
   },
   "PV-TW-257-23-3": {
     "assetCode": "PV-TW-257-23-3",
-    "stationCode": "PRGD",
+    "stationCode": "PV",
     "stationName": "Pallavaram",
     "location": "Pallavaram West",
     "type": "2 wheeler",
@@ -1558,7 +1639,7 @@
   },
   "PARKING-PV-EAST-2024-75": {
     "assetCode": "PARKING-PV-EAST-2024-75",
-    "stationCode": "PRGD",
+    "stationCode": "PV",
     "stationName": "Pallavaram",
     "location": "Pallavaram East",
     "type": "2 wheeler",
@@ -1567,7 +1648,7 @@
   },
   "PARKING-RPM-2024-109": {
     "assetCode": "PARKING-RPM-2024-109",
-    "stationCode": "PRGL",
+    "stationCode": "RPM",
     "stationName": "Royapuram",
     "location": "",
     "type": "Mixed",
@@ -1576,7 +1657,7 @@
   },
   "PnU-MAS-SKL-Toi-348": {
     "assetCode": "PnU-MAS-SKL-Toi-348",
-    "stationCode": "PRGL",
+    "stationCode": "SKL",
     "stationName": "Singaperumal koil",
     "location": "Entrance from GST road (TBM end)",
     "type": "PAUT (Revenue Model)",
@@ -1585,7 +1666,7 @@
   },
   "PARKING-SKL-2024-96": {
     "assetCode": "PARKING-SKL-2024-96",
-    "stationCode": "PRGL",
+    "stationCode": "SKL",
     "stationName": "Singaperumal Koil",
     "location": "",
     "type": "2 wheeler",
@@ -1594,7 +1675,7 @@
   },
   "PARKING-SPWEST-2025-49": {
     "assetCode": "PARKING-SPWEST-2025-49",
-    "stationCode": "PRGL",
+    "stationCode": "SP",
     "stationName": "Saidapet",
     "location": "Saidapet West",
     "type": "2 wheeler",
@@ -1603,7 +1684,7 @@
   },
   "PARKING-SP-EAST-2025-52": {
     "assetCode": "PARKING-SP-EAST-2025-52",
-    "stationCode": "PUT",
+    "stationCode": "SP",
     "stationName": "Saidapet",
     "location": "Saidapet East",
     "type": "2 wheeler",
@@ -1612,7 +1693,7 @@
   },
   "PUB-BSS-SP-08": {
     "assetCode": "PUB-BSS-SP-08",
-    "stationCode": "PV",
+    "stationCode": "SP",
     "stationName": "Saidapet",
     "location": "",
     "type": "Battery Swapping",
@@ -1621,7 +1702,7 @@
   },
   "PnU-MAS-SP-Toi-306 | 1": {
     "assetCode": "PnU-MAS-SP-Toi-306 | 1",
-    "stationCode": "PV",
+    "stationCode": "SP",
     "stationName": "Saidapet",
     "location": "Concourse area",
     "type": "PAUT (ROMT Model)",
@@ -1630,7 +1711,7 @@
   },
   "PnU-MAS-SP-Toi-306 | 2": {
     "assetCode": "PnU-MAS-SP-Toi-306 | 2",
-    "stationCode": "PV",
+    "stationCode": "SP",
     "stationName": "Saidapet",
     "location": "PF-1&2(TBM end)",
     "type": "PAUT (ROMT Model)",
@@ -1639,7 +1720,7 @@
   },
   "PARKING-SPE-2025-51": {
     "assetCode": "PARKING-SPE-2025-51",
-    "stationCode": "PV",
+    "stationCode": "SPE",
     "stationName": "Sullurupetta",
     "location": "",
     "type": "2 wheeler",
@@ -1648,7 +1729,7 @@
   },
   "NFR-SHOP-SPE-2025-1": {
     "assetCode": "NFR-SHOP-SPE-2025-1",
-    "stationCode": "RPM",
+    "stationCode": "SPE",
     "stationName": "Sullurupetta",
     "location": "",
     "type": "Stationary ,gift, toys and florist Shop",
@@ -1657,7 +1738,7 @@
   },
   "PnU-MAS-SPE-Toi-320 | 1": {
     "assetCode": "PnU-MAS-SPE-Toi-320 | 1",
-    "stationCode": "SKL",
+    "stationCode": "SPE",
     "stationName": "Sullurupetta",
     "location": "PF-1 (near BO)",
     "type": "PAUT (Revenue Model)",
@@ -1666,7 +1747,7 @@
   },
   "PnU-MAS-SPE-Toi-320 | 2": {
     "assetCode": "PnU-MAS-SPE-Toi-320 | 2",
-    "stationCode": "SKL",
+    "stationCode": "SPE",
     "stationName": "Sullurupetta",
     "location": "PF-1 (ODUR end)",
     "type": "PAUT (Revenue Model)",
@@ -1675,7 +1756,7 @@
   },
   "PnU-MAS-SPE-Toi-320 | 3": {
     "assetCode": "PnU-MAS-SPE-Toi-320 | 3",
-    "stationCode": "SP",
+    "stationCode": "SPE",
     "stationName": "Sullurupetta",
     "location": "PF-2&3(ODUR end)",
     "type": "PAUT (Revenue Model)",
@@ -1684,7 +1765,7 @@
   },
   "MAS-STM-MX-361-24": {
     "assetCode": "MAS-STM-MX-361-24",
-    "stationCode": "SP",
+    "stationCode": "STM",
     "stationName": "St. Thomas Mount",
     "location": "",
     "type": "Mixed",
@@ -1693,7 +1774,7 @@
   },
   "PARKING-STM-EAST-2025-45": {
     "assetCode": "PARKING-STM-EAST-2025-45",
-    "stationCode": "SP",
+    "stationCode": "STM",
     "stationName": "St. Thomas Mount",
     "location": "St. Thomas Mount east",
     "type": "Mixed",
@@ -1702,7 +1783,7 @@
   },
   "NFR-BSS-STM-15": {
     "assetCode": "NFR-BSS-STM-15",
-    "stationCode": "SP",
+    "stationCode": "STM",
     "stationName": "St. Thomas Mount",
     "location": "",
     "type": "Battery Swapping",
@@ -1711,7 +1792,7 @@
   },
   "PnU-MAS-STM-Toi-332 | 1": {
     "assetCode": "PnU-MAS-STM-Toi-332 | 1",
-    "stationCode": "SP",
+    "stationCode": "STM",
     "stationName": "St. Thomas Mount",
     "location": "PF-1&2 (TBM end)",
     "type": "PAUT (Revenue Model)",
@@ -1720,7 +1801,7 @@
   },
   "PnU-MAS-STM-Toi-332 | 2": {
     "assetCode": "PnU-MAS-STM-Toi-332 | 2",
-    "stationCode": "SPE",
+    "stationCode": "STM",
     "stationName": "St. Thomas Mount",
     "location": "East side entrance",
     "type": "PAUT (Revenue Model)",
@@ -1729,7 +1810,7 @@
   },
   "PARKING-SVR-2025-67": {
     "assetCode": "PARKING-SVR-2025-67",
-    "stationCode": "SPE",
+    "stationCode": "SVR",
     "stationName": "Sevvapet Road",
     "location": "",
     "type": "2 wheeler",
@@ -1738,7 +1819,7 @@
   },
   "PARKING-TADA-2025-77": {
     "assetCode": "PARKING-TADA-2025-77",
-    "stationCode": "SPE",
+    "stationCode": "TADA",
     "stationName": "TADA",
     "location": "",
     "type": "2 wheeler",
@@ -1747,7 +1828,7 @@
   },
   "PnU-MAS-TBM-Toi-351": {
     "assetCode": "PnU-MAS-TBM-Toi-351",
-    "stationCode": "SPE",
+    "stationCode": "TBM",
     "stationName": "Tambaram",
     "location": "PF-5&6",
     "type": "PAUT (Revenue Model)",
@@ -1756,7 +1837,7 @@
   },
   "PnU-MAS-TBM-Toi-349": {
     "assetCode": "PnU-MAS-TBM-Toi-349",
-    "stationCode": "SPE",
+    "stationCode": "TBM",
     "stationName": "Tambaram",
     "location": "East entrance of TBM Station",
     "type": "PAUT (Revenue Model)",
@@ -1765,7 +1846,7 @@
   },
   "PnU-MAS-TBM-Toi-350": {
     "assetCode": "PnU-MAS-TBM-Toi-350",
-    "stationCode": "STM",
+    "stationCode": "TBM",
     "stationName": "Tambaram",
     "location": "PF-1&2",
     "type": "PAUT (Revenue Model)",
@@ -1774,7 +1855,7 @@
   },
   "PnU-MAS-TBM-Toi-354": {
     "assetCode": "PnU-MAS-TBM-Toi-354",
-    "stationCode": "STM",
+    "stationCode": "TBM",
     "stationName": "Tambaram",
     "location": "West side of station (near GST road)",
     "type": "PAUT (ROMT Model)",
@@ -1783,7 +1864,7 @@
   },
   "PnU-MAS-TBM-Toi-359": {
     "assetCode": "PnU-MAS-TBM-Toi-359",
-    "stationCode": "STM",
+    "stationCode": "TBM",
     "stationName": "Tambaram",
     "location": "",
     "type": "PAUT (BOT Model)",
@@ -1792,7 +1873,7 @@
   },
   "PnU-MAS-TBM-WRL-296": {
     "assetCode": "PnU-MAS-TBM-WRL-296",
-    "stationCode": "STM",
+    "stationCode": "TBM",
     "stationName": "Tambaram",
     "location": "Concourse area",
     "type": "Cloak Room",
@@ -1801,7 +1882,7 @@
   },
   "TBMS-MX-253-23-4": {
     "assetCode": "TBMS-MX-253-23-4",
-    "stationCode": "STM",
+    "stationCode": "TBM",
     "stationName": "Tambaram",
     "location": "Tambaram East Combined",
     "type": "Mixed",
@@ -1810,7 +1891,7 @@
   },
   "PARKING-TBM-W-TW-1024-372": {
     "assetCode": "PARKING-TBM-W-TW-1024-372",
-    "stationCode": "SVR",
+    "stationCode": "TBM",
     "stationName": "Tambaram",
     "location": "Tambaram West",
     "type": "2 wheeler",
@@ -1819,7 +1900,7 @@
   },
   "PARKING-TBM-W-CAR-2025-24": {
     "assetCode": "PARKING-TBM-W-CAR-2025-24",
-    "stationCode": "TADA",
+    "stationCode": "TBM",
     "stationName": "Tambaram",
     "location": "Tambaram West",
     "type": "4 Wheeler",
@@ -1916,468 +1997,9 @@
     "licenseeName": "Hexion Solutions",
     "category": "NFR"
   },
-  "TBM-MX-262-23-3": {
-    "assetCode": "TBM-MX-262-23-3",
-    "stationCode": "TBM",
-    "stationName": "Tambaram Sanatorium",
-    "location": "",
-    "type": "Mixed",
-    "licenseeName": "Sun Motor Parts",
-    "category": "PARKING"
-  },
-  "PARKING-TBMS-CAR-2025-76": {
-    "assetCode": "PARKING-TBMS-CAR-2025-76",
-    "stationCode": "TBM",
-    "stationName": "Tambaram Sanatorium",
-    "location": "",
-    "type": "4 Wheeler",
-    "licenseeName": "Sun Motor Parts",
-    "category": "PARKING"
-  },
-  "NFR-SHOPS-TBMS-2025-3": {
-    "assetCode": "NFR-SHOPS-TBMS-2025-3",
-    "stationCode": "TBM",
-    "stationName": "Tambaram Sanatorium",
-    "location": "",
-    "type": "Cosmetics/personal care shop",
-    "licenseeName": "Hexion Solutions",
-    "category": "NFR"
-  },
-  "PnU-MAS-TI-Toi-227": {
-    "assetCode": "PnU-MAS-TI-Toi-227",
-    "stationCode": "TBM",
-    "stationName": "Tiruninravur",
-    "location": "Concourse area (Near PF-5)",
-    "type": "PAUT (Revenue Model)",
-    "licenseeName": "M/s Apex assosciates - Coimbatore",
-    "category": "PA"
-  },
-  "-MAS-TI-TW-156-": {
-    "assetCode": "-MAS-TI-TW-156-",
-    "stationCode": "TBM",
-    "stationName": "Tiruninravur",
-    "location": "Tiruninravur-1",
-    "type": "2 wheeler",
-    "licenseeName": "A. Kanchana",
-    "category": "PARKING"
-  },
-  "PnU-MAS-TMV-Toi-293": {
-    "assetCode": "PnU-MAS-TMV-Toi-293",
-    "stationCode": "TBM",
-    "stationName": "Tindivanam",
-    "location": "Middle of PF-1",
-    "type": "PAUT (Revenue Model)",
-    "licenseeName": "M/s Nagamoorthi S Villupuram",
-    "category": "PA"
-  },
-  "PnU-MAS-TMV-Toi-368": {
-    "assetCode": "PnU-MAS-TMV-Toi-368",
-    "stationCode": "TBM",
-    "stationName": "Tindivanam",
-    "location": "",
-    "type": "PAUT (BOT Model)",
-    "licenseeName": "Shri Nagamoorthi S-Viluppuram",
-    "category": "PA"
-  },
-  "PARKING-TVM-2025-63": {
-    "assetCode": "PARKING-TVM-2025-63",
-    "stationCode": "TBM",
-    "stationName": "Tindivanam",
-    "location": "",
-    "type": "2 wheeler",
-    "licenseeName": "Nagamoorthi S",
-    "category": "PARKING"
-  },
-  "PARKING-TMVL-2025-75": {
-    "assetCode": "PARKING-TMVL-2025-75",
-    "stationCode": "TBM",
-    "stationName": "Tirumullaivoil",
-    "location": "",
-    "type": "2 wheeler",
-    "licenseeName": "M Raghu",
-    "category": "PARKING"
-  },
-  "PARKING-TRL-NEW-2024-68": {
-    "assetCode": "PARKING-TRL-NEW-2024-68",
-    "stationCode": "TBM",
-    "stationName": "Tiruvallur",
-    "location": "",
-    "type": "2 wheeler",
-    "licenseeName": "Simley Enterprises",
-    "category": "PARKING"
-  },
-  "PARKING-TRL-MAIN-2025-37": {
-    "assetCode": "PARKING-TRL-MAIN-2025-37",
-    "stationCode": "TBM",
-    "stationName": "Tiruvallur",
-    "location": "Tiruvallur Main",
-    "type": "2 wheeler",
-    "licenseeName": "Sai Enterprises",
-    "category": "PARKING"
-  },
-  "PnU-MAS-TRL-WRL-225 | 1": {
-    "assetCode": "PnU-MAS-TRL-WRL-225 | 1",
-    "stationCode": "TBM",
-    "stationName": "Tiruvallur",
-    "location": "PF-1(AJJ end)",
-    "type": "ACWH",
-    "licenseeName": "M/s. Maruthi Enterprises-Thiruchirappalli",
-    "category": "PA"
-  },
-  "PnU-MAS-TRL-WRL-225 | 2": {
-    "assetCode": "PnU-MAS-TRL-WRL-225 | 2",
-    "stationCode": "TBMS",
-    "stationName": "Tiruvallur",
-    "location": "PF-1(middle of PF)",
-    "type": "ACWH",
-    "licenseeName": "M/s. Maruthi Enterprises-Thiruchirappalli",
-    "category": "PA"
-  },
-  "PnU-MAS-TRMN-Toi-345": {
-    "assetCode": "PnU-MAS-TRMN-Toi-345",
-    "stationCode": "TBMS",
-    "stationName": "Taramani",
-    "location": "2nd floor (PF-2)",
-    "type": "PAUT (Revenue Model)",
-    "licenseeName": "M/s Maran Enterprises - Chennai",
-    "category": "PA"
-  },
-  "PARKING-TRMN-SITE-1-2024-": {
-    "assetCode": "PARKING-TRMN-SITE-1-2024-",
-    "stationCode": "TBMS",
-    "stationName": "Taramani",
-    "location": "Taramani site 1",
-    "type": "Mixed",
-    "licenseeName": "Jayabalan Parthasarathy",
-    "category": "PARKING"
-  },
-  "PARKING-TRMN-2-2025-18": {
-    "assetCode": "PARKING-TRMN-2-2025-18",
-    "stationCode": "TI",
-    "stationName": "Taramani",
-    "location": "Taramani site 2",
-    "type": "Mixed",
-    "licenseeName": "Maaran Enterprises",
-    "category": "PARKING"
-  },
-  "MAS-BSS-TRMN-07": {
-    "assetCode": "MAS-BSS-TRMN-07",
-    "stationCode": "TI",
-    "stationName": "Taramani",
-    "location": "",
-    "type": "Battery Swapping",
-    "licenseeName": "Sun Mobility Private Ltd",
-    "category": "NFR"
-  },
-  "NFR-GROCERY-TRMN-04": {
-    "assetCode": "NFR-GROCERY-TRMN-04",
-    "stationCode": "TMV",
-    "stationName": "Taramani",
-    "location": "",
-    "type": "Grocery Shop with Photocopier",
-    "licenseeName": "Hexion Solutions",
-    "category": "NFR"
-  },
-  "PnU-MAS-TRT-Toi-311": {
-    "assetCode": "PnU-MAS-TRT-Toi-311",
-    "stationCode": "TMV",
-    "stationName": "Tiruttani",
-    "location": "",
-    "type": "PAUT (Revenue Model)",
-    "licenseeName": "M/s Gada Lalitha-Guntur",
-    "category": "PA"
-  },
-  "PnU-MAS-TRT-WRL-373": {
-    "assetCode": "PnU-MAS-TRT-WRL-373",
-    "stationCode": "TMV",
-    "stationName": "Tiruttani",
-    "location": "",
-    "type": "ACWH",
-    "licenseeName": "M/s Vijaya Durga enterprises",
-    "category": "PA"
-  },
-  "PARKING-TRT-2024-44": {
-    "assetCode": "PARKING-TRT-2024-44",
-    "stationCode": "TMVL",
-    "stationName": "Tiruttani",
-    "location": "",
-    "type": "2 wheeler",
-    "licenseeName": "M K Traders",
-    "category": "PARKING"
-  },
-  "NFR-SHOP-TRT-2025-1": {
-    "assetCode": "NFR-SHOP-TRT-2025-1",
-    "stationCode": "TRL",
-    "stationName": "Tiruttani",
-    "location": "",
-    "type": "Stationary ,gift, toys and florist Shop",
-    "licenseeName": "JV Enterprises",
-    "category": "NFR"
-  },
-  "PnU-MAS-TYMR-Toi-344": {
-    "assetCode": "PnU-MAS-TYMR-Toi-344",
-    "stationCode": "TRL",
-    "stationName": "Thiruvanmiyur",
-    "location": "2nd floor (PF-2)",
-    "type": "PAUT (Revenue Model)",
-    "licenseeName": "M/s A Kanchana-Chennai",
-    "category": "PA"
-  },
-  "PARKING-TYMR-2024-63": {
-    "assetCode": "PARKING-TYMR-2024-63",
-    "stationCode": "TRL",
-    "stationName": "Thiruvanmiyur",
-    "location": "",
-    "type": "2 wheeler",
-    "licenseeName": "Vijayalakshmi",
-    "category": "PARKING"
-  },
-  "BSS-TYMR-2025-6": {
-    "assetCode": "BSS-TYMR-2025-6",
-    "stationCode": "TRL",
-    "stationName": "Thiruvanmiyur",
-    "location": "",
-    "type": "Battery Swapping",
-    "licenseeName": "Sun Mobility Private Ltd",
-    "category": "NFR"
-  },
-  "PARKING-VDR-2024-49": {
-    "assetCode": "PARKING-VDR-2024-49",
-    "stationCode": "TRMN",
-    "stationName": "Vandalur",
-    "location": "Vandalur Site A",
-    "type": "2 wheeler",
-    "licenseeName": "Harikrishnan. M",
-    "category": "PARKING"
-  },
-  "PnU-MAS-VEU-Toi-266": {
-    "assetCode": "PnU-MAS-VEU-Toi-266",
-    "stationCode": "TRMN",
-    "stationName": "Veppampattu",
-    "location": "PF-1 (AJJ end)",
-    "type": "PAUT (ROMT Model)",
-    "licenseeName": "Sri Balaji Foods and Beverages-Vijayawada",
-    "category": "PA"
-  },
-  "PARKING-VLCY-A-2025-12": {
-    "assetCode": "PARKING-VLCY-A-2025-12",
-    "stationCode": "TRMN",
-    "stationName": "Velachery",
-    "location": "Velachery Part A",
-    "type": "Mixed",
-    "licenseeName": "Shiv Solutions",
-    "category": "PARKING"
-  },
-  "PARKING-VLCY-MED-2025-62": {
-    "assetCode": "PARKING-VLCY-MED-2025-62",
-    "stationCode": "TRMN",
-    "stationName": "Velachery",
-    "location": "Velachery Medavakkam side",
-    "type": "Mixed",
-    "licenseeName": "Gariba Nawaz Enterprises",
-    "category": "PARKING"
-  },
-  "PUB-BSS-VLCY-09": {
-    "assetCode": "PUB-BSS-VLCY-09",
-    "stationCode": "TRMN",
-    "stationName": "Velachery",
-    "location": "",
-    "type": "Battery Swapping",
-    "licenseeName": "Sun Mobility Private Ltd",
-    "category": "NFR"
-  },
-  "NFR-VLCY-outdoorsports-1": {
-    "assetCode": "NFR-VLCY-outdoorsports-1",
-    "stationCode": "TRT",
-    "stationName": "Velachery",
-    "location": "",
-    "type": "Outdoor Sports facility",
-    "licenseeName": "Maaran Enterprises",
-    "category": "NFR"
-  },
-  "NFR-VLCY-Indoor Sports facility-25": {
-    "assetCode": "NFR-VLCY-Indoor Sports facility-25",
-    "stationCode": "TRT",
-    "stationName": "Velachery",
-    "location": "",
-    "type": "Indoor Sports facility",
-    "licenseeName": "Prashik Trends",
-    "category": "NFR"
-  },
-  "NFR-GROCERY-VLCY-03": {
-    "assetCode": "NFR-GROCERY-VLCY-03",
-    "stationCode": "TRT",
-    "stationName": "Velachery",
-    "location": "",
-    "type": "Grocery Shop with Photocopier",
-    "licenseeName": "Hexion Solutions",
-    "category": "NFR"
-  },
-  "PUB/NFR/NINFRIS/Kora/22": {
-    "assetCode": "PUB/NFR/NINFRIS/Kora/22",
-    "stationCode": "TRT",
-    "stationName": "Velachery",
-    "location": "",
-    "type": "Family Entertainment",
-    "licenseeName": "M/s.Kora Café (P) Ltd",
-    "category": "NFR"
-  },
-  "PnU-MAS-VLK-Toi-169": {
-    "assetCode": "PnU-MAS-VLK-Toi-169",
-    "stationCode": "TYMR",
-    "stationName": "Villivakkam",
-    "location": "PF-1",
-    "type": "PAUT (ROMT Model)",
-    "licenseeName": "S Uma- Chennai",
-    "category": "PA"
-  },
-  "PARKING-VLK-2024-71": {
-    "assetCode": "PARKING-VLK-2024-71",
-    "stationCode": "TYMR",
-    "stationName": "Villivakkam",
-    "location": "",
-    "type": "2 wheeler",
-    "licenseeName": "Tushar Agencies",
-    "category": "PARKING"
-  },
-  "VLK-MOBSTORE-25-8": {
-    "assetCode": "VLK-MOBSTORE-25-8",
-    "stationCode": "TYMR",
-    "stationName": "Villivakkam",
-    "location": "",
-    "type": "Mobile Stores and Accesories Kiosk",
-    "licenseeName": "Jithu Entire Solutions",
-    "category": "NFR"
-  },
-  "PARKING-MAS-MCN-TW-242": {
-    "assetCode": "PARKING-MAS-MCN-TW-242",
-    "stationCode": "VDR",
-    "stationName": "Vaniyambadi",
-    "location": "Vaniyambadi Site 1",
-    "type": "2 wheeler",
-    "licenseeName": "J V Enterprises",
-    "category": "PARKING"
-  },
-  "PARKING-VN-SITE2-2024-43": {
-    "assetCode": "PARKING-VN-SITE2-2024-43",
-    "stationCode": "VEU",
-    "stationName": "Vaniyambadi",
-    "location": "Vaniyambadi Site 2",
-    "type": "2 wheeler",
-    "licenseeName": "KGS Food caters",
-    "category": "PARKING"
-  },
-  "PARKING-WJ-2025-54": {
-    "assetCode": "PARKING-WJ-2025-54",
-    "stationCode": "VLCY",
-    "stationName": "Walajabad",
-    "location": "",
-    "type": "2 wheeler",
-    "licenseeName": "Binu Railway Contract",
-    "category": "PARKING"
-  },
-  "PARKING-WST-2024-40": {
-    "assetCode": "PARKING-WST-2024-40",
-    "stationCode": "VLCY",
-    "stationName": "Washermanpet",
-    "location": "",
-    "type": "Mixed",
-    "licenseeName": "Dharini. R",
-    "category": "PARKING"
-  },
-  "NFR-BSS-WST-14": {
-    "assetCode": "NFR-BSS-WST-14",
-    "stationCode": "VLCY",
-    "stationName": "Washermanpet",
-    "location": "",
-    "type": "Battery Swapping",
-    "licenseeName": "Indofast swap Energy Pvt Ltd",
-    "category": "NFR"
-  },
-  "MSS-MAS-MAS-BCA-23 | 1": {
-    "assetCode": "MSS-MAS-MAS-BCA-23 | 1",
-    "stationCode": "VLCY",
-    "stationName": "Dr. M. G. R. Chennai Central",
-    "location": "",
-    "type": "Battery Operated Carts",
-    "licenseeName": "Sri. R. Subburaj",
-    "category": "PA"
-  },
-  "MSS-MAS-MAS-BCA-23 | 2": {
-    "assetCode": "MSS-MAS-MAS-BCA-23 | 2",
-    "stationCode": "VLCY",
-    "stationName": "Dr. M. G. R. Chennai Central",
-    "location": "",
-    "type": "Battery Operated Carts",
-    "licenseeName": "Sri. R. Subburaj",
-    "category": "PA"
-  },
-  "MSS-MAS-MAS-BCA-23 | 3": {
-    "assetCode": "MSS-MAS-MAS-BCA-23 | 3",
-    "stationCode": "VLCY",
-    "stationName": "Dr. M. G. R. Chennai Central",
-    "location": "",
-    "type": "Battery Operated Carts",
-    "licenseeName": "Sri. R. Subburaj",
-    "category": "PA"
-  },
-  "MSS-MAS-MAS-BCA-23 | 4": {
-    "assetCode": "MSS-MAS-MAS-BCA-23 | 4",
-    "stationCode": "VLCY",
-    "stationName": "Dr. M. G. R. Chennai Central",
-    "location": "",
-    "type": "Battery Operated Carts",
-    "licenseeName": "Sri. R. Subburaj",
-    "category": "PA"
-  },
-  "MSS-MAS-MAS-BCA-23 | 5": {
-    "assetCode": "MSS-MAS-MAS-BCA-23 | 5",
-    "stationCode": "VLK",
-    "stationName": "Dr. M. G. R. Chennai Central",
-    "location": "",
-    "type": "Battery Operated Carts",
-    "licenseeName": "Sri. R. Subburaj",
-    "category": "PA"
-  },
-  "MSS-MAS-MS-BCA-24 | 1": {
-    "assetCode": "MSS-MAS-MS-BCA-24 | 1",
-    "stationCode": "VLK",
-    "stationName": "Chennai Egmore",
-    "location": "",
-    "type": "Battery Operated Carts",
-    "licenseeName": "M/s. Balaji Catering Service",
-    "category": "PA"
-  },
-  "MSS-MAS-MS-BCA-24 | 2": {
-    "assetCode": "MSS-MAS-MS-BCA-24 | 2",
-    "stationCode": "VLK",
-    "stationName": "Chennai Egmore",
-    "location": "",
-    "type": "Battery Operated Carts",
-    "licenseeName": "M/s. Balaji Catering Service",
-    "category": "PA"
-  },
-  "MSS-MAS-MS-BCA-24 | 3": {
-    "assetCode": "MSS-MAS-MS-BCA-24 | 3",
-    "stationCode": "VN",
-    "stationName": "Chennai Egmore",
-    "location": "",
-    "type": "Battery Operated Carts",
-    "licenseeName": "M/s. Balaji Catering Service",
-    "category": "PA"
-  },
-  "MSS-MAS-MS-BCA-24 | 4": {
-    "assetCode": "MSS-MAS-MS-BCA-24 | 4",
-    "stationCode": "VN",
-    "stationName": "Chennai Egmore",
-    "location": "",
-    "type": "Battery Operated Carts",
-    "licenseeName": "M/s. Balaji Catering Service",
-    "category": "PA"
-  },
   "MSS-MAS-TBM-BCA-12 | 1": {
     "assetCode": "MSS-MAS-TBM-BCA-12 | 1",
-    "stationCode": "WJ",
+    "stationCode": "TBM",
     "stationName": "Tambaram",
     "location": "",
     "type": "Battery Operated Carts",
@@ -2386,7 +2008,7 @@
   },
   "MSS-MAS-TBM-BCA-12 | 2": {
     "assetCode": "MSS-MAS-TBM-BCA-12 | 2",
-    "stationCode": "WST",
+    "stationCode": "TBM",
     "stationName": "Tambaram",
     "location": "",
     "type": "Battery Operated Carts",
@@ -2395,11 +2017,389 @@
   },
   "MSS-MAS-TBM-BCA-12 | 3": {
     "assetCode": "MSS-MAS-TBM-BCA-12 | 3",
-    "stationCode": "WST",
+    "stationCode": "TBM",
     "stationName": "Tambaram",
     "location": "",
     "type": "Battery Operated Carts",
     "licenseeName": "M/s. Balaji Catering Service",
     "category": "PA"
+  },
+  "TBM-MX-262-23-3": {
+    "assetCode": "TBM-MX-262-23-3",
+    "stationCode": "TBMS",
+    "stationName": "Tambaram Sanatorium",
+    "location": "",
+    "type": "Mixed",
+    "licenseeName": "Sun Motor Parts",
+    "category": "PARKING"
+  },
+  "PARKING-TBMS-CAR-2025-76": {
+    "assetCode": "PARKING-TBMS-CAR-2025-76",
+    "stationCode": "TBMS",
+    "stationName": "Tambaram Sanatorium",
+    "location": "",
+    "type": "4 Wheeler",
+    "licenseeName": "Sun Motor Parts",
+    "category": "PARKING"
+  },
+  "NFR-SHOPS-TBMS-2025-3": {
+    "assetCode": "NFR-SHOPS-TBMS-2025-3",
+    "stationCode": "TBMS",
+    "stationName": "Tambaram Sanatorium",
+    "location": "",
+    "type": "Cosmetics/personal care shop",
+    "licenseeName": "Hexion Solutions",
+    "category": "NFR"
+  },
+  "PnU-MAS-TI-Toi-227": {
+    "assetCode": "PnU-MAS-TI-Toi-227",
+    "stationCode": "TI",
+    "stationName": "Tiruninravur",
+    "location": "Concourse area (Near PF-5)",
+    "type": "PAUT (Revenue Model)",
+    "licenseeName": "M/s Apex assosciates - Coimbatore",
+    "category": "PA"
+  },
+  "-MAS-TI-TW-156-": {
+    "assetCode": "-MAS-TI-TW-156-",
+    "stationCode": "TI",
+    "stationName": "Tiruninravur",
+    "location": "Tiruninravur-1",
+    "type": "2 wheeler",
+    "licenseeName": "A. Kanchana",
+    "category": "PARKING"
+  },
+  "PnU-MAS-TMV-Toi-293": {
+    "assetCode": "PnU-MAS-TMV-Toi-293",
+    "stationCode": "TMV",
+    "stationName": "Tindivanam",
+    "location": "Middle of PF-1",
+    "type": "PAUT (Revenue Model)",
+    "licenseeName": "M/s Nagamoorthi S Villupuram",
+    "category": "PA"
+  },
+  "PnU-MAS-TMV-Toi-368": {
+    "assetCode": "PnU-MAS-TMV-Toi-368",
+    "stationCode": "TMV",
+    "stationName": "Tindivanam",
+    "location": "",
+    "type": "PAUT (BOT Model)",
+    "licenseeName": "Shri Nagamoorthi S-Viluppuram",
+    "category": "PA"
+  },
+  "PARKING-TVM-2025-63": {
+    "assetCode": "PARKING-TVM-2025-63",
+    "stationCode": "TMV",
+    "stationName": "Tindivanam",
+    "location": "",
+    "type": "2 wheeler",
+    "licenseeName": "Nagamoorthi S",
+    "category": "PARKING"
+  },
+  "PARKING-TMVL-2025-75": {
+    "assetCode": "PARKING-TMVL-2025-75",
+    "stationCode": "TMVL",
+    "stationName": "Tirumullaivoil",
+    "location": "",
+    "type": "2 wheeler",
+    "licenseeName": "M Raghu",
+    "category": "PARKING"
+  },
+  "PARKING-TRL-NEW-2024-68": {
+    "assetCode": "PARKING-TRL-NEW-2024-68",
+    "stationCode": "TRL",
+    "stationName": "Tiruvallur",
+    "location": "",
+    "type": "2 wheeler",
+    "licenseeName": "Simley Enterprises",
+    "category": "PARKING"
+  },
+  "PARKING-TRL-MAIN-2025-37": {
+    "assetCode": "PARKING-TRL-MAIN-2025-37",
+    "stationCode": "TRL",
+    "stationName": "Tiruvallur",
+    "location": "Tiruvallur Main",
+    "type": "2 wheeler",
+    "licenseeName": "Sai Enterprises",
+    "category": "PARKING"
+  },
+  "PnU-MAS-TRL-WRL-225 | 1": {
+    "assetCode": "PnU-MAS-TRL-WRL-225 | 1",
+    "stationCode": "TRL",
+    "stationName": "Tiruvallur",
+    "location": "PF-1(AJJ end)",
+    "type": "ACWH",
+    "licenseeName": "M/s. Maruthi Enterprises-Thiruchirappalli",
+    "category": "PA"
+  },
+  "PnU-MAS-TRL-WRL-225 | 2": {
+    "assetCode": "PnU-MAS-TRL-WRL-225 | 2",
+    "stationCode": "TRL",
+    "stationName": "Tiruvallur",
+    "location": "PF-1(middle of PF)",
+    "type": "ACWH",
+    "licenseeName": "M/s. Maruthi Enterprises-Thiruchirappalli",
+    "category": "PA"
+  },
+  "PnU-MAS-TRMN-Toi-345": {
+    "assetCode": "PnU-MAS-TRMN-Toi-345",
+    "stationCode": "TRMN",
+    "stationName": "Taramani",
+    "location": "2nd floor (PF-2)",
+    "type": "PAUT (Revenue Model)",
+    "licenseeName": "M/s Maran Enterprises - Chennai",
+    "category": "PA"
+  },
+  "PARKING-TRMN-SITE-1-2024-": {
+    "assetCode": "PARKING-TRMN-SITE-1-2024-",
+    "stationCode": "TRMN",
+    "stationName": "Taramani",
+    "location": "Taramani site 1",
+    "type": "Mixed",
+    "licenseeName": "Jayabalan Parthasarathy",
+    "category": "PARKING"
+  },
+  "PARKING-TRMN-2-2025-18": {
+    "assetCode": "PARKING-TRMN-2-2025-18",
+    "stationCode": "TRMN",
+    "stationName": "Taramani",
+    "location": "Taramani site 2",
+    "type": "Mixed",
+    "licenseeName": "Maaran Enterprises",
+    "category": "PARKING"
+  },
+  "MAS-BSS-TRMN-07": {
+    "assetCode": "MAS-BSS-TRMN-07",
+    "stationCode": "TRMN",
+    "stationName": "Taramani",
+    "location": "",
+    "type": "Battery Swapping",
+    "licenseeName": "Sun Mobility Private Ltd",
+    "category": "NFR"
+  },
+  "NFR-GROCERY-TRMN-04": {
+    "assetCode": "NFR-GROCERY-TRMN-04",
+    "stationCode": "TRMN",
+    "stationName": "Taramani",
+    "location": "",
+    "type": "Grocery Shop with Photocopier",
+    "licenseeName": "Hexion Solutions",
+    "category": "NFR"
+  },
+  "PnU-MAS-TRT-Toi-311": {
+    "assetCode": "PnU-MAS-TRT-Toi-311",
+    "stationCode": "TRT",
+    "stationName": "Tiruttani",
+    "location": "",
+    "type": "PAUT (Revenue Model)",
+    "licenseeName": "M/s Gada Lalitha-Guntur",
+    "category": "PA"
+  },
+  "PnU-MAS-TRT-WRL-373": {
+    "assetCode": "PnU-MAS-TRT-WRL-373",
+    "stationCode": "TRT",
+    "stationName": "Tiruttani",
+    "location": "",
+    "type": "ACWH",
+    "licenseeName": "M/s Vijaya Durga enterprises",
+    "category": "PA"
+  },
+  "PARKING-TRT-2024-44": {
+    "assetCode": "PARKING-TRT-2024-44",
+    "stationCode": "TRT",
+    "stationName": "Tiruttani",
+    "location": "",
+    "type": "2 wheeler",
+    "licenseeName": "M K Traders",
+    "category": "PARKING"
+  },
+  "NFR-SHOP-TRT-2025-1": {
+    "assetCode": "NFR-SHOP-TRT-2025-1",
+    "stationCode": "TRT",
+    "stationName": "Tiruttani",
+    "location": "",
+    "type": "Stationary ,gift, toys and florist Shop",
+    "licenseeName": "JV Enterprises",
+    "category": "NFR"
+  },
+  "PnU-MAS-TYMR-Toi-344": {
+    "assetCode": "PnU-MAS-TYMR-Toi-344",
+    "stationCode": "TYMR",
+    "stationName": "Thiruvanmiyur",
+    "location": "2nd floor (PF-2)",
+    "type": "PAUT (Revenue Model)",
+    "licenseeName": "M/s A Kanchana-Chennai",
+    "category": "PA"
+  },
+  "PARKING-TYMR-2024-63": {
+    "assetCode": "PARKING-TYMR-2024-63",
+    "stationCode": "TYMR",
+    "stationName": "Thiruvanmiyur",
+    "location": "",
+    "type": "2 wheeler",
+    "licenseeName": "Vijayalakshmi",
+    "category": "PARKING"
+  },
+  "BSS-TYMR-2025-6": {
+    "assetCode": "BSS-TYMR-2025-6",
+    "stationCode": "TYMR",
+    "stationName": "Thiruvanmiyur",
+    "location": "",
+    "type": "Battery Swapping",
+    "licenseeName": "Sun Mobility Private Ltd",
+    "category": "NFR"
+  },
+  "PARKING-VDR-2024-49": {
+    "assetCode": "PARKING-VDR-2024-49",
+    "stationCode": "VDR",
+    "stationName": "Vandalur",
+    "location": "Vandalur Site A",
+    "type": "2 wheeler",
+    "licenseeName": "Harikrishnan. M",
+    "category": "PARKING"
+  },
+  "PnU-MAS-VEU-Toi-266": {
+    "assetCode": "PnU-MAS-VEU-Toi-266",
+    "stationCode": "VEU",
+    "stationName": "Veppampattu",
+    "location": "PF-1 (AJJ end)",
+    "type": "PAUT (ROMT Model)",
+    "licenseeName": "Sri Balaji Foods and Beverages-Vijayawada",
+    "category": "PA"
+  },
+  "PARKING-VLCY-A-2025-12": {
+    "assetCode": "PARKING-VLCY-A-2025-12",
+    "stationCode": "VLCY",
+    "stationName": "Velachery",
+    "location": "Velachery Part A",
+    "type": "Mixed",
+    "licenseeName": "Shiv Solutions",
+    "category": "PARKING"
+  },
+  "PARKING-VLCY-MED-2025-62": {
+    "assetCode": "PARKING-VLCY-MED-2025-62",
+    "stationCode": "VLCY",
+    "stationName": "Velachery",
+    "location": "Velachery Medavakkam side",
+    "type": "Mixed",
+    "licenseeName": "Gariba Nawaz Enterprises",
+    "category": "PARKING"
+  },
+  "PUB-BSS-VLCY-09": {
+    "assetCode": "PUB-BSS-VLCY-09",
+    "stationCode": "VLCY",
+    "stationName": "Velachery",
+    "location": "",
+    "type": "Battery Swapping",
+    "licenseeName": "Sun Mobility Private Ltd",
+    "category": "NFR"
+  },
+  "NFR-VLCY-outdoorsports-1": {
+    "assetCode": "NFR-VLCY-outdoorsports-1",
+    "stationCode": "VLCY",
+    "stationName": "Velachery",
+    "location": "",
+    "type": "Outdoor Sports facility",
+    "licenseeName": "Maaran Enterprises",
+    "category": "NFR"
+  },
+  "NFR-VLCY-Indoor Sports facility-25": {
+    "assetCode": "NFR-VLCY-Indoor Sports facility-25",
+    "stationCode": "VLCY",
+    "stationName": "Velachery",
+    "location": "",
+    "type": "Indoor Sports facility",
+    "licenseeName": "Prashik Trends",
+    "category": "NFR"
+  },
+  "NFR-GROCERY-VLCY-03": {
+    "assetCode": "NFR-GROCERY-VLCY-03",
+    "stationCode": "VLCY",
+    "stationName": "Velachery",
+    "location": "",
+    "type": "Grocery Shop with Photocopier",
+    "licenseeName": "Hexion Solutions",
+    "category": "NFR"
+  },
+  "PUB/NFR/NINFRIS/Kora/22": {
+    "assetCode": "PUB/NFR/NINFRIS/Kora/22",
+    "stationCode": "VLCY",
+    "stationName": "Velachery",
+    "location": "",
+    "type": "Family Entertainment",
+    "licenseeName": "M/s.Kora Café (P) Ltd",
+    "category": "NFR"
+  },
+  "PnU-MAS-VLK-Toi-169": {
+    "assetCode": "PnU-MAS-VLK-Toi-169",
+    "stationCode": "VLK",
+    "stationName": "Villivakkam",
+    "location": "PF-1",
+    "type": "PAUT (ROMT Model)",
+    "licenseeName": "S Uma- Chennai",
+    "category": "PA"
+  },
+  "PARKING-VLK-2024-71": {
+    "assetCode": "PARKING-VLK-2024-71",
+    "stationCode": "VLK",
+    "stationName": "Villivakkam",
+    "location": "",
+    "type": "2 wheeler",
+    "licenseeName": "Tushar Agencies",
+    "category": "PARKING"
+  },
+  "VLK-MOBSTORE-25-8": {
+    "assetCode": "VLK-MOBSTORE-25-8",
+    "stationCode": "VLK",
+    "stationName": "Villivakkam",
+    "location": "",
+    "type": "Mobile Stores and Accesories Kiosk",
+    "licenseeName": "Jithu Entire Solutions",
+    "category": "NFR"
+  },
+  "PARKING-MAS-MCN-TW-242": {
+    "assetCode": "PARKING-MAS-MCN-TW-242",
+    "stationCode": "VN",
+    "stationName": "Vaniyambadi",
+    "location": "Vaniyambadi Site 1",
+    "type": "2 wheeler",
+    "licenseeName": "J V Enterprises",
+    "category": "PARKING"
+  },
+  "PARKING-VN-SITE2-2024-43": {
+    "assetCode": "PARKING-VN-SITE2-2024-43",
+    "stationCode": "VN",
+    "stationName": "Vaniyambadi",
+    "location": "Vaniyambadi Site 2",
+    "type": "2 wheeler",
+    "licenseeName": "KGS Food caters",
+    "category": "PARKING"
+  },
+  "PARKING-WJ-2025-54": {
+    "assetCode": "PARKING-WJ-2025-54",
+    "stationCode": "WJ",
+    "stationName": "Walajabad",
+    "location": "",
+    "type": "2 wheeler",
+    "licenseeName": "Binu Railway Contract",
+    "category": "PARKING"
+  },
+  "PARKING-WST-2024-40": {
+    "assetCode": "PARKING-WST-2024-40",
+    "stationCode": "WST",
+    "stationName": "Washermanpet",
+    "location": "",
+    "type": "Mixed",
+    "licenseeName": "Dharini. R",
+    "category": "PARKING"
+  },
+  "NFR-BSS-WST-14": {
+    "assetCode": "NFR-BSS-WST-14",
+    "stationCode": "WST",
+    "stationName": "Washermanpet",
+    "location": "",
+    "type": "Battery Swapping",
+    "licenseeName": "Indofast swap Energy Pvt Ltd",
+    "category": "NFR"
   }
 }
