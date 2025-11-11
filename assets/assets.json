@@ -692,15 +692,6 @@
     "licenseeName": "M/s Saisharath Subbian & Co.",
     "category": "PA"
   },
-  "MSS-MAS-MAS-BCA-23": {
-    "assetCode": "MSS-MAS-MAS-BCA-23",
-    "stationCode": "MAS",
-    "stationName": "Dr. M. G. R. Chennai Central",
-    "location": "",
-    "type": "Battery Operated Carts",
-    "licenseeName": "Sri. R. Subburaj(5 cars)",
-    "category": "PA"
-  },
   "PnU-MAS-MAS-WRL-200": {
     "assetCode": "PnU-MAS-MAS-WRL-200",
     "stationCode": "MAS",
@@ -1194,15 +1185,6 @@
     "location": "PF-4",
     "type": "ACWH",
     "licenseeName": "Sri. R. Subburaj",
-    "category": "PA"
-  },
-  "MSS-MAS-MS-BCA-24": {
-    "assetCode": "MSS-MAS-MS-BCA-24",
-    "stationCode": "MS",
-    "stationName": "Chennai Egmore",
-    "location": "",
-    "type": "Battery Operated Carts",
-    "licenseeName": "M/s. Balaji Catering Service(4 cars)",
     "category": "PA"
   },
   "PnU-MAS-MS-WRL-282": {
@@ -1731,7 +1713,7 @@
     "assetCode": "PnU-MAS-STM-Toi-332 | 1",
     "stationCode": "STM",
     "stationName": "St. Thomas Mount",
-    "location": "East side entrance",
+    "location": "PF-1&2 (TBM end)",
     "type": "PAUT (Revenue Model)",
     "licenseeName": "M/s S Uma Chennai",
     "category": "PA"
@@ -1740,7 +1722,7 @@
     "assetCode": "PnU-MAS-STM-Toi-332 | 2",
     "stationCode": "STM",
     "stationName": "St. Thomas Mount",
-    "location": "PF-1&2 (TBM end)",
+    "location": "East side entrance",
     "type": "PAUT (Revenue Model)",
     "licenseeName": "M/s S Uma Chennai",
     "category": "PA"
@@ -1806,15 +1788,6 @@
     "location": "",
     "type": "PAUT (BOT Model)",
     "licenseeName": "M/s Sun Motor Parts",
-    "category": "PA"
-  },
-  "MSS-MAS-TBM-BCA-12": {
-    "assetCode": "MSS-MAS-TBM-BCA-12",
-    "stationCode": "TBM",
-    "stationName": "Tambaram",
-    "location": "",
-    "type": "Battery Operated Carts",
-    "licenseeName": "M/s. Balaji Catering Service(3 cars)",
     "category": "PA"
   },
   "PnU-MAS-TBM-WRL-296": {
@@ -2320,5 +2293,113 @@
     "type": "Battery Swapping",
     "licenseeName": "Indofast swap Energy Pvt Ltd",
     "category": "NFR"
+  },
+  "MSS-MAS-MAS-BCA-23 | 1": {
+    "assetCode": "MSS-MAS-MAS-BCA-23 | 1",
+    "stationCode": "MAS",
+    "stationName": "Dr. M. G. R. Chennai Central",
+    "location": "",
+    "type": "Battery Operated Carts",
+    "licenseeName": "Sri. R. Subburaj",
+    "category": "PA"
+  },
+  "MSS-MAS-MAS-BCA-23 | 2": {
+    "assetCode": "MSS-MAS-MAS-BCA-23 | 2",
+    "stationCode": "MAS",
+    "stationName": "Dr. M. G. R. Chennai Central",
+    "location": "",
+    "type": "Battery Operated Carts",
+    "licenseeName": "Sri. R. Subburaj",
+    "category": "PA"
+  },
+  "MSS-MAS-MAS-BCA-23 | 3": {
+    "assetCode": "MSS-MAS-MAS-BCA-23 | 3",
+    "stationCode": "MAS",
+    "stationName": "Dr. M. G. R. Chennai Central",
+    "location": "",
+    "type": "Battery Operated Carts",
+    "licenseeName": "Sri. R. Subburaj",
+    "category": "PA"
+  },
+  "MSS-MAS-MAS-BCA-23 | 4": {
+    "assetCode": "MSS-MAS-MAS-BCA-23 | 4",
+    "stationCode": "MAS",
+    "stationName": "Dr. M. G. R. Chennai Central",
+    "location": "",
+    "type": "Battery Operated Carts",
+    "licenseeName": "Sri. R. Subburaj",
+    "category": "PA"
+  },
+  "MSS-MAS-MAS-BCA-23 | 5": {
+    "assetCode": "MSS-MAS-MAS-BCA-23 | 5",
+    "stationCode": "MAS",
+    "stationName": "Dr. M. G. R. Chennai Central",
+    "location": "",
+    "type": "Battery Operated Carts",
+    "licenseeName": "Sri. R. Subburaj",
+    "category": "PA"
+  },
+  "MSS-MAS-MS-BCA-24 | 1": {
+    "assetCode": "MSS-MAS-MS-BCA-24 | 1",
+    "stationCode": "MS",
+    "stationName": "Chennai Egmore",
+    "location": "",
+    "type": "Battery Operated Carts",
+    "licenseeName": "M/s. Balaji Catering Service",
+    "category": "PA"
+  },
+  "MSS-MAS-MS-BCA-24 | 2": {
+    "assetCode": "MSS-MAS-MS-BCA-24 | 2",
+    "stationCode": "MS",
+    "stationName": "Chennai Egmore",
+    "location": "",
+    "type": "Battery Operated Carts",
+    "licenseeName": "M/s. Balaji Catering Service",
+    "category": "PA"
+  },
+  "MSS-MAS-MS-BCA-24 | 3": {
+    "assetCode": "MSS-MAS-MS-BCA-24 | 3",
+    "stationCode": "MS",
+    "stationName": "Chennai Egmore",
+    "location": "",
+    "type": "Battery Operated Carts",
+    "licenseeName": "M/s. Balaji Catering Service",
+    "category": "PA"
+  },
+  "MSS-MAS-MS-BCA-24 | 4": {
+    "assetCode": "MSS-MAS-MS-BCA-24 | 4",
+    "stationCode": "MS",
+    "stationName": "Chennai Egmore",
+    "location": "",
+    "type": "Battery Operated Carts",
+    "licenseeName": "M/s. Balaji Catering Service",
+    "category": "PA"
+  },
+  "MSS-MAS-TBM-BCA-12 | 1": {
+    "assetCode": "MSS-MAS-TBM-BCA-12 | 1",
+    "stationCode": "TBM",
+    "stationName": "Tambaram",
+    "location": "",
+    "type": "Battery Operated Carts",
+    "licenseeName": "M/s. Balaji Catering Service",
+    "category": "PA"
+  },
+  "MSS-MAS-TBM-BCA-12 | 2": {
+    "assetCode": "MSS-MAS-TBM-BCA-12 | 2",
+    "stationCode": "TBM",
+    "stationName": "Tambaram",
+    "location": "",
+    "type": "Battery Operated Carts",
+    "licenseeName": "M/s. Balaji Catering Service",
+    "category": "PA"
+  },
+  "MSS-MAS-TBM-BCA-12 | 3": {
+    "assetCode": "MSS-MAS-TBM-BCA-12 | 3",
+    "stationCode": "TBM",
+    "stationName": "Tambaram",
+    "location": "",
+    "type": "Battery Operated Carts",
+    "licenseeName": "M/s. Balaji Catering Service",
+    "category": "PA"
   }
 }
