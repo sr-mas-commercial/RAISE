@@ -521,80 +521,80 @@ async function loadComplaints() {
     }
 }
 
-function renderTable(complaints) {
-    const tbody = document.getElementById('tableBody');
-    tbody.innerHTML = '';
+// function renderTable(complaints) {
+//     const tbody = document.getElementById('tableBody');
+//     tbody.innerHTML = '';
     
-    complaints.forEach((complaint, index) => {
-        const row = tbody.insertRow();
-        // row.innerHTML = `
-        //     <td class="table-cell">${complaints.length - index}</td>
-        //     <td class="table-cell">${escapeHtml(complaint.timestamp)}</td>
-        //     <td class="table-cell">${escapeHtml(complaint.name)}</td>
-        //     <td class="table-cell">${escapeHtml(complaint.mobile)}</td>
-        //     <td class="table-cell">${escapeHtml(complaint.pnr_uts || 'Not provided')}</td>
-        //     <td class="table-cell">${escapeHtml(complaint.complaint_type)}</td>
-        //     <td class="table-cell" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis;" 
-        //         title="${escapeHtml(complaint.description)}">
-        //         ${escapeHtml(complaint.description)}
-        //     </td>
-        //     <td class="table-cell">${escapeHtml(complaint.location || 'N/A')}</td>
-        //     <td class="table-cell">${escapeHtml(complaint.asset_id)}</td>
-        //     <td class="table-cell">
-        //         ${complaint.photo_url ? 
-        //             `<a href="${escapeHtml(complaint.photo_url)}" target="_blank" class="photo-link">📷 View</a>` : 
-        //             'No photo'}
-        //     </td>
-        //     <td class="table-cell">
-        //         <span class="status-badge status-${complaint.status.toLowerCase().replace(' ', '-')}">
-        //             ${escapeHtml(complaint.status)}
-        //         </span>
-        //     </td>
-        //     <td class="table-cell">
-        //         <button class="btn-action" onclick="openStatusModal('${complaint.id}', '${escapeHtml(complaint.status)}', ${index})">
-        //             Update
-        //         </button>
-        //     </td>
-        // `;
-         row.innerHTML = `
-            <td class="table-cell">${complaints.length - index}</td>
-            <td class="table-cell">${escapeHtml(complaint.timestamp)}</td>
-            <td class="table-cell">
-                <span class="badge ${complaint.form_type === 'Complaint' ? 'badge-complaint' : 'badge-feedback'}">
-                    ${escapeHtml(complaint.form_type || 'Complaint')}
-                </span>
-            </td>
-            <td class="table-cell">${escapeHtml(complaint.name)}</td>
-            <td class="table-cell">${escapeHtml(complaint.mobile)}</td>
-            <td class="table-cell">${escapeHtml(complaint.pnr_uts || 'Not provided')}</td>
-            <td class="table-cell">
-                ${escapeHtml(complaint.complaint_type || complaint.feedback_type || 'N/A')}
-            </td>
-            <td class="table-cell" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis;" 
-                title="${escapeHtml(complaint.description)}">
-                ${escapeHtml(complaint.description)}
-            </td>
-            <td class="table-cell">${escapeHtml(complaint.location || 'N/A')}</td>
-            <td class="table-cell">${escapeHtml(complaint.asset_id)}</td>
-            <td class="table-cell">
-                ${complaint.photo_url ? 
-                    `<a href="${escapeHtml(complaint.photo_url)}" target="_blank" class="photo-link">📷 View</a>` : 
-                    'No photo'}
-            </td>
-            <td class="table-cell">
-                <span class="status-badge status-${complaint.status.toLowerCase().replace(' ', '-')}">
-                    ${escapeHtml(complaint.status)}
-                </span>
-            </td>
-            <td class="table-cell">
-                <button class="btn-update" onclick="openStatusModal('${complaint.id}', '${escapeHtml(complaint.status)}', ${index})">
-                    Update
-                </button>
-            </td>
-        `;
+//     complaints.forEach((complaint, index) => {
+//         const row = tbody.insertRow();
+//         // row.innerHTML = `
+//         //     <td class="table-cell">${complaints.length - index}</td>
+//         //     <td class="table-cell">${escapeHtml(complaint.timestamp)}</td>
+//         //     <td class="table-cell">${escapeHtml(complaint.name)}</td>
+//         //     <td class="table-cell">${escapeHtml(complaint.mobile)}</td>
+//         //     <td class="table-cell">${escapeHtml(complaint.pnr_uts || 'Not provided')}</td>
+//         //     <td class="table-cell">${escapeHtml(complaint.complaint_type)}</td>
+//         //     <td class="table-cell" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis;" 
+//         //         title="${escapeHtml(complaint.description)}">
+//         //         ${escapeHtml(complaint.description)}
+//         //     </td>
+//         //     <td class="table-cell">${escapeHtml(complaint.location || 'N/A')}</td>
+//         //     <td class="table-cell">${escapeHtml(complaint.asset_id)}</td>
+//         //     <td class="table-cell">
+//         //         ${complaint.photo_url ? 
+//         //             `<a href="${escapeHtml(complaint.photo_url)}" target="_blank" class="photo-link">📷 View</a>` : 
+//         //             'No photo'}
+//         //     </td>
+//         //     <td class="table-cell">
+//         //         <span class="status-badge status-${complaint.status.toLowerCase().replace(' ', '-')}">
+//         //             ${escapeHtml(complaint.status)}
+//         //         </span>
+//         //     </td>
+//         //     <td class="table-cell">
+//         //         <button class="btn-action" onclick="openStatusModal('${complaint.id}', '${escapeHtml(complaint.status)}', ${index})">
+//         //             Update
+//         //         </button>
+//         //     </td>
+//         // `;
+//          row.innerHTML = `
+//             <td class="table-cell">${complaints.length - index}</td>
+//             <td class="table-cell">${escapeHtml(complaint.timestamp)}</td>
+//             <td class="table-cell">
+//                 <span class="badge ${complaint.form_type === 'Complaint' ? 'badge-complaint' : 'badge-feedback'}">
+//                     ${escapeHtml(complaint.form_type || 'Complaint')}
+//                 </span>
+//             </td>
+//             <td class="table-cell">${escapeHtml(complaint.name)}</td>
+//             <td class="table-cell">${escapeHtml(complaint.mobile)}</td>
+//             <td class="table-cell">${escapeHtml(complaint.pnr_uts || 'Not provided')}</td>
+//             <td class="table-cell">
+//                 ${escapeHtml(complaint.complaint_type || complaint.feedback_type || 'N/A')}
+//             </td>
+//             <td class="table-cell" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis;" 
+//                 title="${escapeHtml(complaint.description)}">
+//                 ${escapeHtml(complaint.description)}
+//             </td>
+//             <td class="table-cell">${escapeHtml(complaint.location || 'N/A')}</td>
+//             <td class="table-cell">${escapeHtml(complaint.asset_id)}</td>
+//             <td class="table-cell">
+//                 ${complaint.photo_url ? 
+//                     `<a href="${escapeHtml(complaint.photo_url)}" target="_blank" class="photo-link">📷 View</a>` : 
+//                     'No photo'}
+//             </td>
+//             <td class="table-cell">
+//                 <span class="status-badge status-${complaint.status.toLowerCase().replace(' ', '-')}">
+//                     ${escapeHtml(complaint.status)}
+//                 </span>
+//             </td>
+//             <td class="table-cell">
+//                 <button class="btn-update" onclick="openStatusModal('${complaint.id}', '${escapeHtml(complaint.status)}', ${index})">
+//                     Update
+//                 </button>
+//             </td>
+//         `;
 
-    });
-}
+//     });
+// }
 
 function updateStats(complaints) {
     const total = complaints.length;
@@ -1119,4 +1119,180 @@ if (!document.head.querySelector('style[data-notifications]')) {
     `;
     document.head.appendChild(style);
 }
+
+
+
+function renderTable(complaints) {
+    const tbody = document.getElementById('tableBody');
+    tbody.innerHTML = '';
+    
+    complaints.forEach((complaint, index) => {
+        const row = tbody.insertRow();
+        row.innerHTML = `
+            <td class="table-cell">${complaints.length - index}</td>
+            <td class="table-cell">${escapeHtml(complaint.timestamp)}</td>
+            <td class="table-cell">
+                <span class="badge ${complaint.form_type === 'Complaint' ? 'badge-complaint' : 'badge-feedback'}">
+                    ${escapeHtml(complaint.form_type || 'Complaint')}
+                </span>
+            </td>
+            <td class="table-cell">${escapeHtml(complaint.name)}</td>
+            <td class="table-cell">${escapeHtml(complaint.mobile)}</td>
+            <td class="table-cell">${escapeHtml(complaint.pnr_uts || 'Not provided')}</td>
+            <td class="table-cell">${escapeHtml(complaint.complaint_type || complaint.feedback_type || 'N/A')}</td>
+            <td class="table-cell" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis;" 
+                title="${escapeHtml(complaint.description)}">
+                ${escapeHtml(complaint.description)}
+            </td>
+            <td class="table-cell">${escapeHtml(complaint.location || 'N/A')}</td>
+            
+            <!-- ✅ CLICKABLE ASSET ID -->
+            <td class="table-cell">
+                <a href="#" onclick="showAssetDetails('${escapeHtml(complaint.asset_id)}'); return false;" 
+                   style="color: #667eea; font-weight: 600; text-decoration: none; cursor: pointer;"
+                   title="Click to view asset details">
+                    ${escapeHtml(complaint.asset_id)}
+                </a>
+            </td>
+            
+            <td class="table-cell">
+                ${complaint.photo_url ? 
+                    `<a href="${escapeHtml(complaint.photo_url)}" target="_blank" class="photo-link">📷 View</a>` : 
+                    'No photo'}
+            </td>
+            <td class="table-cell">
+                <span class="status-badge status-${complaint.status.toLowerCase().replace(' ', '-')}">
+                    ${escapeHtml(complaint.status)}
+                </span>
+            </td>
+            <td class="table-cell">
+                <button class="btn-action" onclick="openStatusModal('${complaint.id}', '${escapeHtml(complaint.status)}', ${index})">
+                    Update
+                </button>
+            </td>
+        `;
+    });
+}
+
+// ==================== ASSET DETAILS FUNCTIONS ====================
+
+// Function to show asset details modal
+async function showAssetDetails(assetId) {
+    if (!assetId || assetId === 'Not specified') {
+        alert('No asset ID available');
+        return;
+    }
+    
+    // Show modal
+    document.getElementById('assetDetailsModal').style.display = 'flex';
+    document.getElementById('assetDetailsContent').innerHTML = 
+        '<div class="loading">Loading asset details...</div>';
+    
+    try {
+        // ✅ FETCH FROM assets.json (same file your QR generator uses)
+        const response = await fetch('assets/assets.json');
+        const assets = await response.json();
+        
+        // Find the asset by assetCode
+        const asset = Object.values(assets).find(a => a.assetCode === assetId);
+        
+        if (asset) {
+            // Display asset details
+            document.getElementById('assetDetailsContent').innerHTML = `
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 8px;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tr style="border-bottom: 1px solid #e0e0e0;">
+                            <td style="padding: 12px 0; font-weight: 600; color: #666; width: 180px;">Asset Code:</td>
+                            <td style="padding: 12px 0;">
+                                <code style="background: #fff; padding: 4px 8px; border-radius: 4px; font-weight: 600;">
+                                    ${escapeHtml(asset.assetCode || assetId)}
+                                </code>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e0e0e0;">
+                            <td style="padding: 12px 0; font-weight: 600; color: #666;">Station Code:</td>
+                            <td style="padding: 12px 0;">${escapeHtml(asset.stationCode || 'N/A')}</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e0e0e0;">
+                            <td style="padding: 12px 0; font-weight: 600; color: #666;">Station Name:</td>
+                            <td style="padding: 12px 0;">${escapeHtml(asset.stationName || 'N/A')}</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e0e0e0;">
+                            <td style="padding: 12px 0; font-weight: 600; color: #666;">Asset Type:</td>
+                            <td style="padding: 12px 0;">
+                                <span style="background: #667eea; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85rem;">
+                                    ${escapeHtml(asset.assetType || 'N/A')}
+                                </span>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e0e0e0;">
+                            <td style="padding: 12px 0; font-weight: 600; color: #666;">Location:</td>
+                            <td style="padding: 12px 0;">${escapeHtml(asset.location || 'N/A')}</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e0e0e0;">
+                            <td style="padding: 12px 0; font-weight: 600; color: #666;">Licensee Name:</td>
+                            <td style="padding: 12px 0;">${escapeHtml(asset.licenseeName || 'N/A')}</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e0e0e0;">
+                            <td style="padding: 12px 0; font-weight: 600; color: #666;">Category:</td>
+                            <td style="padding: 12px 0;">${escapeHtml(asset.category || 'N/A')}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px 0; font-weight: 600; color: #666;">Contact:</td>
+                            <td style="padding: 12px 0;">${escapeHtml(asset.contact || 'N/A')}</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div style="margin-top: 15px; padding: 15px; background: #e3f2fd; border-left: 4px solid #2196f3; border-radius: 4px;">
+                    <p style="margin: 0; font-size: 0.9rem; color: #1565c0;">
+                        <strong>📍 QR Code URL:</strong><br>
+                        <code style="font-size: 0.85rem; word-break: break-all;">
+                            ${window.location.origin}/raise_index_html.html?asset=${encodeURIComponent(assetId)}
+                        </code>
+                    </p>
+                </div>
+            `;
+        } else {
+            // Asset not found in JSON
+            document.getElementById('assetDetailsContent').innerHTML = `
+                <div style="text-align: center; padding: 30px; color: #666;">
+                    <p style="font-size: 2rem; margin: 0;">⚠️</p>
+                    <h3 style="margin: 15px 0 10px 0;">Asset Not Found</h3>
+                    <p style="margin: 0;">Asset ID <strong>${escapeHtml(assetId)}</strong> not found in assets database.</p>
+                    <p style="margin: 10px 0 0 0; font-size: 0.9rem; color: #999;">
+                        Please add this asset to <code>assets/assets.json</code>
+                    </p>
+                </div>
+            `;
+        }
+        
+    } catch (error) {
+        console.error('Error fetching asset details:', error);
+        document.getElementById('assetDetailsContent').innerHTML = `
+            <div style="text-align: center; padding: 30px; color: #c00;">
+                <p style="font-size: 2rem; margin: 0;">❌</p>
+                <h3 style="margin: 15px 0 10px 0;">Error Loading Asset Details</h3>
+                <p style="margin: 0;">Could not load assets.json file.</p>
+                <p style="margin: 10px 0 0 0; font-size: 0.85rem;">
+                    Error: ${escapeHtml(error.message)}
+                </p>
+            </div>
+        `;
+    }
+}
+
+// Function to close asset details modal
+function closeAssetDetailsModal() {
+    document.getElementById('assetDetailsModal').style.display = 'none';
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+    const modal = document.getElementById('assetDetailsModal');
+    if (event.target === modal) {
+        closeAssetDetailsModal();
+    }
+}
+
 

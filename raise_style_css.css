@@ -749,3 +749,48 @@ tr:hover {
         transform: translateY(0);
     }
 }
+
+/* Asset Details Styles */
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+    font-size: 1rem;
+}
+
+.loading:before {
+    content: "⏳ ";
+    font-size: 1.5rem;
+}
+
+/* Enhance asset ID link on hover */
+td.table-cell a[onclick*="showAssetDetails"]:hover {
+    text-decoration: underline;
+    color: #5568d3 !important;
+}
+
+/* Modal animations */
+.modal {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
