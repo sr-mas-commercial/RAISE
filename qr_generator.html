@@ -256,7 +256,102 @@
     //   pdf.save("RAISE_QR_Bulk.pdf");
     // }
 
-  async function generateBulkPDF(assets) {
+//   async function generateBulkPDF(assets) {
+//   const { jsPDF } = window.jspdf;
+//   const pdf = new jsPDF({
+//     orientation: "portrait",
+//     unit: "mm",
+//     format: [297, 420], // A3 size
+//   });
+
+//   const assetList = Object.values(assets);
+
+//   for (let i = 0; i < assetList.length; i++) {
+//     const asset = assetList[i];
+//     const qrDataURL = createQRDataURL(asset);
+
+//     // Safe field extraction
+//     const stationName = safeValue(asset.stationName);
+//     const assetCode = safeValue(asset.assetCode);
+//     const location = safeValue(asset.location);
+//     const type = safeValue(asset.type);
+//     const licenseeName = safeValue(asset.licenseeName);
+//     const category = safeValue(asset.category);
+
+//     // === Add Blue Border ===
+//     pdf.setDrawColor(0, 51, 153); // Deep blue
+//     pdf.setLineWidth(3);
+//     pdf.rect(10, 10, 277, 400); // Outer border (A3 page = 297x420 mm)
+
+//     // === Add Logo ===
+//     try {
+//       await pdf.addImage(LOGO_PATH, "PNG", (297 - 60) / 2, 20, 60, 60);
+//     } catch (error) {
+//       console.log("Logo not loaded:", error);
+//     }
+
+//     let yPos = 100;
+
+//     // === Main Header ===
+//     pdf.setFont("helvetica", "bold");
+//     pdf.setFontSize(28);
+//     pdf.setTextColor(0, 51, 102);
+//     pdf.text("Southern Railway", 148.5, yPos, { align: "center" });
+//     yPos += 12;
+
+//     // === Sub Header ===
+//     pdf.setFontSize(22);
+//     pdf.text("Chennai Division", 148.5, yPos, { align: "center" });
+//     yPos += 20;
+
+//     // === Station Name ===
+//     pdf.setFontSize(26);
+//     pdf.setTextColor(255, 153, 51);
+//     pdf.text(stationName, 148.5, yPos, { align: "center" });
+//     yPos += 18;
+
+//     // === Asset Details ===
+//     pdf.setFont("helvetica", "normal");
+//     pdf.setFontSize(14);
+//     pdf.setTextColor(0, 51, 102);
+
+//     const addTextLine = (label, value) => {
+//       if (value) {
+//         pdf.text(`${label}: ${value}`, 148.5, yPos, { align: "center" });
+//         yPos += 8;
+//       }
+//     };
+
+//     addTextLine("Asset ID", assetCode);
+//     addTextLine("Type", type);
+//     addTextLine("Location", location);
+//     addTextLine("Licensee", licenseeName);
+//     addTextLine("Category", category);
+
+//     yPos += 10;
+
+//     // === QR Code ===
+//     const qrSize = 160; // Bigger for A3
+//     const qrX = (297 - qrSize) / 2;
+//     pdf.addImage(qrDataURL, "PNG", qrX, yPos, qrSize, qrSize);
+//     yPos += qrSize + 15;
+
+//     // === Instruction Text (Bottom) ===
+//     pdf.setFont("helvetica", "bold");
+//     pdf.setFontSize(16);
+//     pdf.setTextColor(0, 51, 102);
+//     pdf.text("Scan this QR code to register feedback or complaint", 148.5, yPos, { align: "center" });
+//     yPos += 8;
+//     pdf.text("for this specific facility or asset", 148.5, yPos, { align: "center" });
+
+//     // === Page Break ===
+//     if (i !== assetList.length - 1) pdf.addPage([297, 420], "portrait");
+//   }
+
+//   pdf.save("RAISE_QR_Bulk_A3.pdf");
+// }
+
+    async function generateBulkPDF(assets) {
   const { jsPDF } = window.jspdf;
   const pdf = new jsPDF({
     orientation: "portrait",
@@ -270,7 +365,6 @@
     const asset = assetList[i];
     const qrDataURL = createQRDataURL(asset);
 
-    // Safe field extraction
     const stationName = safeValue(asset.stationName);
     const assetCode = safeValue(asset.assetCode);
     const location = safeValue(asset.location);
@@ -278,26 +372,39 @@
     const licenseeName = safeValue(asset.licenseeName);
     const category = safeValue(asset.category);
 
-    // === Add Blue Border ===
-    pdf.setDrawColor(0, 51, 153); // Deep blue
-    pdf.setLineWidth(3);
-    pdf.rect(10, 10, 277, 400); // Outer border (A3 page = 297x420 mm)
+    // === Border properties ===
+    const borderColor = [0, 51, 102]; // same as text color (#003366)
+    const borderWidth = 8 * 0.352778; // convert 8pt → mm ≈ 2.82mm
+    const borderRadius = 12; // inner rounded corner radius
+
+    // === Draw rounded blue border (edge-to-edge, no white space) ===
+    pdf.setDrawColor(...borderColor);
+    pdf.setLineWidth(borderWidth);
+    pdf.roundedRect(
+      borderWidth / 2,
+      borderWidth / 2,
+      297 - borderWidth,
+      420 - borderWidth,
+      borderRadius,
+      borderRadius,
+      "S"
+    );
 
     // === Add Logo ===
     try {
-      await pdf.addImage(LOGO_PATH, "PNG", (297 - 60) / 2, 20, 60, 60);
+      await pdf.addImage(LOGO_PATH, "PNG", (297 - 60) / 2, 25, 60, 60);
     } catch (error) {
       console.log("Logo not loaded:", error);
     }
 
-    let yPos = 100;
+    let yPos = 110;
 
     // === Main Header ===
     pdf.setFont("helvetica", "bold");
     pdf.setFontSize(28);
-    pdf.setTextColor(0, 51, 102);
+    pdf.setTextColor(...borderColor);
     pdf.text("Southern Railway", 148.5, yPos, { align: "center" });
-    yPos += 12;
+    yPos += 14;
 
     // === Sub Header ===
     pdf.setFontSize(22);
@@ -313,7 +420,7 @@
     // === Asset Details ===
     pdf.setFont("helvetica", "normal");
     pdf.setFontSize(14);
-    pdf.setTextColor(0, 51, 102);
+    pdf.setTextColor(...borderColor);
 
     const addTextLine = (label, value) => {
       if (value) {
@@ -328,27 +435,27 @@
     addTextLine("Licensee", licenseeName);
     addTextLine("Category", category);
 
-    yPos += 10;
+    yPos += 15;
 
     // === QR Code ===
-    const qrSize = 160; // Bigger for A3
+    const qrSize = 160;
     const qrX = (297 - qrSize) / 2;
     pdf.addImage(qrDataURL, "PNG", qrX, yPos, qrSize, qrSize);
-    yPos += qrSize + 15;
+    yPos += qrSize + 18;
 
     // === Instruction Text (Bottom) ===
     pdf.setFont("helvetica", "bold");
     pdf.setFontSize(16);
-    pdf.setTextColor(0, 51, 102);
+    pdf.setTextColor(...borderColor);
     pdf.text("Scan this QR code to register feedback or complaint", 148.5, yPos, { align: "center" });
     yPos += 8;
     pdf.text("for this specific facility or asset", 148.5, yPos, { align: "center" });
 
-    // === Page Break ===
+    // === Add page break if more assets ===
     if (i !== assetList.length - 1) pdf.addPage([297, 420], "portrait");
   }
 
-  pdf.save("RAISE_QR_Bulk_A3.pdf");
+  pdf.save("RAISE_QR_Bulk_A3_Border.pdf");
 }
 
     // Main function to fetch, render and setup bulk download
