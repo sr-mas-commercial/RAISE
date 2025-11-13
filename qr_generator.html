@@ -53,7 +53,7 @@
     .bottom-text {
       margin-top: 14px;
       font-weight: 700;
-      font-size: 2em;
+      font-size: 1em;
       color: #003366;
     }
     #downloadBtn {
@@ -209,12 +209,12 @@ async function generateBulkPDF(assets) {
     pdf.setFont("helvetica", "bold");
     pdf.setFontSize(30);
     pdf.setTextColor(...borderColor);
-    pdf.text("Southern Railway", centerX, yPos, { align: "center" });
+    pdf.text("SOUTHERN RAILWAY", centerX, yPos, { align: "center" });
     yPos += 14;
 
     // === SUB HEADER ===
     pdf.setFontSize(26);
-    pdf.text("Chennai Division", centerX, yPos, { align: "center" });
+    pdf.text("CHENNAI DIVISION", centerX, yPos, { align: "center" });
     yPos += 20;
 
     // === STATION NAME ===
