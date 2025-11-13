@@ -207,31 +207,31 @@ async function generateBulkPDF(assets) {
 
     // === MAIN HEADER ===
     pdf.setFont("helvetica", "bold");
-    pdf.setFontSize(28);
+    pdf.setFontSize(30);
     pdf.setTextColor(...borderColor);
     pdf.text("Southern Railway", centerX, yPos, { align: "center" });
     yPos += 14;
 
     // === SUB HEADER ===
-    pdf.setFontSize(22);
+    pdf.setFontSize(26);
     pdf.text("Chennai Division", centerX, yPos, { align: "center" });
     yPos += 20;
 
     // === STATION NAME ===
-    pdf.setFontSize(26);
+    pdf.setFontSize(24);
     pdf.setTextColor(255, 153, 51);
     pdf.text(stationName, centerX, yPos, { align: "center" });
     yPos += 18;
 
     pdf.setFont("helvetica", "bold");
-    pdf.setFontSize(28);
+    pdf.setFontSize(32);
     pdf.setTextColor(...borderColor);
     pdf.text("FOR FEEDBACK / COMPLAINT, SCAN QR CODE", centerX, yPos, { align: "center" });
     yPos += 18
 
     // === ASSET DETAILS ===
     pdf.setFont("helvetica", "normal");
-    pdf.setFontSize(14);
+    pdf.setFontSize(18);
     pdf.setTextColor(...borderColor);
 
     const addTextLine = (label, value) => {
