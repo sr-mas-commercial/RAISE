@@ -9,22 +9,6 @@ const ADMIN_CREDENTIALS = {
     password: 'admin123'
 };
 
-// // Initialize Supabase client
-// let supabase;
-// if (typeof window !== 'undefined') {
-//     // Load Supabase from CDN
-//     const script = document.createElement('script');
-//     script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
-//     script.onload = () => {
-//         supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-//         console.log('Supabase initialized');
-//     };
-//     document.head.appendChild(script);
-// }
-
-// // Global variables
-// let currentComplaints = [];
-// let currentComplaintId = null;
 
 // ==================== COMPLAINT FORM (index.html) ====================
 function initComplaintForm() {
@@ -115,39 +99,59 @@ function toggleFormFields() {
 }
 
 // Global variables
-let supabase = null;
+let supabaseClient = null;
 let currentComplaints = [];
 let currentComplaintId = null;
 
 // ==================== SUPABASE INITIALIZATION ====================
 // Wait for Supabase to load from CDN
+// function initSupabase() {
+//     return new Promise((resolve, reject) => {
+//         // Check if already loaded
+//         if (window.supabase) {
+//             supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+//             console.log('✅ Supabase initialized');
+//             resolve();
+//             return;
+//         }
+        
+//         // Wait for script to load
+//         let checkInterval = setInterval(() => {
+//             if (window.supabase) {
+//                 clearInterval(checkInterval);
+//                 supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+//                 console.log('✅ Supabase initialized');
+//                 resolve();
+//             }
+//         }, 100);
+        
+//         // Timeout after 10 seconds
+//         setTimeout(() => {
+//             clearInterval(checkInterval);
+//             if (!supabase) {
+//                 reject(new Error('Supabase failed to load'));
+//             }
+//         }, 10000);
+//     });
+// }
+
 function initSupabase() {
     return new Promise((resolve, reject) => {
-        // Check if already loaded
-        if (window.supabase) {
-            supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-            console.log('✅ Supabase initialized');
-            resolve();
+        // Supabase SDK must already be loaded via CDN
+        if (!window.supabase) {
+            reject(new Error('Supabase SDK not loaded'));
             return;
         }
-        
-        // Wait for script to load
-        let checkInterval = setInterval(() => {
-            if (window.supabase) {
-                clearInterval(checkInterval);
-                supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-                console.log('✅ Supabase initialized');
-                resolve();
-            }
-        }, 100);
-        
-        // Timeout after 10 seconds
-        setTimeout(() => {
-            clearInterval(checkInterval);
-            if (!supabase) {
-                reject(new Error('Supabase failed to load'));
-            }
-        }, 10000);
+
+        if (!supabaseClient) {
+            supabaseClient = window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_ANON_KEY
+            );
+            console.log('✅ Supabase client initialized');
+        }
+
+        resolve();
     });
 }
 
@@ -179,9 +183,9 @@ async function handleComplaintSubmit(event) {
 
         
     // CHECK IF SUPABASE IS LOADED - ADD THIS
-    if (!supabase) {
+    if (!supabaseClient) {
         await initSupabase();
-        if (!supabase) {
+        if (!supabaseClient) {
             showError('Database connection failed. Please refresh the page.');
             return;
         }
@@ -274,7 +278,7 @@ async function handleComplaintSubmit(event) {
             const file = photoInput.files[0];
             const fileName = `${Date.now()}_${file.name.replace(/[^a-zA-Z0-9.]/g, '_')}`;
             
-            const { data: uploadData, error: uploadError } = await supabase.storage
+            const { data: uploadData, error: uploadError } = await supabaseClient.storage
                 .from('complaint-photos')
                 .upload(fileName, file);
             
@@ -283,7 +287,7 @@ async function handleComplaintSubmit(event) {
                 showError('Failed to upload photo. Submitting complaint without photo...');
             } else {
                 // Get public URL
-                const { data: urlData } = supabase.storage
+                const { data: urlData } = supabaseClient.storage
                     .from('complaint-photos')
                     .getPublicUrl(fileName);
                 formData.photo_url = urlData.publicUrl;
@@ -292,7 +296,7 @@ async function handleComplaintSubmit(event) {
         
         console.log("formData:", formData);
         // Submit to Supabase
-        const { data, error } = await supabase
+        const { data, error } = await supabaseClient
             .from('complaints')
             .insert([formData], { defaultToNull: false })
             .select();
@@ -464,7 +468,7 @@ function checkAuth() {
 
 async function loadComplaints() {
         // CHECK IF SUPABASE IS LOADED - ADD THIS
-    if (!supabase) {
+    if (!supabaseClient) {
         try {
             await initSupabase();
         } catch (error) {
@@ -490,7 +494,7 @@ async function loadComplaints() {
     
     try {
         // Fetch from Supabase
-        const { data: complaints, error } = await supabase
+        const { data: complaints, error } = await supabaseClient
             .from('complaints')
             .select('*')
             .order('created_at', { ascending: false });
@@ -841,7 +845,7 @@ async function updateStatus() {
     
     try {
         // Update in Supabase
-        const { error } = await supabase
+        const { error } = await supabaseClient
             .from('complaints')
             .update({ status: newStatus })
             .eq('id', currentComplaintId);
