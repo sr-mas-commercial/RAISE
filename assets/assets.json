@@ -2401,5 +2401,32 @@
     "type": "Battery Swapping",
     "licenseeName": "Indofast swap Energy Pvt Ltd",
     "category": "NFR"
+  },
+  "KRISHNA": {
+    "assetCode": "KRISHNA",
+    "stationCode": "MAS",
+    "stationName": "Dr. M. G. R. Chennai Central",
+    "location": "PF-1",
+    "type": "TTE Rest House",
+    "licenseeName": "M/s P Govindan",
+    "category": "TTE Rest House"
+  },
+  "CAUVERY": {
+    "assetCode": "CAUVERY",
+    "stationCode": "MAS",
+    "stationName": "Dr. M. G. R. Chennai Central",
+    "location": "Near PARCEL OFFICE",
+    "type": "TTE Rest House",
+    "licenseeName": "M/s P Govindan",
+    "category": "TTE Rest House"
+  },
+  "VAIGAI": {
+    "assetCode": "VAIGAI",
+    "stationCode": "MS",
+    "stationName": "Chennai Egmore",
+    "location": "",
+    "type": "TTE Rest House",
+    "licenseeName": "KHAGAUL LOCO LABOUR'S CO-OPERATIVE SOCIETY LTD.",
+    "category": "TTE Rest House"
   }
 }
