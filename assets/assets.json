@@ -638,6 +638,24 @@
     "licenseeName": "M/s. Vijaya Durga Enterprises-Krishna",
     "category": "PA"
   },
+    "MSS-MAS-MAS-BCA-232 | 1": {
+    "assetCode": "MSS-MAS-KPD-BCA-232 | 1",
+    "stationCode": "KPD",
+    "stationName": "Katpadi Junction",
+    "location": "",
+    "type": "Battery Operated Carts",
+    "licenseeName": "M/s. Shifa Traders",
+    "category": "PA"
+  },
+    "MSS-MAS-MAS-BCA-232 | 2": {
+    "assetCode": "MSS-MAS-KPD-BCA-232 | 2",
+    "stationCode": "KPD",
+    "stationName": "Katpadi Junction",
+    "location": "",
+    "type": "Battery Operated Carts",
+    "licenseeName": "M/s. Shifa Traders",
+    "category": "PA"
+  },
   "PnU-MAS-KTBR-Toi-342": {
     "assetCode": "PnU-MAS-KTBR-Toi-342",
     "stationCode": "KTBR",
@@ -881,49 +899,76 @@
     "licenseeName": "M/s. Saisharath Subbian and Co",
     "category": "PA"
   },
-  "MSS-MAS-MAS-BCA-23 | 1": {
-    "assetCode": "MSS-MAS-MAS-BCA-23 | 1",
+  "MSS-MAS-MAS-BCA-230 | 1": {
+    "assetCode": "MSS-MAS-MAS-BCA-230 | 1",
     "stationCode": "MAS",
     "stationName": "Dr. M. G. R. Chennai Central",
     "location": "",
     "type": "Battery Operated Carts",
-    "licenseeName": "Sri. R. Subburaj",
+    "licenseeName": "M/s. Meenakshi",
     "category": "PA"
   },
-  "MSS-MAS-MAS-BCA-23 | 2": {
-    "assetCode": "MSS-MAS-MAS-BCA-23 | 2",
+  "MSS-MAS-MAS-BCA-230 | 2": {
+    "assetCode": "MSS-MAS-MAS-BCA-230 | 2",
     "stationCode": "MAS",
     "stationName": "Dr. M. G. R. Chennai Central",
     "location": "",
     "type": "Battery Operated Carts",
-    "licenseeName": "Sri. R. Subburaj",
+    "licenseeName": "M/s. Meenakshi",
     "category": "PA"
   },
-  "MSS-MAS-MAS-BCA-23 | 3": {
-    "assetCode": "MSS-MAS-MAS-BCA-23 | 3",
+  "MSS-MAS-MAS-BCA-230 | 3": {
+    "assetCode": "MSS-MAS-MAS-BCA-230 | 3",
     "stationCode": "MAS",
     "stationName": "Dr. M. G. R. Chennai Central",
     "location": "",
     "type": "Battery Operated Carts",
-    "licenseeName": "Sri. R. Subburaj",
+    "licenseeName": "M/s. Meenakshi",
     "category": "PA"
   },
-  "MSS-MAS-MAS-BCA-23 | 4": {
-    "assetCode": "MSS-MAS-MAS-BCA-23 | 4",
+  "MSS-MAS-MAS-BCA-230 | 4": {
+    "assetCode": "MSS-MAS-MAS-BCA-230 | 4",
     "stationCode": "MAS",
     "stationName": "Dr. M. G. R. Chennai Central",
     "location": "",
     "type": "Battery Operated Carts",
-    "licenseeName": "Sri. R. Subburaj",
+    "licenseeName": "M/s. Meenakshi",
     "category": "PA"
   },
-  "MSS-MAS-MAS-BCA-23 | 5": {
-    "assetCode": "MSS-MAS-MAS-BCA-23 | 5",
+  "MSS-MAS-MAS-BCA-230 | 5": {
+    "assetCode": "MSS-MAS-MAS-BCA-230 | 5",
     "stationCode": "MAS",
     "stationName": "Dr. M. G. R. Chennai Central",
     "location": "",
     "type": "Battery Operated Carts",
-    "licenseeName": "Sri. R. Subburaj",
+    "licenseeName": "M/s. Meenakshi",
+    "category": "PA"
+  },
+    "MSS-MAS-MAS-BCA-230 | 6": {
+    "assetCode": "MSS-MAS-MAS-BCA-230 | 6",
+    "stationCode": "MAS",
+    "stationName": "Dr. M. G. R. Chennai Central",
+    "location": "",
+    "type": "Battery Operated Carts",
+    "licenseeName": "M/s. Meenakshi",
+    "category": "PA"
+  },
+      "MSS-MAS-MAS-BCA-230 | 7": {
+    "assetCode": "MSS-MAS-MAS-BCA-230 | 7",
+    "stationCode": "MAS",
+    "stationName": "Dr. M. G. R. Chennai Central",
+    "location": "",
+    "type": "Battery Operated Carts",
+    "licenseeName": "M/s. Meenakshi",
+    "category": "PA"
+  },
+      "MSS-MAS-MAS-BCA-230 | 8": {
+    "assetCode": "MSS-MAS-MAS-BCA-230 | 8",
+    "stationCode": "MAS",
+    "stationName": "Dr. M. G. R. Chennai Central",
+    "location": "",
+    "type": "Battery Operated Carts",
+    "licenseeName": "M/s. Meenakshi",
     "category": "PA"
   },
   "PnU-MAS-MASS-Toi-211": {
@@ -1286,40 +1331,40 @@
     "licenseeName": "Naveen Advertisers",
     "category": "NFR"
   },
-  "MSS-MAS-MS-BCA-24 | 1": {
-    "assetCode": "MSS-MAS-MS-BCA-24 | 1",
+  "MSS-MAS-MS-BCA-229 | 1": {
+    "assetCode": "MSS-MAS-MS-BCA-229 | 1",
     "stationCode": "MS",
     "stationName": "Chennai Egmore",
     "location": "",
     "type": "Battery Operated Carts",
-    "licenseeName": "M/s. Balaji Catering Service",
+    "licenseeName": "M/s. Adhiyaman Express",
     "category": "PA"
   },
-  "MSS-MAS-MS-BCA-24 | 2": {
-    "assetCode": "MSS-MAS-MS-BCA-24 | 2",
+  "MSS-MAS-MS-BCA-229 | 2": {
+    "assetCode": "MSS-MAS-MS-BCA-229 | 2",
     "stationCode": "MS",
     "stationName": "Chennai Egmore",
     "location": "",
     "type": "Battery Operated Carts",
-    "licenseeName": "M/s. Balaji Catering Service",
+    "licenseeName": "M/s. Adhiyaman Express",
     "category": "PA"
   },
-  "MSS-MAS-MS-BCA-24 | 3": {
-    "assetCode": "MSS-MAS-MS-BCA-24 | 3",
+  "MSS-MAS-MS-BCA-229 | 3": {
+    "assetCode": "MSS-MAS-MS-BCA-229 | 3",
     "stationCode": "MS",
     "stationName": "Chennai Egmore",
     "location": "",
     "type": "Battery Operated Carts",
-    "licenseeName": "M/s. Balaji Catering Service",
+    "licenseeName": "M/s. Adhiyaman Express",
     "category": "PA"
   },
-  "MSS-MAS-MS-BCA-24 | 4": {
-    "assetCode": "MSS-MAS-MS-BCA-24 | 4",
+  "MSS-MAS-MS-BCA-229 | 4": {
+    "assetCode": "MSS-MAS-MS-BCA-229 | 4",
     "stationCode": "MS",
     "stationName": "Chennai Egmore",
     "location": "",
     "type": "Battery Operated Carts",
-    "licenseeName": "M/s. Balaji Catering Service",
+    "licenseeName": "M/s. Adhiyaman Express",
     "category": "PA"
   },
   "PnU-MAS-MSB-Toi-318": {
