@@ -278,6 +278,24 @@
     "licenseeName": "S.Jayalakshmi",
     "category": "NFR"
   },
+  "MAS-BOC-CGL-2026-05 | 1": {
+    "assetCode": "MAS-BOC-CGL-2026-05 | 1",
+    "stationCode": "CGL",
+    "stationName": "Chengalpattu Junction",
+    "location": "",
+    "type": "Battery Operated Carts",
+    "licenseeName": "Riya Enterprises - Madurai",
+    "category": "PA"
+  },
+  "MAS-BOC-CGL-2026-05 | 2": {
+    "assetCode": "MAS-BOC-CGL-2026-05 | 2",
+    "stationCode": "CGL",
+    "stationName": "Chengalpattu Junction",
+    "location": "",
+    "type": "Battery Operated Carts",
+    "licenseeName": "Riya Enterprises - Madurai",
+    "category": "PA"
+  },
   "PARKING-CJ-2025-7": {
     "assetCode": "PARKING-CJ-2025-7",
     "stationCode": "CJ",
@@ -638,7 +656,7 @@
     "licenseeName": "M/s. Vijaya Durga Enterprises-Krishna",
     "category": "PA"
   },
-    "MSS-MAS-MAS-BCA-232 | 1": {
+  "MSS-MAS-MAS-BCA-232 | 1": {
     "assetCode": "MSS-MAS-KPD-BCA-232 | 1",
     "stationCode": "KPD",
     "stationName": "Katpadi Junction",
@@ -647,7 +665,7 @@
     "licenseeName": "M/s. Shifa Traders",
     "category": "PA"
   },
-    "MSS-MAS-MAS-BCA-232 | 2": {
+  "MSS-MAS-MAS-BCA-232 | 2": {
     "assetCode": "MSS-MAS-KPD-BCA-232 | 2",
     "stationCode": "KPD",
     "stationName": "Katpadi Junction",
@@ -944,7 +962,7 @@
     "licenseeName": "M/s. Meenakshi",
     "category": "PA"
   },
-    "MSS-MAS-MAS-BCA-230 | 6": {
+  "MSS-MAS-MAS-BCA-230 | 6": {
     "assetCode": "MSS-MAS-MAS-BCA-230 | 6",
     "stationCode": "MAS",
     "stationName": "Dr. M. G. R. Chennai Central",
@@ -953,7 +971,7 @@
     "licenseeName": "M/s. Meenakshi",
     "category": "PA"
   },
-      "MSS-MAS-MAS-BCA-230 | 7": {
+  "MSS-MAS-MAS-BCA-230 | 7": {
     "assetCode": "MSS-MAS-MAS-BCA-230 | 7",
     "stationCode": "MAS",
     "stationName": "Dr. M. G. R. Chennai Central",
@@ -962,7 +980,7 @@
     "licenseeName": "M/s. Meenakshi",
     "category": "PA"
   },
-      "MSS-MAS-MAS-BCA-230 | 8": {
+  "MSS-MAS-MAS-BCA-230 | 8": {
     "assetCode": "MSS-MAS-MAS-BCA-230 | 8",
     "stationCode": "MAS",
     "stationName": "Dr. M. G. R. Chennai Central",
@@ -2048,7 +2066,7 @@
     "stationName": "Tambaram",
     "location": "",
     "type": "Battery Operated Carts",
-    "licenseeName": "M/s. Balaji Catering Service",
+    "licenseeName": "Riya Enterprises - Madurai",
     "category": "PA"
   },
   "MSS-MAS-TBM-BCA-12 | 2": {
@@ -2057,7 +2075,7 @@
     "stationName": "Tambaram",
     "location": "",
     "type": "Battery Operated Carts",
-    "licenseeName": "M/s. Balaji Catering Service",
+    "licenseeName": "Riya Enterprises - Madurai",
     "category": "PA"
   },
   "MSS-MAS-TBM-BCA-12 | 3": {
@@ -2066,7 +2084,7 @@
     "stationName": "Tambaram",
     "location": "",
     "type": "Battery Operated Carts",
-    "licenseeName": "M/s. Balaji Catering Service",
+    "licenseeName": "Riya Enterprises - Madurai",
     "category": "PA"
   },
   "TBM-MX-262-23-3": {
