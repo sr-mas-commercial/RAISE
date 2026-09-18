@@ -1,4 +1,126 @@
 {
+
+"NFR-MAS-SALNSPA-25-70": {
+  "assetCode": "NFR-MAS-SALNSPA-25-70",
+  "stationCode": "MAS",
+  "stationName": "Dr. M. G. R. Chennai Central",
+  "location": "Gate 1 Entrance",
+  "type": "Salon & Spa",
+  "licenseeName": "M. Raghu",
+  "category": "NFR"
+},
+  
+"ADVT-MAS-MAS-OSD-302": {
+  "assetCode": "ADVT-MAS-MAS-OSD-302",
+  "stationCode": "MAS",
+  "stationName": "Dr. M. G. R. Chennai Central",
+  "location": "Booking and reservation counters",
+  "type": "Dual Display Information System",
+  "licenseeName": "Ninja Media Creations",
+  "category": "NFR"
+},
+
+"MSS-MAS-MAS-STGen-209": {
+  "assetCode": "MSS-MAS-MAS-STGen-209",
+  "stationCode": "MAS",
+  "stationName": "Dr. M. G. R. Chennai Central",
+  "location": "Station Entrance",
+  "type": "Bike Rental",
+  "licenseeName": "S Uma",
+  "category": "NFR"
+},
+"NFR-MASS-GBA-25-74": {
+  "assetCode": "NFR-MASS-GBA-25-74",
+  "stationCode": "MASS",
+  "stationName": "Moore Market Complex - Chennai Central suburban",
+  "location": "Circulating area",
+  "type": "Glowball with advertisement",
+  "licenseeName": "R.Subburaj",
+  "category": "NFR"
+},
+
+"NFR-BSS-MASS-2026-23": {
+  "assetCode": "NFR-BSS-MASS-2026-23",
+  "stationCode": "MASS",
+  "stationName": "Moore Market Complex - Chennai Central suburban",
+  "location": "MASS station entrance",
+  "type": "Battery Swapping stations",
+  "licenseeName": "Indofast swap Energy Pvt Ltd",
+  "category": "NFR"
+},
+
+"NFR-MAS-COSMETIC-2026-40": {
+  "assetCode": "NFR-MAS-COSMETIC-2026-40",
+  "stationCode": "MAS",
+  "stationName": "Dr. M. G. R. Chennai Central",
+  "location": "Gate 6 Entrance",
+  "type": "Cosmetices/ Personal care Shop",
+  "licenseeName": "Jithu Entire Solutions",
+  "category": "NFR"
+},
+"NFR-MAS-STATIONARY-26-41": {
+  "assetCode": "NFR-MAS-STATIONARY-26-41",
+  "stationCode": "MAS",
+  "stationName": "Dr. M. G. R. Chennai Central",
+  "location": "Gate 6 Entrance",
+  "type": "Stationary/ Florists/ Toys/ Gifts shop",
+  "licenseeName": "Jithu Entire Solutions",
+  "category": "NFR"
+},
+
+"NFR-VBPK-2026-46": {
+  "assetCode": "NFR-VBPK-2026-46",
+  "stationCode": "MASS, STM, KPD, TBM",
+  "stationName": "Moore Market Complex - Chennai Central suburban",
+  "location": "MASS station Concourse area",
+  "type": "Virtual Brand Promotional Kiosk",
+  "licenseeName": "AVSKS Ventures LLP - Bangalore",
+  "category": "NFR"
+},
+
+"PnU-MAS-MASS-Toi-389": {
+  "assetCode": "PnU-MAS-MASS-Toi-389",
+  "stationCode": "MAS",
+  "stationName": "Moore Market Complex - Chennai Central suburban",
+  "location": "Concourse area",
+  "type": "PAUT (Revenue Model)",
+  "licenseeName": "Harikrishnan M",
+  "category": "PA"
+},
+
+
+"PnU-MAS-MAS-WRL-379": {
+  "assetCode": "PnU-MAS-MAS-WRL-379",
+  "stationCode": "MAS",
+  "stationName": "Dr. M. G. R. Chennai Central",
+  "location": "Old Concourse area",
+  "type": "Retiring room",
+  "licenseeName": "M/s Maganti Kiran Kumar - Krishna - Prakasam",
+  "category": "PA"
+},
+
+
+"PARKING-MAS-MASS-TW-393": {
+  "assetCode": "PARKING-MAS-MASS-TW-393",
+  "stationCode": "MASS",
+  "stationName": "Moore Market Complex - Chennai Central suburban",
+  "location": "Adjacent Pf-16",
+  "type": "Two Wheeler",
+  "licenseeName": "Falcons Transport Services",
+  "category": "PARKING"
+},
+
+"PARKING-MAS-MAS-FW-349": {
+  "assetCode": "PARKING-MAS-MAS-FW-349",
+  "stationCode": "MAS",
+  "stationName": "Dr. M. G. R. Chennai Central",
+  "location": "MMC opp",
+  "type": "Four Wheeler",
+  "licenseeName": "Narmadha Enterprises",
+  "category": "PARKING"
+},
+
+
   "PARKING-AB-2-2024-50": {
     "assetCode": "PARKING-AB-2-2024-50",
     "stationCode": "AB",
@@ -707,7 +829,7 @@
     "stationName": "Dr. M. G. R. Chennai Central",
     "location": "Old concourse of Chennai central",
     "type": "PAUT (Revenue Model)",
-    "licenseeName": "M/s Meenakshi- Tiruvallur",
+    "licenseeName": "M/s Sri Lakshmi Tirupathamma contract Works - Prakasam",
     "category": "PA"
   },
   "PnU-MAS-MAS-Toi-313": {
@@ -716,8 +838,9 @@
     "stationName": "Dr. M. G. R. Chennai Central",
     "location": "New concourse of Chennai central",
     "type": "PAUT (Revenue Model)",
-    "licenseeName": "M/s Kashipur Road-Star Welfare Society",
+    "licenseeName": "R Subburaj",
     "category": "PA"
+
   },
   "PnU-MAS-MAS-Toi-201": {
     "assetCode": "PnU-MAS-MAS-Toi-201",
@@ -764,15 +887,7 @@
     "licenseeName": "M/s Sun Motor Parts",
     "category": "PA"
   },
-  "PARKING-MAS-CAR-2024-67": {
-    "assetCode": "PARKING-MAS-CAR-2024-67",
-    "stationCode": "MAS",
-    "stationName": "Dr. M. G. R. Chennai Central",
-    "location": "Chennai Central -Car",
-    "type": "4 wheeler",
-    "licenseeName": "Narmadha Enterprises",
-    "category": "PARKING"
-  },
+  
   "MC-37-MAS-RDN-23": {
     "assetCode": "MC-37-MAS-RDN-23",
     "stationCode": "MAS",
@@ -845,24 +960,8 @@
     "licenseeName": "Smart Forwarders",
     "category": "NFR"
   },
-  "MAS-SG-COSMETICSSHOP-04": {
-    "assetCode": "MAS-SG-COSMETICSSHOP-04",
-    "stationCode": "MAS",
-    "stationName": "Dr. M. G. R. Chennai Central",
-    "location": "",
-    "type": "MAS-COSMETICSSHOP",
-    "licenseeName": "Jithu Entire Solutions",
-    "category": "NFR"
-  },
-  "MAS-SG-STATIONARY-05": {
-    "assetCode": "MAS-SG-STATIONARY-05",
-    "stationCode": "MAS",
-    "stationName": "Dr. M. G. R. Chennai Central",
-    "location": "",
-    "type": "MAS-STATIONARY",
-    "licenseeName": "Jithu Entire Solutions",
-    "category": "NFR"
-  },
+
+ 
   "MAS-Txtstore-2025-2": {
     "assetCode": "MAS-Txtstore-2025-2",
     "stationCode": "MAS",
@@ -890,24 +989,8 @@
     "licenseeName": "Sunset Hues",
     "category": "NFR"
   },
-  "NFR-MAS-GAMINGZONE-01": {
-    "assetCode": "NFR-MAS-GAMINGZONE-01",
-    "stationCode": "MAS",
-    "stationName": "Dr. M. G. R. Chennai Central",
-    "location": "",
-    "type": "Gaming Zone",
-    "licenseeName": "Meenakshi",
-    "category": "NFR"
-  },
-  "NFR-MAS-BMI-01": {
-    "assetCode": "NFR-MAS-BMI-01",
-    "stationCode": "MAS",
-    "stationName": "Dr. M. G. R. Chennai Central",
-    "location": "",
-    "type": "BMI Health",
-    "licenseeName": "Hexion Solutions",
-    "category": "NFR"
-  },
+  
+
   "PnU-MAS-MAS-WRL-248": {
     "assetCode": "PnU-MAS-MAS-WRL-248",
     "stationCode": "MAS",
@@ -998,15 +1081,7 @@
     "licenseeName": "Sri. M. Harikrishnan",
     "category": "PA"
   },
-  "PARKING-MASS-2025-21": {
-    "assetCode": "PARKING-MASS-2025-21",
-    "stationCode": "MASS",
-    "stationName": "Moore Market Complex - Chennai Central suburban",
-    "location": "",
-    "type": "2 wheeler",
-    "licenseeName": "Falcons Transport Services",
-    "category": "PARKING"
-  },
+
   "PUB-MASS-RDN-24-1": {
     "assetCode": "PUB-MASS-RDN-24-1",
     "stationCode": "MASS",
@@ -1016,15 +1091,7 @@
     "licenseeName": "Armour Display System Pvt.Ltd.",
     "category": "NFR"
   },
-  "BSS-MASS-2024-2": {
-    "assetCode": "BSS-MASS-2024-2",
-    "stationCode": "MASS",
-    "stationName": "Moore Market Complex - Chennai Central suburban",
-    "location": "",
-    "type": "Battery Swapping",
-    "licenseeName": "Sun Mobility Private Ltd",
-    "category": "NFR"
-  },
+ 
   "PnU-MAS-MBM-Toi-321": {
     "assetCode": "PnU-MAS-MBM-Toi-321",
     "stationCode": "MBM",
