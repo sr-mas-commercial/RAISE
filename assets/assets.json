@@ -901,7 +901,7 @@
     "assetCode": "MAS-RLXC-LOC2-24",
     "stationCode": "MAS",
     "stationName": "Dr. M. G. R. Chennai Central",
-    "location": "",
+    "location": "New Concourse",
     "type": "Relaxation chair",
     "licenseeName": "Uma",
     "category": "NFR"
@@ -910,7 +910,7 @@
     "assetCode": "MAS-MOBILESHOP-2024-1",
     "stationCode": "MAS",
     "stationName": "Dr. M. G. R. Chennai Central",
-    "location": "",
+    "location": "Near Gate 6",
     "type": "Mobile Stores and Accesories Kiosk",
     "licenseeName": "Karthik Food World",
     "category": "NFR"
@@ -919,7 +919,7 @@
     "assetCode": "MAS-Txtstore-2025-1",
     "stationCode": "MAS",
     "stationName": "Dr. M. G. R. Chennai Central",
-    "location": "",
+    "location": "New Concourse",
     "type": "Textile Store with advertisement",
     "licenseeName": "Vennila clothing company-TIRUPUR",
     "category": "NFR"
@@ -937,7 +937,7 @@
     "assetCode": "PUB-MAS-Attarshop-03",
     "stationCode": "MAS",
     "stationName": "Dr. M. G. R. Chennai Central",
-    "location": "",
+    "location": "Gate 6 Entrance",
     "type": "MAS-Attar shop",
     "licenseeName": "AKS Express",
     "category": "NFR"
@@ -946,7 +946,7 @@
     "assetCode": "PUB-MAS-Leathershop-02",
     "stationCode": "MAS",
     "stationName": "Dr. M. G. R. Chennai Central",
-    "location": "",
+    "location": "Gate 6 Entrance",
     "type": "MAS-Leathershop",
     "licenseeName": "Saisharath Subbian and co-Coimbatore",
     "category": "NFR"
@@ -955,7 +955,7 @@
     "assetCode": "PUB-MAS-Opticalshop-01",
     "stationCode": "MAS",
     "stationName": "Dr. M. G. R. Chennai Central",
-    "location": "",
+    "location": "Gate 6 Entrance",
     "type": "MAS-Opticalshop",
     "licenseeName": "Smart Forwarders",
     "category": "NFR"
@@ -966,7 +966,7 @@
     "assetCode": "MAS-Txtstore-2025-2",
     "stationCode": "MAS",
     "stationName": "Dr. M. G. R. Chennai Central",
-    "location": "",
+    "location": "New Concourse",
     "type": "Textile Store with advertisement",
     "licenseeName": "Vennila clothing company",
     "category": "NFR"
@@ -975,7 +975,7 @@
     "assetCode": "PUB-MAS-RC-24-2",
     "stationCode": "MAS",
     "stationName": "Dr. M. G. R. Chennai Central",
-    "location": "",
+    "location": "Old Concorse",
     "type": "Relaxation chair",
     "licenseeName": "R.Subburaj",
     "category": "NFR"
@@ -984,7 +984,7 @@
     "assetCode": "NFR-MAS-BVM-02",
     "stationCode": "MAS",
     "stationName": "Dr. M. G. R. Chennai Central",
-    "location": "",
+    "location": "Old Concorse",
     "type": "Book Vending Machine",
     "licenseeName": "Sunset Hues",
     "category": "NFR"
